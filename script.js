@@ -42,24 +42,6 @@ function cancelScroll() {
     isScrolling = false;
   }
 }
-document.addEventListener("DOMContentLoaded", function () {
-  const marquees = document.querySelectorAll(".marquee");
-
-  marquees.forEach(marquee => {
-    const track = marquee.querySelector(".track");
-    if (!track) return;
-
-    const marqueeWidth = marquee.offsetWidth;
-    let trackWidth = track.scrollWidth;
-
-    const originalContent = track.innerHTML;
-
-    while (trackWidth < marqueeWidth * 2) {
-      track.innerHTML += originalContent;
-      trackWidth = track.scrollWidth;
-    }
-  });
-});
 // 🔹 Anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
@@ -114,6 +96,32 @@ document.addEventListener("DOMContentLoaded", () => {
     triggerShine(section);
   });
 });
+const tracks = document.querySelectorAll(".marquee-track")
+
+tracks.forEach(track => {
+
+  const content = track.innerHTML
+  track.innerHTML += content   // duplicate 1 lần
+
+  let position = 0
+  const speed = 0.3
+
+  function animate() {
+
+    position -= speed
+
+    if (Math.abs(position) >= track.scrollWidth / 2) {
+      position = 0
+    }
+
+    track.style.transform = `translateX(${position}px)`
+
+    requestAnimationFrame(animate)
+  }
+
+  animate()
+
+})
 document.querySelector(".name-container")
   .classList.add("start-animation");
 history.scrollRestoration = "manual";

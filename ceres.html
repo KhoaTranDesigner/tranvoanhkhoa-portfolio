@@ -16,28 +16,38 @@
 <body class="loading">
   <header class="main-header">
     <nav class="nav-left">
-      <a href="#about" class="nav-item"></a>
-      <a href="#skills" class="nav-item"></a>
+      <a href="#about" class="nav-item">ABOUT</a>
+      <a href="#skills" class="nav-item">SKILL</a>
     </nav>
 
     <div class="branding">
-      <a href="index.html">
-        <video id="logo" class="logo" autoplay muted playsinline>
-          <source src="gif/logo-gif.webm" type="video/webm">
-        </video>
-      </a>
       <div class="name-container">
         <h1 class="main-name">
-          <span class="typing-text">Trần Võ Anh Khoa</span>
-          <div class="sub-title-wrapper">
-            <h2 class="sub-title">Media & Digital Designer</h2>
-            <div class="back-hint">
-              <span class="arrow">←</span>
-              <span class="hint-text">click to back</span>
-            </div>
+          <a href="index.html" class="name-link">
+
+            <span class="logo-box">
+              <span id="logo"></span>
+            </span>
+
+            <span class="typing-text">Trần Võ Anh Khoa</span>
+
+          </a>
+        </h1>
+        <div class="sub-title-wrapper">
+          <h2 class="sub-title">Media & Digital Designer</h2>
+          <div class="back-hint">
+            <span class="arrow">←</span>
+            <span class="hint-text">click to back</span>
           </div>
+        </div>
       </div>
     </div>
+
+    <nav class="nav-right">
+      <a href="#tools" class="nav-item">TOOLS</a>
+      <a href="#Project" class="nav-item">PROJECT</a>
+      <a href="#contact" class="nav-item">CONTACT</a>
+    </nav>
   </header>
   <section class="ceres-hero">
 
@@ -168,6 +178,16 @@
 
     });
 
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+  lottie.loadAnimation({
+    container: document.getElementById("logo"),
+    renderer: "svg",
+    loop: false,
+    autoplay: true,
+    path: "animationlogo.json"
   });
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

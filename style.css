@@ -6,8 +6,10 @@
 }
 
 body {
-  min-width: 1440px;
-  font-family: "Be Vietnam Pro", sans-serif;
+  min-width: 0;
+  margin: auto;
+  font-family: "Be Vietnam Pro",
+    sans-serif;
   background: #ffffff;
   color: #111;
 }
@@ -78,22 +80,30 @@ body {
   justify-self: center;
 }
 
-.logo {
-  position: absolute;
-  left: -90px;
-  /* chỉnh số này theo mắt */
-  top: 50%;
-  transform: translateY(-55%);
-  width: 100px;
+.name-link {
+  color: #0028ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: none;
+  text-decoration: none;
 }
 
-/*tran vo anh khoa*/
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  width: 1.9em;
+  height: 1.9em;
+}
+
 .main-name {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 600;
   font-style: italic;
   color: #0026ff;
-  text-align: center;
 }
 
 .typing-text {
@@ -155,8 +165,9 @@ body {
 }
 
 .hero-section {
-  background: #f0f0f0;
-  padding: var(--space-5) var(--space-5);
+  width: 100%;
+  background: #ffffff;
+  padding: var(--space-1) var(--space-5);
 }
 
 .hero-container {
@@ -190,8 +201,27 @@ body {
 
 .hero-buttons {
   display: flex;
-  gap: var(--space-2);
+  gap: 16px;
   margin-bottom: var(--space-3);
+  justify-content: flex-start;
+  /* desktop căn trái */
+}
+
+/* mobile */
+@media (max-width:768px) {
+
+  .hero-buttons {
+    justify-content: center;
+    /* mobile căn giữa */
+    flex-wrap: wrap;
+    /* tránh tràn màn hình */
+  }
+
+}
+
+.hero-buttons .btn {
+  max-width: 100%;
+  white-space: nowrap;
 }
 
 .btn {
@@ -261,7 +291,10 @@ body.loading .nav-right {
   width: 100%;
   max-width: 380px;
   object-fit: cover;
-  transform: translateY(0px) translateX(40px);
+
+  transform: translateY(0px);
+  /* bỏ translateX */
+
   opacity: 0;
   filter: grayscale(100%) brightness(0.5);
   animation: revealLight 2s ease-out forwards;
@@ -321,8 +354,8 @@ body>* {
 }
 
 .container {
-  max-width: 1440px;
-  margin: 0 auto;
+  margin: 0;
+  width: 100%;
 
 }
 
@@ -370,112 +403,58 @@ body>* {
 
 .hero-section {
   position: relative;
-  height: 103vh;
-  /* chiều cao mong muốn */
+  min-height: 100vh;
   margin-top: -150px;
-  /* kéo lên trên */
   padding-top: 230px;
-  /* bù lại nội dung */
 }
 
 .services-grid {
   background: #ffffff;
-  padding: 0px 80px;
+  padding: 0px 20px;
   /* trên dưới | trái phải */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 20px;
+  gap: 40px;
+  margin-top: 50px;
 }
 
 /* Reset khoảng trắng mặc định */
 body {
   margin: 0;
-  padding: 0;
+  width: 100%;
 }
 
 /* Section riêng của marquee */
-.marquee-section {
+.marquee {
   width: 100%;
-  background: #0028ff;
-  /* đổi màu nếu muốn */
-  padding: 20px 0;
   overflow: hidden;
-  position: relative;
+  background: #1a33ff;
+  padding: 18px 0;
 }
 
-.marquee-section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(120deg,
-      transparent,
-      rgba(255, 255, 255, 0.336),
-      transparent);
-  pointer-events: none;
-}
-
-.marquee-section.shine-active::after {
-  animation: shine 4s ease-in-out;
-}
-
-@keyframes shine {
-  0% {
-    left: -120%;
-  }
-
-  10% {
-    left: -120%;
-  }
-
-  100% {
-    left: 120%;
-  }
-}
-
-/* Track chạy ngang */
-.track {
+.marquee-track {
   display: flex;
-  width: max-content;
-  animation: scroll 40s linear infinite;
+  gap: 40px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  will-change: transform;
 }
 
-/* ghi ngay đây*/
-
-/* Item */
-.item {
+.marquee-item {
   display: flex;
   align-items: center;
-  gap: 80px;
-  padding: 0 50px;
-}
+  gap: 14px;
+  white-space: nowrap;
 
-.item img {
-  width: 40px;
-  height: 40px;
-}
-
-.item span {
+  color: white;
+  font-size: 26px;
   font-style: italic;
-  font-size: 30px;
-  font-weight: 300;
-  color: #ffffff;
-  /* xanh giống Khoa đang dùng */
 }
 
-/* Animation */
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+.marquee-item img {
+  height: 32px;
 }
+
 
 .service-card {
   background: #eeeeee;
@@ -525,7 +504,7 @@ body {
 .service-icon img {
   width: 36px;
   height: 36px;
-  object-fit: contain;
+  object-fit: none;
 }
 
 .service-card h3 {
@@ -535,6 +514,7 @@ body {
 }
 
 .service-card p {
+  text-align: left;
   color: #555;
   line-height: 1.6;
   font-size: 16px;
@@ -555,7 +535,7 @@ body {
 }
 
 .section-header p {
-  color: #555;
+  color: #000000;
   font-style: italic;
   line-height: 1.8;
   font-size: 18px;
@@ -569,7 +549,7 @@ header {
   width: 100%;
   z-index: 999;
 
-  background: rgba(255, 255, 255, 0.233);
+  background: rgba(255, 255, 255, 0);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   /* cho Safari */
@@ -578,7 +558,7 @@ header {
 }
 
 .design-philosophy {
-  padding: 80px 20px;
+  padding: 20px 20px;
   background: #ffffff;
   text-align: left;
   /* đổi từ center -> left */
@@ -596,31 +576,49 @@ header {
 
 .dp-card {
   max-width: 800px;
-  margin: 0 auto 60px;
+  margin: 0 auto 70px;
 }
 
-.dp-card h3 {
+.dp-heading {
   display: flex;
   align-items: baseline;
-  gap: 20px;
+  /* quan trọng */
+  gap: 16px;
+}
+
+
+/* số lớn */
+
+.dp-number {
+  font-size: 36px;
+  /* gần với heading */
+  font-weight: 700;
+  color: #0028ff;
+  line-height: 1;
+  min-width: 40px;
+}
+
+/* tiêu đề */
+
+.dp-text {
   font-size: 32px;
+  font-weight: 700;
   color: #0028ff;
 }
 
-.dp-number {
-  font-size: 32px;
-}
+
+/* paragraph */
 
 .dp-card p {
-  margin-top: 12px;
-  /* hoặc 16px nếu muốn thoáng hơn */
+  margin-left: 56px;
+  margin-top: 10px;
+  font-size: 18px;
   color: #555;
   line-height: 1.8;
-  font-size: 18px;
 }
 
 body {
-  padding-top: 121px;
+  padding-top: 120px;
   /* chỉnh bằng chiều cao header */
 }
 
@@ -638,7 +636,7 @@ header.scrolled {
 
 .about-container {
   width: 100%;
-  padding: 20px 80px;
+  padding: 20px 20px;
   /* tạo khoảng cách 2 bên */
 }
 
@@ -795,6 +793,11 @@ section html {
   margin-top: 60px;
 }
 
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .project-link {
   text-decoration: none;
   color: inherit;
@@ -806,7 +809,7 @@ section html {
   width: 100%;
   height: 240px;
   overflow: hidden;
-  margin-bottom: 14px;
+  border-radius: 10px;
 }
 
 .project-image img {
@@ -817,7 +820,7 @@ section html {
 }
 
 /* hover zoom */
-.project-link:hover img {
+.project-card:hover img {
   transform: scale(1.05);
 }
 
@@ -827,54 +830,40 @@ section html {
   margin: 0;
 }
 
-.project-year {
+.project-title {
   font-size: 18px;
-  font-style: normal !important;
-  margin-top: 6px;
+  color: #0028ff;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.project-year {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 14px;
   opacity: 0.7;
+  line-height: 1.6;
 }
 
-.mobile-block {
-  display: none;
-}
-
-@media (max-width:768px) {
-
-  body>*:not(.mobile-block) {
-    display: none;
-  }
-
-  .mobile-block {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
-    z-index: 9999;
-  }
-
-  .mobile-content {
-    text-align: center;
-    max-width: 320px;
-    padding: 20px;
-    margin: auto;
-  }
+.project-year p {
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  text-align: left;
 }
 
 /*css trang ceres*/
 .ceres-hero {
   text-align: center;
   padding: 80px 20px;
-  background: #f3f3f3;
+  background: #ffffff;
 }
 
 .ceres-tagline {
   letter-spacing: 6px;
   font-size: 14px;
-  color: #1c5c6b;
+  color: #3e6770;
   margin-bottom: 20px;
 }
 
@@ -1124,6 +1113,7 @@ section html {
 }
 
 .contact-section {
+  background: #0028FF;
   width: 100%;
   padding: 20px 0;
 }
@@ -1142,14 +1132,286 @@ section html {
 }
 
 .contact-item span {
-  color: #0028FF;
+  color: #ffffff;
 }
 
 .contact-item a {
-  color: #0028FF;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .contact-item a:hover {
   opacity: 0.7;
+}
+
+/* ============================= */
+/* MOBILE FIX */
+/* ============================= */
+
+@media (max-width:768px) {
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+
+    .main-header {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: none;
+    }
+
+    .main-name {
+      justify-content: center;
+      font-size: clamp(28px, 7vw, 36px);
+    }
+
+    .name-link {
+      gap: 0px;
+      /* chỉnh khoảng cách logo với chữ */
+    }
+
+    #logo {
+      width: 1.5em;
+      height: 1.5em;
+    }
+
+    #logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .portfolio-title {
+      margin-top: 40px;
+      margin-bottom: 30px;
+      font-size: clamp(40px, 10vw, 48px);
+      letter-spacing: 3px;
+      -webkit-text-stroke: 2px #0028ff;
+    }
+
+    .sub-title {
+      font-size: 12px;
+      /* chỉnh nhỏ lại */
+    }
+
+    .hint-text {
+      font-size: 8px;
+    }
+
+    .sub-title-wrapper {
+      gap: 8px;
+    }
+
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .hero-right {
+      order: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-avatar {
+      display: block;
+      margin: 0 auto;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .greeting {
+      font-size: clamp(24px, 6vw, 32px);
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+      /* mobile căn giữa */
+      flex-wrap: wrap;
+    }
+
+
+    .hero-buttons .btn {
+      width: 200px;
+      text-align: center;
+    }
+
+    .marquee-section {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .track {
+      display: flex;
+      gap: 30px;
+      animation: marquee 12s linear infinite;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .item img {
+      width: 22px;
+      height: 22px;
+    }
+
+    .item span {
+      font-size: 14px;
+    }
+
+    .dp-heading {
+      gap: 12px;
+    }
+
+    .dp-number {
+      font-size: 28px;
+      min-width: 32px;
+    }
+
+    .dp-text {
+      font-size: 22px;
+    }
+
+    .dp-card p {
+      margin-left: 44px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .dp-card {
+      margin-bottom: 50px;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(5, 80px);
+      gap: 0px;
+      justify-content: center;
+    }
+
+    /* thu nhỏ icon */
+    .skill-item img {
+      width: 60px;
+    }
+
+    .skill-name {
+      bottom: -10px;
+      font-size: 10px;
+    }
+
+    /* 3 icon hàng dưới nằm giữa */
+    .skill-item:nth-child(6) {
+      grid-column: 2;
+    }
+
+    .skill-item:nth-child(7) {
+      grid-column: 3;
+    }
+
+    .skill-item:nth-child(8) {
+      grid-column: 4;
+    }
+
+    .projects-grid {
+      padding: 0px 20px;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .project-card {
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .project-image {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+    }
+
+    .project-year p {
+      text-align: left;
+      font-style: normal;
+      font-size: 14px;
+      color: #000000;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .section-header p {
+      padding: 0 20px;
+    }
+  }
+
+  /* section thanks */
+  .thanks-section {
+    padding: 120px 20px;
+  }
+
+  .thanks-section h2 {
+    font-size: 36px;
+    line-height: 1.3;
+  }
+
+  .thanks-section p {
+    font-size: 14px;
+  }
+
+  .thanks-role {
+    font-size: 8px;
+  }
+
+  /* thanh contact */
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+  }
+
+  .contact-item {
+    font-size: 13px;
+  }
+
+  .project-title {
+    text-align: left;
+    margin-top: 0;
+    font-size: 16px;
+  }
 }
