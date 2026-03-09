@@ -825,20 +825,27 @@ section html {
 }
 
 .project-title {
+  padding-top: 10px;
   font-size: 18px;
   color: #0028ff;
   margin: 0;
 }
 
-.project-title {
+.project-title a {
+  text-decoration: none;
   font-size: 18px;
   color: #0028ff;
   margin-top: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 0px;
+}
+
+.project-title a:hover {
+  transition: 0.6s ease;
+  color: #00127a;
 }
 
 .project-year {
-  margin-top: 10px;
+  margin-top: 0px;
   text-align: left;
   font-size: 14px;
   opacity: 0.7;
@@ -856,7 +863,8 @@ section html {
 /*css trang ceres*/
 .ceres-hero {
   text-align: center;
-  padding: 80px 20px;
+  margin-top: 100px;
+  padding: 40px;
   background: #ffffff;
 }
 
@@ -888,7 +896,7 @@ section html {
 }
 
 .ceres-about h3 {
-  font-size: 22px;
+  font-size: 18px;
   color: #1c5c6b;
   margin-bottom: 15px;
 }
@@ -948,7 +956,7 @@ section html {
 .next-section {
   padding: 30px;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 0px;
   font-size: 28px;
   color: #1c5c6b;
 }
@@ -1079,7 +1087,7 @@ section html {
 
 .project-credit {
   font-size: 14px;
-  color: #6f8aa8;
+  color: #0028FF;
   margin-top: 10px;
   font-style: italic;
   letter-spacing: 1px;
@@ -1414,4 +1422,50 @@ section html {
     margin-top: 0;
     font-size: 16px;
   }
+
+  .title-product-labels {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    font-size: 22px;
+  }
+
+  .product-labels {
+    flex-direction: column;
+    /* xếp dọc */
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .label-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .label-item img {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .full-packaging-image img {
+    padding-top: 30px;
+    max-width: 300px;
+  }
+
+  .ceres-company {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1c5c6b;
+    margin-top: 10px;
+  }
+
+  .ceres-about h3 {
+    font-size: 18px;
+    color: #1c5c6b;
+    margin-bottom: 15px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }
