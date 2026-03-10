@@ -122,6 +122,7 @@ tracks.forEach(track => {
   animate()
 
 })
+
 document.querySelector(".name-container")
   .classList.add("start-animation");
 history.scrollRestoration = "manual";

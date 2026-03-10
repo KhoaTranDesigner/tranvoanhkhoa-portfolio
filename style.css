@@ -75,6 +75,52 @@ body {
   color: #0028ff;
 }
 
+.project-meta {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 0px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.project-concept {
+  max-width: 900px;
+  margin: 80px auto;
+  line-height: 1.7;
+}
+
+.project-concept h2 {
+  color: #0b192d;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.project-concept p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0028FF;
+  margin-bottom: 6px;
+}
+
+.meta-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+}
+
 .branding {
   position: relative;
   justify-self: center;
@@ -860,6 +906,15 @@ section html {
   text-align: left;
 }
 
+.ngocnga-hero-cp {
+  text-align: center;
+  margin-top: 100px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: #ffffff;
+}
+
 /*css trang ceres*/
 .ceres-hero {
   text-align: center;
@@ -914,7 +969,7 @@ section html {
 
 .packaging-title {
   font-size: 32px;
-  color: #1c5c6b;
+  color: #0b192d;
   margin-bottom: 40px;
 }
 
@@ -958,7 +1013,7 @@ section html {
   text-align: center;
   margin-top: 0px;
   font-size: 28px;
-  color: #1c5c6b;
+  color: #0b192d;
 }
 
 .ceres-showcase img {
@@ -976,7 +1031,7 @@ section html {
   text-align: left;
   font-style: italic;
   font-size: 28px;
-  color: #1c5c6b;
+  color: #0b192d;
 }
 
 .full-packaging-image {
@@ -1150,6 +1205,333 @@ section html {
 
 .contact-item a:hover {
   opacity: 0.7;
+}
+
+/* campaign */
+.poster-stand-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.poster-stand-row img {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.poster-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.poster-row img {
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  flex: 1;
+}
+
+.standee-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 30px;
+}
+
+.standee-row img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.standee-mockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.standee-mockup img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+}
+
+.posm-title {
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: #91182A;
+  text-transform: uppercase;
+}
+
+.posm-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.post-full {
+  padding-top: 0px;
+  width: 100%;
+  max-width: none;
+  display: block;
+  border-radius: 12px;
+}
+
+body {
+  margin: 0;
+}
+
+.facebook-post {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.post-wrapper img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 0 auto;
+  /* thêm dòng này */
+}
+
+.post-small {
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-wrapper img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.facebook-cover {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.facebook-cover {
+  padding: 40px 16px;
+}
+
+.cover-wrapper {
+  gap: 16px;
+}
+
+.cover-wrapper img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+
+.cover-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cover-wrapper img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.keyvisual-section {
+  padding: 40px 40px;
+  text-align: center;
+  background: #fff;
+}
+
+.keyvisual-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #91182A;
+  margin-bottom: 80px;
+}
+
+.keyvisual-title3 {
+  padding-top: 80px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #91182A;
+  margin-bottom: 50px;
+}
+
+.keyvisual-titles {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #91182A;
+  margin-bottom: 0px;
+}
+
+.keyvisual-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  /* hoặc xóa luôn dòng này */
+  gap: 90px;
+  justify-content: center;
+}
+
+.keyvisual-container img {
+  width: 50%;
+  height: 700px;
+  /* chiều cao khung */
+  object-fit: cover;
+  /* ảnh tự scale để lấp khung */
+
+  border-radius: 12px;
+  box-shadow: 0 0 40px #91182a44;
+}
+
+.keyvisual {
+  width: 100%;
+  padding: 40px 40px;
+  /* khoảng thở trên dưới và 2 bên */
+  box-sizing: border-box;
+}
+
+.keyvisual-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.keyvisual-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 0 50px #91182a49;
+}
+
+.campaign-intro {
+  width: 100%;
+  padding: 20px 20px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.campaign-container {
+  max-width: 900px;
+}
+
+.campaign-container h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #91182A;
+  letter-spacing: 1px;
+}
+
+.campaign-container p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+/* Key Visual Materials */
+.material-section {
+  padding: 40px 40px;
+  background: #ffffff;
+  text-align: center;
+}
+
+/* TITLE */
+
+.material-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #91182A;
+  margin-bottom: 80px;
+  letter-spacing: -0.5px;
+}
+
+/* GRID */
+
+.material-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+/* CARD */
+
+.material-card {
+  color: #91182A;
+  text-align: center;
+}
+
+/* KHUNG ẢNH */
+
+.material-card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+
+  border-radius: 14px;
+  background: #fff;
+  margin-bottom: 24px;
+}
+
+/* TITLE CARD */
+
+.material-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* TEXT */
+
+.material-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #000000;
 }
 
 /* ============================= */
@@ -1387,6 +1769,179 @@ section html {
     }
   }
 
+  /* ngọc ngà */
+
+  .poster-stand-row {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .poster-stand-row img {
+    width: 55%;
+    height: auto;
+    display: block;
+  }
+
+  .poster-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .poster-row img {
+    max-width: 90%;
+  }
+
+  .posm-title {
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: #91182A;
+    text-transform: uppercase;
+  }
+
+  .standee-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .standee-row img {
+    max-width: 90%;
+  }
+
+  .post-small {
+    max-width: 340px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .keyvisual-section {
+    padding: 40px 40px;
+  }
+
+  .keyvisual-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .keyvisual-container img {
+    flex: none;
+    width: 50%;
+    max-width: 420px;
+    height: auto;
+    box-shadow: 0 0 20px #ff00261e;
+  }
+
+  .keyvisual-title {
+    font-size: 28px;
+    margin-bottom: 80px;
+  }
+
+  .keyvisual-titles {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .keyvisual-title3 {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  .material-section {
+    padding: 40px 20px;
+    text-align: left;
+    /* tránh lỗi canh giữa làm lệch card */
+  }
+
+  .material-title {
+    font-size: 38px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* chuyển grid thành slider ngang */
+  .material-grid:hover,
+  .material-grid:active,
+  .material-grid:focus-within {
+    animation-play-state: paused;
+  }
+
+  .material-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 10px;
+
+    animation: swipeHint 1.2s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  @keyframes swipeHint {
+
+    0% {
+      transform: translateX(0);
+    }
+
+    40% {
+      transform: translateX(-12px);
+    }
+
+    80% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+
+  }
+
+  /* ẩn scrollbar */
+  .material-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* mỗi card chiếm gần full màn hình */
+  .material-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  /* ảnh giữ đúng tỉ lệ */
+  .material-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .keyvisual img {
+    border-radius: 6px;
+    box-shadow: 0px 0px 35px #91182a2f;
+  }
+
+  .campaign-intro {
+    padding: 0px 20px;
+  }
+
+  .campaign-container h1 {
+    padding-top: 20px;
+    font-size: 28px;
+  }
+
+  .campaign-container p {
+    font-size: 16px;
+  }
+
+
   /* section thanks */
   .thanks-section {
     padding: 120px 20px;
@@ -1450,6 +2005,41 @@ section html {
   .full-packaging-image img {
     padding-top: 30px;
     max-width: 300px;
+  }
+
+  .project-meta {
+    gap: 30px;
+    margin: auto;
+    padding-bottom: 20px;
+  }
+
+  .meta-label {
+    font-size: 12px;
+  }
+
+  .meta-value {
+    font-size: 12px;
+  }
+
+  .project-concept {
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+
+  .project-concept h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .project-concept p {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .meta-item {
+    align-items: center;
   }
 
   .ceres-company {
