@@ -180,3 +180,20 @@ if (isMobile) {
   })
 
 }
+const grid = document.querySelector('.material-grid')
+const dots = document.querySelectorAll('.m-dot')
+
+grid.addEventListener('scroll', () => {
+
+  const scrollLeft = grid.scrollLeft
+  const cardWidth = grid.querySelector('.material-card').offsetWidth + 18
+
+  let index = Math.round(scrollLeft / cardWidth)
+
+  dots.forEach(d => d.classList.remove('active'))
+
+  if (dots[index]) {
+    dots[index].classList.add('active')
+  }
+
+})

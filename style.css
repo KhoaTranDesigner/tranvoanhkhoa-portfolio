@@ -1684,6 +1684,10 @@ img {
   gap: 60px;
 }
 
+.material-dots {
+  display: none;
+}
+
 /* CARD */
 
 .material-card {
@@ -2097,6 +2101,26 @@ img {
     animation-play-state: paused;
   }
 
+  .material-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .m-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #5c000e;
+    transition: .3s;
+  }
+
+  .m-dot.active {
+    background: #91182A;
+    transform: scale(1.4);
+  }
+
   .material-grid {
     display: flex;
     overflow-x: auto;
@@ -2107,7 +2131,7 @@ img {
 
     padding-bottom: 10px;
 
-    animation: swipeHint 1.2s ease-in-out infinite;
+    animation: swipeHint 1.2s ease-in-out 2;
     animation-delay: 2s;
   }
 
@@ -2118,7 +2142,7 @@ img {
     }
 
     40% {
-      transform: translateX(-12px);
+      transform: translateX(-10px);
     }
 
     80% {
