@@ -5,7 +5,7 @@ const header = document.querySelector("header");
 
 let animationFrameId = null;
 let isScrolling = false;
-
+const isMobile = window.matchMedia("(max-width:768px)").matches
 function smoothScrollTo(target, duration = 800) {
   cancelScroll(); // tránh chồng animation
 
@@ -46,30 +46,40 @@ function cancelScroll() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
 
-    const href = this.getAttribute("href");
+    e.preventDefault()
 
-    e.preventDefault();
+    const href = this.getAttribute("href")
+    const target = document.querySelector(href)
+    if (!target) return
 
-    // Scroll về đầu nếu là "#"
-    if (href === "#") {
-      smoothScrollTo(0);
-      return;
+    const headerHeight = header ? header.offsetHeight + 80 : 0
+    const targetPosition = target.offsetTop - headerHeight
+
+    if (isMobile) {
+
+      window.scrollTo(0, targetPosition)   // ⭐ NHẢY THẲNG → mượt mobile
+
+    } else {
+
+      smoothScrollTo(targetPosition)       // ⭐ giữ hiệu ứng desktop
+
     }
 
-    const target = document.querySelector(href);
-    if (!target) return;
-
-    const headerHeight = header ? header.offsetHeight + 80 : 0;
-    const targetPosition = target.offsetTop - headerHeight;
-
-    smoothScrollTo(targetPosition);
-  });
-});
+  })
+})
 // 🔹 Click vào graphics designer
 const subTitle = document.querySelector(".sub-title");
+
 if (subTitle) {
   subTitle.addEventListener("click", function () {
-    smoothScrollTo(0);
+
+
+    if (isMobile) {
+      window.scrollTo(0, 0)
+    } else {
+      smoothScrollTo(0)
+    }
+
   });
 }
 window.addEventListener("load", () => {
@@ -131,16 +141,42 @@ window.scrollTo(0, 0);
 window.addEventListener("wheel", cancelScroll, { passive: true });
 window.addEventListener("touchstart", cancelScroll, { passive: true });
 window.addEventListener("keydown", cancelScroll);
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-const overlay = document.getElementById("menuOverlay");
+const hamburger = document.getElementById("hamburger")
 
-hamburger.addEventListener("click", () => {
+if (hamburger) {
 
-  hamburger.classList.toggle("active");
+  const mobileMenu = document.getElementById("mobileMenu")
+  const overlay = document.getElementById("menuOverlay")
 
-  mobileMenu.classList.toggle("show");
+  hamburger.addEventListener("click", () => {
 
-  overlay.classList.toggle("show");
+    hamburger.classList.toggle("active")
+    mobileMenu.classList.toggle("show")
+    overlay.classList.toggle("show")
 
-});
+  })
+
+}
+if (isMobile) {
+
+  const revealElements = document.querySelectorAll(".reveal")
+
+  const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show")
+      }
+
+    })
+
+  }, {
+    threshold: 0.15
+  })
+
+  revealElements.forEach(el => {
+    observer.observe(el)
+  })
+
+}
