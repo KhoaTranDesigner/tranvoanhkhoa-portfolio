@@ -2236,6 +2236,10 @@ img {
     color: #1c5c6b;
     margin-bottom: 15px;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 html {
