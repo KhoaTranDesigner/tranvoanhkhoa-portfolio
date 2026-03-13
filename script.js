@@ -131,3 +131,16 @@ window.scrollTo(0, 0);
 window.addEventListener("wheel", cancelScroll, { passive: true });
 window.addEventListener("touchstart", cancelScroll, { passive: true });
 window.addEventListener("keydown", cancelScroll);
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("menuOverlay");
+
+hamburger.addEventListener("click", () => {
+
+  hamburger.classList.toggle("active");
+
+  mobileMenu.classList.toggle("show");
+
+  overlay.classList.toggle("show");
+
+});
