@@ -364,7 +364,6 @@ body {
 @media (max-width:768px) {
   .hamburger {
     display: flex;
-    animation: fadeIn .4s ease;
   }
 
 }
@@ -399,7 +398,7 @@ body {
 }
 
 .hero-buttons {
-  justify-content: center;
+  justify-content: left;
   /* mobile căn giữa */
   flex-wrap: wrap;
   /* tránh tràn màn hình */
