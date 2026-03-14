@@ -2307,6 +2307,10 @@ img {
   html {
     scroll-behavior: auto;
   }
+
+  .service-icon {
+    display: none;
+  }
 }
 
 html {
