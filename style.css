@@ -106,6 +106,15 @@ body {
   pointer-events: auto;
 }
 
+.mothersday-hero-cp {
+  text-align: center;
+  margin-top: 100px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: #ffffff;
+  /* Hoặc điều chỉnh số px cho bằng với độ cao của header */
+}
 
 /* ===== MENU ===== */
 header {
@@ -228,7 +237,7 @@ header {
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #0028FF;
+  color: #0b192d;
   margin-bottom: 6px;
 }
 
@@ -819,7 +828,6 @@ body {
 }
 
 header.scrolled {
-  box-shadow: 0 3px 8px #0028FF;
   background: #1e40ff09;
 }
 
@@ -1425,15 +1433,19 @@ section html {
 .standee-row {
   display: flex;
   justify-content: center;
-  gap: 80px;
+  gap: 40px;
   margin-bottom: 30px;
 }
 
 .standee-row img {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  /* Khoảng cách giữa 2 standee rộng ra chút cho thoáng */
   width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  /* Margin bottom để cách xa hình mockup bên dưới */
 }
 
 .standee-mockup {
@@ -1450,11 +1462,11 @@ section html {
 }
 
 .posm-title {
-  text-align: left;
+  text-align: center;
   font-size: 14px;
   letter-spacing: 1px;
   margin-bottom: 12px;
-  color: #91182A;
+  color: #5c000e;
   text-transform: uppercase;
 }
 
@@ -1565,7 +1577,7 @@ img {
   text-align: center;
   font-size: 40px;
   font-weight: 700;
-  color: #91182A;
+  color: #5c000e;
   margin-bottom: 80px;
 }
 
@@ -1574,8 +1586,8 @@ img {
   text-align: center;
   font-size: 40px;
   font-weight: 700;
-  color: #91182A;
-  margin-bottom: 50px;
+  color: #5c000e;
+  margin-bottom: 20px;
 }
 
 .keyvisual-titles {
@@ -1584,7 +1596,7 @@ img {
   text-align: center;
   font-size: 40px;
   font-weight: 700;
-  color: #91182A;
+  color: #5c000e;
   margin-bottom: 0px;
 }
 
@@ -1606,7 +1618,6 @@ img {
   /* ảnh tự scale để lấp khung */
 
   border-radius: 12px;
-  box-shadow: 0 0 40px #91182a44;
 }
 
 .keyvisual {
@@ -1626,7 +1637,6 @@ img {
   width: 100%;
   height: auto;
   display: block;
-  box-shadow: 0 0 50px #91182a49;
 }
 
 .campaign-intro {
@@ -1645,7 +1655,7 @@ img {
   font-size: 48px;
   font-weight: 600;
   margin-bottom: 40px;
-  color: #91182A;
+  color: #5c000e;
   letter-spacing: 1px;
 }
 
@@ -1669,7 +1679,7 @@ img {
   text-align: center;
   font-size: 40px;
   font-weight: 700;
-  color: #91182A;
+  color: #5c000e;
   margin-bottom: 80px;
   letter-spacing: -0.5px;
 }
@@ -1680,7 +1690,10 @@ img {
   max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  /* Ép tất cả nằm ngang */
+  grid-auto-columns: 1fr;
+  /* Tự động chia kích thước các cột bằng nhau */
   gap: 60px;
 }
 
@@ -1691,7 +1704,7 @@ img {
 /* CARD */
 
 .material-card {
-  color: #91182A;
+  color: #5c000e;
   text-align: center;
 }
 
@@ -1721,6 +1734,344 @@ img {
   font-size: 15px;
   line-height: 1.7;
   color: #000000;
+}
+
+/* ========================================================= */
+/* CSS RIÊNG CHO FACEBOOK POST - MOTHER'S DAY CAMPAIGN       */
+/* ========================================================= */
+
+.md-facebook-post {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.md-section-title {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  /* Dùng lại biến màu của trang Mother's Day để đồng bộ */
+  color: var(--md-heading-color, #006871);
+  margin-bottom: 0px;
+}
+
+.md-post-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.md-post-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.md-post-title {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  /* Dùng lại biến màu của trang Mother's Day */
+  color: var(--md-heading-color, #006871);
+  text-transform: uppercase;
+}
+
+.md-post-small {
+  max-width: 600px;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  /* Bo góc ảnh mượt mà */
+}
+
+/* Khung bọc 4 ảnh vuông cho Promotion Post */
+.md-post-four {
+  display: flex;
+  justify-content: space-between;
+  /* Đẩy 2 hình ngoài cùng ra sát 2 mép */
+  gap: 10px;
+  width: 100%;
+  /* Đảm bảo khung bọc full 100% bằng đúng banner */
+}
+
+.md-post-four img {
+  /* Công thức: Lấy 100% chiều ngang trừ đi 30px (của 3 cái gap 10px) rồi mới chia 4 */
+  width: calc((100% - 30px) / 4);
+  display: block;
+  border-radius: 12px;
+}
+
+/* ========================================================= */
+/* CSS CHO BANNER SỰ KIỆN & CẮT ẢNH VUÔNG ĐỀU NHAU           */
+/* ========================================================= */
+
+/* Banner ngang hiển thị full chiều rộng container */
+.md-event-banner {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  /* Khoảng cách với 4 hình dưới */
+}
+
+/* Ép 4 hình (dù dọc hay vuông) đều thành hình vuông bằng nhau để không bị lệch hàng */
+.md-square-crop {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  /* Tự động zoom cắt gọn phần thừa mà không làm méo ảnh */
+}
+
+.md-slogan {
+  display: block;
+  /* Ép câu slogan tự động rớt xuống dòng mới */
+  font-size: 60%;
+  /* Chữ sẽ tự động thu nhỏ bằng 60% so với chữ Mother's Day Campaign */
+  font-weight: 400;
+  /* Nét chữ mỏng lại để nhường sự nổi bật cho tên chiến dịch */
+  font-style: italic;
+  /* In nghiêng tạo sự mềm mại, sang trọng */
+  color: #001a1d;
+  /* Đổi sang màu xám trầm để tách biệt với màu xanh ngọc ở trên */
+  margin-top: 12px;
+  /* Cách dòng trên ra một xíu cho thoáng */
+  letter-spacing: 0.5px;
+}
+
+/* ========================================================= */
+/* CSS CHO POSM OFFLINE - MOTHER'S DAY CAMPAIGN              */
+/* ========================================================= */
+
+.md-posm-section {
+  padding: 60px 40px;
+  background: #fff;
+  text-align: center;
+}
+
+.md-posm-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Hàng ngang 4 ảnh cho Booth */
+.md-posm-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.md-posm-row img {
+  /* Chia 4 cột và trừ đi các khoảng gap */
+  width: calc((100% - 45px) / 4);
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+
+/* Hình check-in lớn phía dưới */
+.md-checkin-large {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.md-checkin-large img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+/* ========================================================= */
+/* CSS CHO STANDEE - MOTHER'S DAY CAMPAIGN                   */
+/* ========================================================= */
+
+/* Hàng ngang 2 Standee thiết kế */
+.md-standee-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  /* Khoảng cách giữa 2 standee rộng ra chút cho thoáng */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  /* Margin bottom để cách xa hình mockup bên dưới */
+}
+
+.md-standee-row img {
+  /* Chia đôi, mỗi hình chiếm gần nửa chiều ngang */
+  width: calc((100% - 40px) / 2);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  /* Đổ bóng nhẹ cho Standee nổi khối */
+}
+
+/* Standee Mockup tổng */
+.md-standee-mockup {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.md-standee-mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.md-easel-row img {
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ========================================================= */
+/* CSS CHO POSTER THANG MÁY - MOTHER'S DAY                   */
+/* ========================================================= */
+
+.md-elevator-poster {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.md-elevator-poster img {
+  width: 100%;
+  max-width: 450px;
+  /* Poster dọc nên giới hạn bề ngang để chiều cao không bị quá lố trên PC */
+  height: auto;
+  border-radius: 12px;
+
+}
+
+
+.nn-thanks-section {
+  width: 100%;
+  padding: 120px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.nn-thanks-title {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+  /* Dùng màu đỏ đô/đỏ mận của Ngọc Ngà */
+  color: var(--nn-heading-color, #5c000e);
+  transition: 0.4s;
+}
+
+.nn-thanks-sub {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  color: var(--nn-heading-color, #5c000e);
+}
+
+/* ========================================================= */
+/* CSS CHO FLIP MENU (MENU LẬT) - MOTHER'S DAY               */
+/* ========================================================= */
+
+/* Hàng ngang 3 ảnh thiết kế */
+.md-flipmenu-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* Khoảng cách giữa các ảnh */
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 30px auto;
+  /* Margin bottom để cách xa hình mockup bên dưới */
+}
+
+.md-flipmenu-row img {
+  /* Chia 3 cột, trừ đi 2 khoảng gap 20px (tổng 40px) */
+  width: calc((100% - 40px) / 3);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  /* Đổ bóng nhẹ làm nổi khối ảnh */
+}
+
+/* Ảnh Mockup Menu lật nằm ngang */
+.md-flipmenu-mockup {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.md-flipmenu-mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.nn-project-meta {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.nn-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nn-meta-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Nhận màu đỏ mận tự động */
+  color: var(--nn-heading-color, #5c000e);
+  margin-bottom: 6px;
+}
+
+.nn-meta-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+}
+
+/* ========================================================= */
+/* CSS CHO LEAFLET (TỜ RƠI) - MOTHER'S DAY                   */
+/* ========================================================= */
+
+.md-leaflet-single {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  /* Khống chế độ to vừa phải trên PC */
+  margin: 0 auto;
+}
+
+.md-leaflet-single img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nn-project-credit {
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  color: var(--nn-heading-color, #5c000e);
 }
 
 /* ============================= */
@@ -1757,6 +2108,93 @@ img {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+  }
+
+  .md-section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .md-post-small {
+    max-width: 340px;
+  }
+
+  /* Ép 4 ảnh thành 2 hàng vuông vức trên điện thoại */
+  .md-post-four {
+    gap: 15px;
+    padding: 0 15px;
+    flex-wrap: wrap;
+  }
+
+  /* Trừ đi 1 khoảng gap 20px ở giữa rồi chia 2 để được 2 cột hoàn hảo */
+  .md-post-four img {
+    width: calc((100% - 15px) / 2);
+  }
+
+  .md-standee-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .md-standee-row img {
+    width: 100%;
+    /* Trên mobile, mỗi standee full chiều ngang */
+    max-width: 400px;
+    /* Giới hạn độ to tối đa để không bị phình quá */
+  }
+
+  .md-standee-mockup {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .md-posm-section {
+    padding: 40px 20px;
+  }
+
+  /* Trên mobile gập 4 ảnh thành 2 hàng 2 cột */
+  .md-posm-row {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .md-posm-row img {
+    width: calc((100% - 15px) / 2);
+  }
+
+  .md-checkin-large {
+    padding: 0 10px;
+  }
+
+  .md-easel-row {
+    flex-direction: row;
+    /* Ép nó nằm ngang thay vì rớt xuống cột dọc */
+    justify-content: space-between;
+    gap: 0px;
+    /* Khoảng cách giữa 2 hình là 20px */
+    padding: 0 0px;
+    box-sizing: border-box;
+  }
+
+  .md-easel-row img {
+    /* Chia đôi màn hình, trừ đi khoảng hở 20px ở giữa */
+    width: calc((100% - 20px) / 2);
+    max-width: none;
+    /* Gỡ bỏ giới hạn max-width cũ */
+  }
+
+  .md-elevator-poster {
+    padding: 0 20px;
+    /* Cách đều 2 lề điện thoại 20px giống các mục trên */
+    box-sizing: border-box;
+  }
+
+  .md-elevator-poster img {
+    max-width: 100%;
+    /* Trên mobile thì cứ bung full 100% của khoảng trống còn lại */
   }
 
   * {
@@ -2028,7 +2466,7 @@ img {
     font-size: 14px;
     letter-spacing: 1px;
     margin-bottom: 12px;
-    color: #91182A;
+    color: #5c000e;
     text-transform: uppercase;
   }
 
@@ -2064,7 +2502,6 @@ img {
     width: 50%;
     max-width: 420px;
     height: auto;
-    box-shadow: 0 0 20px #ff00261e;
   }
 
   .keyvisual-title {
@@ -2089,7 +2526,7 @@ img {
   }
 
   .material-title {
-    font-size: 38px;
+    font-size: 28px;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -2112,12 +2549,12 @@ img {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #5c000e;
+    background: #727272;
     transition: .3s;
   }
 
   .m-dot.active {
-    background: #91182A;
+    background: #000000;
     transform: scale(1.4);
   }
 
@@ -2174,7 +2611,6 @@ img {
 
   .keyvisual img {
     border-radius: 6px;
-    box-shadow: 0px 0px 35px #91182a2f;
   }
 
   .campaign-intro {
@@ -2254,6 +2690,24 @@ img {
   .full-packaging-image img {
     padding-top: 30px;
     max-width: 300px;
+  }
+
+  .nn-project-meta {
+    gap: 30px;
+    margin: auto;
+    padding-bottom: 20px;
+  }
+
+  .nn-meta-label {
+    font-size: 12px;
+  }
+
+  .nn-meta-value {
+    font-size: 12px;
+  }
+
+  .nn-meta-item {
+    align-items: center;
   }
 
   .project-meta {
