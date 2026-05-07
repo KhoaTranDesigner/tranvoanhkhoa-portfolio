@@ -727,7 +727,7 @@ body {
 
 .section-header {
   text-align: center;
-  padding: 80px 0 0px 0;
+  padding: 80px 0 20px 0;
   max-width: 800px;
   margin: 0px auto 0px auto;
 }
@@ -1576,7 +1576,7 @@ img {
 .keyvisual-title {
   text-align: center;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 800;
   color: #5c000e;
   margin-bottom: 80px;
 }
@@ -1585,7 +1585,7 @@ img {
   padding-top: 80px;
   text-align: center;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 800;
   color: #5c000e;
   margin-bottom: 20px;
 }
@@ -1595,7 +1595,7 @@ img {
   padding-bottom: 20px;
   text-align: center;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 800;
   color: #5c000e;
   margin-bottom: 0px;
 }
@@ -1678,7 +1678,7 @@ img {
 .material-title {
   text-align: center;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 800;
   color: #5c000e;
   margin-bottom: 80px;
   letter-spacing: -0.5px;
@@ -1752,8 +1752,7 @@ img {
   padding-bottom: 20px;
   text-align: center;
   font-size: 40px;
-  font-weight: 700;
-  /* Dùng lại biến màu của trang Mother's Day để đồng bộ */
+  font-weight: 800;
   color: var(--md-heading-color, #006871);
   margin-bottom: 0px;
 }
@@ -1877,19 +1876,244 @@ img {
   transition: transform 0.3s ease;
 }
 
-
-/* Hình check-in lớn phía dưới */
-.md-checkin-large {
-  width: 100%;
+/* --- CSS CHO VIDEO ADS PROMOTION (MOTHER'S DAY) --- */
+.md-video-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0px auto;
+  padding: 0 20px;
 }
 
-.md-checkin-large img {
+.md-video-col {
+  flex: 0 0 360px;
+}
+
+/* Khung video dọc 9:16 */
+.md-shorts-frame {
   width: 100%;
-  height: auto;
-  border-radius: 16px;
-  display: block;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.md-shorts-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.md-workflow-col {
+  flex: 1;
+  text-align: left;
+}
+
+.md-workflow-col h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--md-heading-color, #006871);
+}
+
+.md-workflow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.md-workflow-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.md-workflow-num {
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 104, 113, 0.08);
+  /* Màu xanh ngọc nhạt */
+  color: var(--md-heading-color, #006871);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 104, 113, 0.15);
+}
+
+.md-workflow-content h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #006871;
+  margin-bottom: 6px;
+}
+
+.md-workflow-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+/* --- CSS BREAKDOWN GIỐNG MẪU KHOA GỬI --- */
+.workflow-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.workflow-info {
+  flex: 1;
+  text-align: left;
+}
+
+/* Tiêu đề My Roles & Workflow màu tím đậm */
+.workflow-info h3 {
+  color: #006871;
+  /* Màu tím chuẩn campaign */
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+}
+
+/* Khung chứa các thẻ nhiệm vụ */
+.workflow-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+/* Tổng thể section */
+.md-ads-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  /* Khoa có thể đổi font tùy ý */
+}
+
+.md-recap-container {
+  display: flex;
+  flex-direction: column;
+  /* Video nằm trên chữ */
+  align-items: center;
+  /* Căn giữa tất cả thành phần con theo chiều ngang */
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  /* Hoặc độ rộng Khoa muốn */
+  margin: 0 auto;
+  /* Căn giữa toàn bộ khối Recap trên trang web */
+  gap: 40px;
+}
+
+/* Cột Video (giữ tỷ lệ Shorts) */
+.md-video-col {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Căn giữa nội dung bên trong cột */
+}
+
+/* --- CSS RIÊNG CHO CLIP NGANG (RECAP) --- */
+
+/* Tăng chiều rộng cột cho video ngang */
+.md-landscape-col {
+  flex: 1.2 !important;
+  /* Ưu tiên chiều rộng cho video */
+  max-width: 900px !important;
+}
+
+/* Thiết lập tỉ lệ 16:9 thay vì 9:16 */
+.md-landscape-frame {
+  width: 100%;
+  max-width: 800px;
+  /* Khống chế độ rộng video để không bị quá to */
+  margin: 0 auto;
+  /* Đảm bảo khung video nằm giữa */
+  position: relative;
+  padding-bottom: 56.25%;
+  /* Tỉ lệ 16:9 chuẩn */
+  height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.md-landscape-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.md-shorts-frame {
+  position: relative;
+  padding-bottom: 177.78%;
+  /* Tỷ lệ 9:16 */
+  height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.md-shorts-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Cột nội dung bên phải */
+.md-workflow-info {
+  padding-top: 20px;
+  text-align: center;
+  /* Căn giữa tiêu đề và tags cho hợp layout 1 cột */
+}
+
+.md-workflow-info h3 {
+  color: #006064;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Style các thẻ Tag giống ảnh mẫu */
+.md-workflow-tags {
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.md-tag {
+  padding: 8px 16px;
+  /* Nền tím nhạt, chữ tím đậm */
+  background: rgba(0, 51, 58, 0.08);
+  color: #006064;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(33, 182, 182, 0.2);
 }
 
 /* ========================================================= */
@@ -2074,11 +2298,99 @@ img {
   color: var(--nn-heading-color, #5c000e);
 }
 
+/* --- CSS CHO 3 ẢNH POST DỊCH VỤ (THỜI ĐIỂM VÀNG) --- */
+.tdv-post-three {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.tdv-post-three img {
+  width: calc((100% - 40px) / 3);
+  /* Chia 3 cột trên máy tính */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+
 /* ============================= */
 /* MOBILE FIX */
 /* ============================= */
 
 @media (max-width:768px) {
+
+  /* Ép cột video ngang bung rộng hết màn hình mobile */
+  .md-landscape-col {
+    max-width: 100% !important;
+    padding: 0 10px;
+  }
+
+  /* Giữ đúng tỉ lệ ngang trên mobile */
+  .md-landscape-frame {
+    padding-bottom: 56.25%;
+  }
+
+  /* --- RESPONSIVE CHO 2 PHẦN ADS PROMOTION VIDEO --- */
+
+  /* 1. Phần layout cũ (có số 01, 02, 03, 04) */
+  .md-video-showcase {
+    flex-direction: column;
+    /* Xếp chồng video lên trên chữ */
+  }
+
+  /* 2. Phần layout mới (có bộ Tags và Description) */
+  .md-recap-container {
+    padding-bottom: 10px !important;
+    /* Ép padding nhỏ lại */
+    flex-direction: column;
+    /* Xếp video lên trên nội dung */
+    gap: 25px !important;
+    align-items: center;
+    /* Căn giữa toàn bộ */
+  }
+
+  /* 3. Chỉnh chung cho cột Video trên mobile */
+  .md-video-col {
+    flex: none !important;
+    height: auto !important;
+    width: 100%;
+    max-width: 100%;
+    /* Giới hạn độ rộng video để không bị quá to trên màn hình dọc */
+    margin: 0 auto;
+  }
+
+  /* 4. Chỉnh nội dung cột chữ */
+  .md-workflow-info {
+    padding-top: 20px;
+    text-align: left;
+    /* Khoa có thể để center nếu muốn căn giữa toàn bộ */
+  }
+
+  .md-workflow-info h3 {
+    font-size: 24px;
+    /* Thu nhỏ tiêu đề Roles một chút */
+    text-align: center;
+    /* Căn giữa tiêu đề cho đẹp layout mobile */
+    margin-bottom: 15px !important;
+    /* Kéo tag lại gần tiêu đề My Roles */
+  }
+
+  .md-workflow-tags {
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Căn giữa bộ Tags trên mobile */
+  }
+
+  .md-description p {
+    font-size: 15px;
+    /* Giảm size chữ nội dung một tí cho dễ đọc */
+    padding: 0 10px;
+  }
+
   .contact-container {
     flex-direction: column;
     gap: 28px;
@@ -2108,11 +2420,6 @@ img {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-  }
-
-  .md-section-title {
-    font-size: 28px;
-    margin-bottom: 30px;
   }
 
   .md-post-small {
@@ -2504,14 +2811,19 @@ img {
     height: auto;
   }
 
+  .md-section-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
   .keyvisual-title {
     font-size: 28px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
 
   .keyvisual-titles {
     font-size: 28px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .keyvisual-title3 {
@@ -2703,7 +3015,7 @@ img {
   }
 
   .nn-meta-value {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .nn-meta-item {
@@ -2721,7 +3033,7 @@ img {
   }
 
   .meta-value {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .project-concept {
@@ -2758,13 +3070,49 @@ img {
     margin-bottom: 15px;
   }
 
-  html {
-    scroll-behavior: auto;
+  .container {
+    padding: 0 20px;
   }
 
-  .service-icon {
-    display: none;
+  .hero-content h1 {
+    font-size: 36px;
   }
+
+  .project-details {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    /* Ép về 1 cột trên mobile */
+  }
+
+  .item.wide,
+  .item.full {
+    grid-column: span 1;
+  }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+.service-icon {
+  display: none;
+}
+
+.tdv-post-three {
+  gap: 8px;
+  /* Thu hẹp khoảng cách giữa 3 ảnh lại cho đỡ chật */
+  padding: 0 15px;
+}
+
+.tdv-post-three img {
+  width: calc((100% - 16px) / 3);
+  /* Vẫn ép chia 3 cột đều nhau */
+  border-radius: 8px;
+  /* Bo góc nhỏ lại một chút cho hợp tỷ lệ điện thoại */
 }
 
 html {
