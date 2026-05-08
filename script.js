@@ -135,8 +135,7 @@ tracks.forEach(track => {
 
 document.querySelector(".name-container")
   .classList.add("start-animation");
-history.scrollRestoration = "manual";
-window.scrollTo(0, 0);
+
 // 🔹 Cancel khi user tác động
 window.addEventListener("wheel", cancelScroll, { passive: true });
 window.addEventListener("touchstart", cancelScroll, { passive: true });
@@ -397,4 +396,40 @@ document.addEventListener("DOMContentLoaded", () => {
       img.setAttribute("loading", "lazy");
     }
   });
+});
+// 1. Khai báo key lưu trữ duy nhất cho từng trang
+const scrollKey = 'scrollPosition_' + window.location.pathname;
+
+// 2. Dùng 'pagehide' thay cho 'beforeunload' để không phá vỡ bộ nhớ đệm (BFCache) trên iPhone
+window.addEventListener('pagehide', () => {
+  sessionStorage.setItem(scrollKey, window.scrollY);
+});
+
+// 3. Xử lý khi trang hiển thị
+window.addEventListener('pageshow', (event) => {
+  const navEntries = performance.getEntriesByType('navigation');
+  const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+
+  // Nếu là load mới hoàn toàn hoặc nhấn F5 (Reload)
+  if (isReload || !event.persisted) {
+    // Nếu là F5 thì mới đưa về đầu trang, còn không thì kệ nó
+    if (isReload) {
+      window.scrollTo(0, 0);
+      sessionStorage.removeItem(scrollKey);
+      return;
+    }
+  }
+
+  // Nếu quay lại bằng nút Back (event.persisted hoặc không phải reload)
+  const scrollPos = sessionStorage.getItem(scrollKey);
+  if (scrollPos) {
+    // Đợi một chút để AOS và các thư viện khác dựng xong giao diện
+    setTimeout(() => {
+      window.scrollTo({
+        top: parseInt(scrollPos),
+        behavior: 'instant'
+      });
+      // Giữ lại vị trí trong session, chỉ xóa khi người dùng thực sự Reload trang
+    }, 100);
+  }
 });
