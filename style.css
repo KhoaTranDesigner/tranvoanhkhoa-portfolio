@@ -762,26 +762,134 @@ header {
   transition: 0.3s ease;
 }
 
-.design-philosophy {
-  padding: 20px 20px;
-  background: #ffffff;
-  text-align: left;
-  /* đổi từ center -> left */
+/* ========================================================= */
+/* CSS MỚI CHO ABOUT SECTION                                 */
+/* ========================================================= */
+.modern-about-section {
+  padding: 120px 20px;
+  background: #fcfcfc;
+  /* Nền xám cực nhẹ để làm nổi bật các thẻ card trắng */
+  color: #111;
 }
 
-.dp-container {
+.about-wrapper {
+  max-width: 1100px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
 }
 
-.dp-title p {
-  font-style: italic;
-  color: #0028ff;
-  margin-bottom: 60px;
+/* Khối Text Giới Thiệu */
+.about-main-text {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.dp-card {
-  max-width: 800px;
-  margin: 0 auto 70px;
+.about-main-text h2 {
+  color: #0028FF;
+  font-size: clamp(32px, 5vw, 40px);
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.about-main-text .lead-text {
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.9;
+  color: #444;
+}
+
+.about-main-text .lead-text span {
+  color: #0028FF;
+  font-weight: 700;
+}
+
+/* Lưới 4 Thẻ Triết Lý */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.phil-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.phil-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 40, 255, 0.08);
+  border-color: rgba(0, 40, 255, 0.3);
+}
+
+/* Chữ số nghệ thuật ở góc */
+.phil-num {
+  font-size: 56px;
+  font-weight: 900;
+  color: rgba(0, 40, 255, 0.06);
+  margin-bottom: 10px;
+  line-height: 1;
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.phil-card:hover .phil-num {
+  color: #0028FF;
+  transform: scale(1.05);
+}
+
+.phil-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0028FF;
+}
+
+.phil-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* ============================= */
+/* MOBILE FIX CHO ABOUT          */
+/* ============================= */
+@media (max-width: 992px) {
+  .philosophy-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* Tablet: 2 cột */
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-about-section {
+    padding: 80px 20px;
+  }
+
+  .about-wrapper {
+    gap: 50px;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    /* Mobile: 1 cột */
+    gap: 16px;
+  }
+
+  .phil-card {
+    padding: 30px 25px;
+  }
+
+  .phil-num {
+    font-size: 48px;
+  }
 }
 
 .dp-heading {
@@ -993,13 +1101,63 @@ section html {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 60px;
+  gap: 50px 30px;
+
+  /* Thêm 3 dòng này để gom grid lại và căn giữa */
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  /* Khoảng thở 2 bên lề để không bị sát mép khi thu nhỏ trình duyệt */
 }
 
 .project-card {
   display: flex;
   flex-direction: column;
+  background: transparent;
+}
+
+.project-thumb {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  /* Cố định chiều cao cho đều */
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 38, 255, 0.733);
+  /* Màu xanh Khoa thích */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.view-project-btn {
+  padding: 12px 24px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 99px;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
 }
 
 .project-link {
@@ -1024,28 +1182,53 @@ section html {
 }
 
 /* hover zoom */
-.project-card:hover img {
-  transform: scale(1.05);
+/* Hover Effect */
+.project-card:hover .project-thumb img {
+  transform: scale(1.1);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-card:hover .view-project-btn {
+  transform: translateY(0);
+}
+
+.project-info {
+  padding: 20px 5px;
+}
+
+.pj-tag {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #0028FF;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .project-title {
-  padding-top: 10px;
-  font-size: 18px;
-  color: #0028ff;
-  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .project-title a {
   text-decoration: none;
-  font-size: 18px;
-  color: #0028ff;
-  margin-top: 14px;
-  margin-bottom: 0px;
+  color: #111;
+  transition: color 0.3s;
 }
 
-.project-title a:hover {
-  transition: 0.6s ease;
-  color: #00127a;
+.project-card:hover .project-title a {
+  color: #0028FF;
+}
+
+.pj-short-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .project-year {
@@ -1266,8 +1449,8 @@ section html {
 /* cảm ơn đã xem */
 .thanks-section {
   width: 100%;
-  height: 600px;
-  background: #0f1b2d;
+  height: 500px;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1306,13 +1489,6 @@ section html {
   letter-spacing: 1px;
 }
 
-.thanks-section {
-  width: 100%;
-  padding: 0px 20px;
-  background: #ffffff;
-  text-align: center;
-}
-
 .thanks-title {
   font-size: 56px;
   color: #0028FF;
@@ -1331,12 +1507,6 @@ section html {
   color: #0028FF;
   letter-spacing: 1px;
   font-style: italic;
-}
-
-.contact-section {
-  background: #0028FF;
-  width: 100%;
-  padding: 20px 0;
 }
 
 .contact-container {
@@ -2316,6 +2486,140 @@ img {
   aspect-ratio: 1 / 1;
 }
 
+/* ========================================================= */
+/* CSS MỚI CHO CONTACT SECTION                               */
+/* ========================================================= */
+
+.contact-section {
+  background: #0028FF;
+  width: 100%;
+  padding: 100px 20px 40px;
+  /* Tăng padding để có không gian thở */
+  color: #fff;
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contact-intro h2 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.contact-intro p {
+  font-size: 18px;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.contact-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.contact-box {
+  background: rgba(255, 255, 255, 0.08);
+  /* Nền kính mờ */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.contact-box:hover {
+  background: #fff;
+  color: #0028FF;
+  /* Chữ đổi sang màu xanh khi hover */
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.c-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  margin-bottom: 20px;
+  transition: opacity 0.3s;
+}
+
+.contact-box:hover .c-label {
+  opacity: 0.6;
+  color: #0028FF;
+}
+
+.c-value {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.c-arrow {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  font-size: 24px;
+  opacity: 0;
+  transform: translate(-15px, 15px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contact-box:hover .c-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.contact-footer {
+  text-align: center;
+  margin-top: 100px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+
+/* ============================= */
+/* MOBILE FIX CHO CONTACT        */
+/* ============================= */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 20px 30px;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    /* Trở về 1 cột trên mobile */
+    gap: 20px;
+  }
+
+  .contact-box {
+    padding: 25px 20px;
+    /* Thu nhỏ padding một chút cho cân đối khi không có icon */
+    text-align: left;
+  }
+
+  .c-value {
+    font-size: 18px;
+    /* Chỉnh size chữ nhỏ lại một xíu cho tinh tế */
+    opacity: 0.9;
+  }
+}
 
 /* ============================= */
 /* MOBILE FIX */
@@ -2694,15 +2998,47 @@ img {
     }
 
     .projects-grid {
-      padding: 0px 20px;
       grid-template-columns: 1fr;
-      gap: 28px;
+      /* Mobile xếp dọc 1 cột */
+      gap: 40px;
+      padding: 0 10px;
+      padding-bottom: 20px;
+    }
+
+    .project-thumb {
+      width: 100% !important;
+      height: 240px !important;
+      /* Chiều cao vừa vặn cho điện thoại */
+      border-radius: 12px;
+    }
+
+    .project-info {
+      width: 100%;
+      padding: 0 !important;
+      /* Bỏ padding thừa để text thẳng hàng với mép ảnh */
+    }
+
+    /* Trên mobile hiển thị overlay nhẹ luôn vì không có hover */
+    .project-overlay {
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 1;
+    }
+
+    .view-project-btn {
+      transform: translateY(0);
+      font-size: 13px;
+      padding: 10px 20px;
     }
 
     .project-card {
-      flex-direction: row;
+      display: flex;
+      flex-direction: column !important;
+      /* Ép xếp dọc: Ảnh ở trên, mô tả ở dưới */
+      align-items: flex-start;
+      /* Chữ và ảnh canh đều lề trái */
       gap: 16px;
-      align-items: center;
+      /* Khoảng cách giữa ảnh và chữ */
+      width: 100%;
     }
 
     .project-image {

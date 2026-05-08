@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <title>Portfolio Khoa</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,61 +145,41 @@
     </div>
   </section>
   <!-- JS sẽ tự nhân đôi -->
-  </div>
-  </div>
-  <div class="section-header">
-    <section id="about">
-      <h2>Giới Thiệu</h2>
-    </section>
-  </div>
-  <section class="design-philosophy">
-    <div class="dp-container">
-    </div>
+  <section id="about" class="modern-about-section">
+    <div class="about-wrapper">
 
-    <div class="dp-grid">
-
-      <div class="dp-card">
-        <h3 class="dp-heading">
-          <span class="dp-number">1.</span>
-          <span class="dp-text">Kinh nghiệm</span>
-        </h3>
-        <p>
-          - 3 năm làm việc trong lĩnh vực thiết kế, cũng như vị trí Media Executive,
-          phát triển nội dung hình ảnh và nền tảng số.
-        </p>
+      <div class="about-main-text">
+        <h2>Giới Thiệu</h2>
       </div>
 
-      <div class="dp-card">
-        <h3 class="dp-heading">
-          <span class="dp-number">2.</span>
-          <span class="dp-text">Phong cách</span>
-        </h3>
-        <p>
-          - Tối giản, trực quan, định hướng rõ ràng.
-        </p>
+      <div class="philosophy-grid">
+        <div class="phil-card">
+          <div class="phil-num">01</div>
+          <h3>Kinh nghiệm</h3>
+          <p>3 năm làm việc trong lĩnh vực thiết kế và vị trí Media Executive, phát triển nội dung hình ảnh đa nền tảng
+            số.</p>
+        </div>
+
+        <div class="phil-card">
+          <div class="phil-num">02</div>
+          <h3>Phong cách</h3>
+          <p>Tối giản, trực quan, định hướng rõ ràng. Tập trung vào giá trị cốt lõi và loại bỏ những chi tiết thừa.</p>
+        </div>
+
+        <div class="phil-card">
+          <div class="phil-num">03</div>
+          <h3>Tập trung</h3>
+          <p>Bố cục chặt chẽ, nhịp điệu hợp lý. Sử dụng màu sắc và ánh sáng có chủ đích để tạo chiều sâu thị giác.</p>
+        </div>
+
+        <div class="phil-card">
+          <div class="phil-num">04</div>
+          <h3>Tư duy</h3>
+          <p>Thiết kế luôn được xây dựng dựa trên chiến lược tiếp thị rõ ràng, không chỉ dừng lại ở cảm tính cá nhân.
+          </p>
+        </div>
       </div>
 
-      <div class="dp-card">
-        <h3 class="dp-heading">
-          <span class="dp-number">3.</span>
-          <span class="dp-text">Tập trung</span>
-        </h3>
-        <p>
-          - Bố cục chặt chẽ, nhịp điệu hợp lý và màu sắc có chủ đích.
-        </p>
-      </div>
-
-      <div class="dp-card">
-        <h3 class="dp-heading">
-          <span class="dp-number">4.</span>
-          <span class="dp-text">Tư duy</span>
-        </h3>
-        <p>
-          - Thiết kế dựa trên chiến lược rõ ràng, không chỉ là cảm tính.
-        </p>
-      </div>
-
-    </div>
     </div>
   </section>
   <section class="marquee">
@@ -531,75 +512,96 @@
     <div class="container">
       <div class="section-header">
         <h2>Dự Án Tiêu Biểu</h2>
-        <p>
-          Dưới đây là một số sản phẩm của tôi, thể hiện kỹ năng và niềm đam mê trong lĩnh vực thiết kế đồ họa.
-        </p>
-        <div class="projects-grid">
-          <!-- CARD 1 -->
-          <div class="project-card">
-            <a href="ceres.html" class="project-image">
-              <img src="source/ceres-project-cover.webp" alt="Ceres Packaging">
-            </a>
+        <p>Những sản phẩm hình ảnh & truyền thông được thực hiện dựa trên sự kết hợp giữa chiến lược và thẩm mỹ thị
+          giác.</p>
+      </div>
 
-            <div class="project-info">
-              <h3 class="project-title">
-                <a href="ceres.html">Ceres Product Packaging</a>
-              </h3>
-              <div class="project-year">
-                Bao bì cho sản phẩm nấm đông trùng hạ thảo Ceres.
-              </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="source/ceres/Key-Visual.png" alt="Ceres">
+            <div class="project-overlay">
+              <a href="ceres.html" class="view-project-btn">Xem dự án</a>
             </div>
           </div>
-
-          <!-- CARD 2 -->
-          <div class="project-card">
-            <a href="ngoc-nga-campaign.html" class="project-image">
-              <img src="source/project2-cover.webp" alt="Project 2">
-            </a>
-
-            <div class="project-info">
-              <h3 class="project-title">
-                <a href="ngoc-nga-campaign.html">Ngọc Ngà 8/3 Campaign</a>
-              </h3>
-              <div class="project-year">
-                Thiết kế key visual và ấn phẩm truyền thông cho chiến dịch 8/3.
-              </div>
-            </div>
+          <div class="project-info">
+            <span class="pj-tag">Packaging / Branding</span>
+            <h3 class="project-title"><a href="ceres.html">Ceres Product Packaging</a></h3>
+            <p class="pj-short-desc">Hệ thống bao bì cao cấp cho sản phẩm nấm đông trùng hạ thảo.</p>
           </div>
-
-          <!-- CARD 3 -->
-          <div class="project-card">
-            <a href="mother's-day.html" class="project-image">
-              <img src="source/project3-cover.webp" alt="Project 3">
-            </a>
-
-            <div class="project-info">
-              <h3 class="project-title">
-                <a href="mother's-day.html">Mother’s Day Campaign</a>
-              </h3>
-              <div class="project-year">
-                Thiết kế key visual và ấn phẩm truyền thông tôn vinh Ngày của Mẹ.
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 4 -->
-          <div class="project-card">
-            <a href="Promotion-campaigns.html" class="project-image">
-              <img src="Thời Điểm Vàng/KV Thời Điểm Vàng.png" alt="Promo Campaign">
-            </a>
-
-            <div class="project-info">
-              <h3 class="project-title">
-                <a href="Promotion-campaigns.html">Thời Điểm Vàng Promotional Campaign</a>
-              </h3>
-              <div class="project-year">
-                Tactical campaign trước mùa Tết.
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="Ngoc-Nga/Key-Visual.png" alt="Ngọc Ngà">
+            <div class="project-overlay">
+              <a href="ngoc-nga-campaign.html" class="view-project-btn">Xem dự án</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Campaign / Visual Identity</span>
+            <h3 class="project-title"><a href="ngoc-nga-campaign.html">Ngọc Ngà 8/3 Campaign</a></h3>
+            <p class="pj-short-desc">Bộ nhận diện truyền thông tôn vinh vẻ đẹp phụ nữ Việt.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="mother-day/Key-Visual.jpg" alt="Mother's Day">
+            <div class="project-overlay">
+              <a href="mother's-day.html" class="view-project-btn">Xem dự án</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Digital Campaign</span>
+            <h3 class="project-title"><a href="mother's-day.html">Mother’s Day Campaign</a></h3>
+            <p class="pj-short-desc">Chiến dịch cảm xúc kết nối tình mẫu tử qua hình ảnh số.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="Thoi-Diem-Vang/Key-Visuals.png" alt="Thời Điểm Vàng">
+            <div class="project-overlay">
+              <a href="Promotion-campaigns.html" class="view-project-btn">Xem dự án</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Tactical Campaign</span>
+            <h3 class="project-title"><a href="Promotion-campaigns.html">Thời Điểm Vàng</a></h3>
+            <p class="pj-short-desc">Chiến dịch thúc đẩy doanh số giai đoạn cận Tết.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="Giao-Diem-Tinh-Hoa/KV.png" alt="Giao Điểm Tinh Hoa">
+            <div class="project-overlay">
+              <a href="Giao-Diem-Tinh-Hoa.html" class="view-project-btn">Xem dự án</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Event Branding</span>
+            <h3 class="project-title"><a href="Giao-Diem-Tinh-Hoa.html">Giao Điểm Tinh Hoa</a></h3>
+            <p class="pj-short-desc">Sự kiện khai trương chi nhánh mới 2026.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="selected-works/Key-Visual.png" alt="Selected Works">
+            <div class="project-overlay">
+              <a href="selected-works.html" class="view-project-btn">Xem dự án</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Other Works</span>
+            <h3 class="project-title"><a href="selected-works.html">Selected Works</a></h3>
+            <p class="pj-short-desc">Các thiết kế 2D khác.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <section class="marquee">
     <div class="marquee-track">
@@ -677,35 +679,76 @@
     </p>
   </section>
   <section id="contact" class="contact-section">
+    <div class="contact-intro">
+      <h2>Sẵn sàng hợp tác?</h2>
+    </div>
 
-    <div class="contact-container">
+    <div class="contact-wrapper">
+      <a href="https://www.facebook.com/kozhsaigon203/" target="_blank" class="contact-box">
+        <span class="c-label">Social</span>
+        <span class="c-value">Facebook</span>
+      </a>
 
-      <!-- FACEBOOK -->
-      <div class="contact-item">
-        <a href="https://www.facebook.com/kozhsaigon203/" target="_blank">
-          <span class="contact-main">facebook.com/kozhsaigon203</span>
-          <span class="contact-hint">click to open</span>
-        </a>
+      <div class="contact-box" id="copy-phone-btn">
+        <span class="c-label">Phone (Click to copy)</span>
+        <span class="c-value">+84 382 856 991</span>
       </div>
 
-      <!-- PHONE (KHÔNG CLICK DESKTOP) -->
-      <div class="contact-item">
-        <span class="contact-main">+84 382 856 991</span>
-        <span class="contact-hint">copy to use</span>
-      </div>
+      <a href="mailto:khoatran9021@gmail.com" class="contact-box">
+        <span class="c-label">Email</span>
+        <span class="c-value">khoatran9021<br>@gmail.com</span>
+      </a>
+    </div>
 
-      <!-- EMAIL -->
-      <div class="contact-item">
-        <a href="mailto:khoatran9021@gmail.com">
-          <span class="contact-main">khoatran9021@gmail.com</span>
-          <span class="contact-hint">tap to email</span>
-        </a>
-      </div>
-
+    <div class="contact-footer">
+      <p>© 2026 Trần Võ Anh Khoa. Media & Digital Designer.</p>
     </div>
   </section>
   </section>
 </body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const phoneBtn = document.getElementById("copy-phone-btn");
+
+    if (phoneBtn) {
+      phoneBtn.addEventListener("click", function () {
+        const phoneNumber = "+84382856991";
+
+        // Cách 1: API hiện đại (dành cho web đã có https)
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(phoneNumber).then(() => {
+            alert("Đã copy số điện thoại: " + phoneNumber);
+          }).catch(err => {
+            console.error('Lỗi copy clipboard: ', err);
+          });
+        } else {
+          // Cách 2: Phương án dự phòng (dành cho chạy file local ở máy tính)
+          const textArea = document.createElement("textarea");
+          textArea.value = phoneNumber;
+
+          // Giấu textarea đi để web không bị giật/scroll khi bấm
+          textArea.style.position = "fixed";
+          textArea.style.left = "-9999px";
+          textArea.style.top = "0";
+
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+
+          try {
+            document.execCommand('copy');
+            alert("Đã copy số điện thoại: " + phoneNumber);
+          } catch (err) {
+            console.error('Không thể copy', err);
+            alert("Trình duyệt chặn copy. Vui lòng copy thủ công: " + phoneNumber);
+          }
+
+          document.body.removeChild(textArea);
+        }
+      });
+    }
+  });
+</script>
 <div class="hamburger" id="hamburger">
   <span></span>
   <span></span>
