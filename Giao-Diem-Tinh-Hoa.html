@@ -39,36 +39,50 @@
 
         /* Tùy chỉnh layout riêng cho phần thiệp và standee */
         .th-offline-row {
+            flex-direction: row;
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 40px;
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto 30px auto;
         }
 
         .th-offline-row img {
+            flex-direction: row;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(139, 0, 26, 0.15);
         }
 
         .th-standee {
-            width: 35%;
+            width: 100%;
         }
 
         .th-thiep {
-            width: 45%;
+            width: 100%;
         }
 
         @media (max-width:768px) {
             .th-offline-row {
-                flex-direction: column;
-                align-items: center;
+                width: 100%;
+                flex-direction: row !important;
+                /* Đảm bảo nằm ngang */
+                justify-content: center;
+                gap: 20px !important;
+                /* Khoảng cách giữa 2 standee */
+                padding: 0 10px;
+            }
+
+            /* CHỈNH KÍCH THƯỚC ẢNH Ở ĐÂY */
+            .th-offline-row img {
+                width: calc((100% - 10px) / 2) !important;
+                /* Chia đôi màn hình để to nhất có thể */
+                height: auto;
             }
 
             .th-standee,
             .th-thiep {
-                width: 90%;
+                width: 100%;
             }
         }
     </style>
@@ -154,11 +168,12 @@
 
             <p>
                 Hệ thống Visual đi theo concept Sang trọng, Ấm áp nhưng không kém phần hiện đại. Thoát khỏi những tông
-                màu khai trương rực rỡ thông thường, tôi lựa chọn sắc <strong style="color: #8b001a;">Đỏ Rượu
+                màu khai trương rực rỡ thông thường, tôi lựa chọn sắc <strong style="color: #000000;">Đỏ Rượu
                     (Burgundy)</strong> làm nền tảng,
-                kết hợp tinh tế cùng các chi tiết <strong style="color: #fbff00;">Vàng Kim (Gold)</strong> và
+                kết hợp tinh tế cùng các chi tiết <strong style="color: #000000;">Vàng Kim (Gold)</strong> và
                 typography mạ chrome. Sự kết hợp
-                này mang lại chiều sâu thị giác, tôn lên vẻ đẹp đằm thắm, quý phái và định vị đẳng cấp của thương hiệu
+                này mang lại chiều sâu thị giác, vừa phù hợp với dịp Tết, vừa tôn lên vẻ đẹp đằm thắm, quý phái và định
+                vị đẳng cấp của thương hiệu
                 trong sự kiện ra mắt.
             </p>
         </div>
@@ -174,7 +189,7 @@
                 <img src="Giao-Diem-Tinh-Hoa/typography.png" alt="Gold Typography">
                 <h3>Gold Chrome Typography</h3>
                 <p>
-                    Cụm typo mạ vàng sắc nét, nổi bật trên nền đỏ rượu, khẳng định sự đẳng cấp và sang trọng của sự
+                    Cụm typo mạ vàng sắc nét, nổi bật trên nền, khẳng định sự đẳng cấp và sang trọng của sự
                     kiện.
                 </p>
             </div>
@@ -183,7 +198,8 @@
                 <img src="Giao-Diem-Tinh-Hoa/hoa-mai.png" alt="Golden Apricot">
                 <h3>Spring Blossom</h3>
                 <p>
-                    Hoa mai điểm xuyết tinh tế mang ý nghĩa thịnh vượng, giúp tổng thể thiết kế thêm mềm mại và rạng rỡ.
+                    Hoa mai điểm xuyết tinh tế mang ý nghĩa thịnh vượng, giúp tổng thể thiết mang nhiều âm hưởng của dịp
+                    lễ Tết.
                 </p>
             </div>
 
@@ -191,8 +207,7 @@
                 <img src="Giao-Diem-Tinh-Hoa/bui.png" alt="Sparkle Effect">
                 <h3>Golden Particles</h3>
                 <p>
-                    Hiệu ứng hạt sáng lấp lánh tạo chiều sâu huyền ảo, mô phỏng không khí lung linh và rực rỡ của sự
-                    kiện.
+                    Hiệu ứng hạt sáng lấp lánh tạo chiều sâu huyền ảo, mô phỏng không khí lung linh và rực rỡ.
                 </p>
             </div>
 
@@ -225,7 +240,7 @@
 
             <div class="md-post-item" style="width: 100%; margin-top: 40px;">
                 <p class="md-post-title">Online Invitation Card</p>
-                <img class="md-post-small" style="max-width: 600px;" src="Giao-Diem-Tinh-Hoa/thiep.png"
+                <img class="md-post-small" style="width: 60%;" src="Giao-Diem-Tinh-Hoa/thiep.png"
                     alt="Online Invitation">
             </div>
         </div>
@@ -260,9 +275,9 @@
         <div class="md-posm-item" style="margin-bottom: 60px;">
             <p class="md-post-title" style="margin-bottom: 20px;">Standee Design & Mockup</p>
             <div class="th-offline-row" style="align-items: center;">
-                <img style="width: 45%;" src="Giao-Diem-Tinh-Hoa/standee.png" alt="Standee Design">
+                <img style="width: 30%;" src="Giao-Diem-Tinh-Hoa/standee.png" alt="Standee Design">
 
-                <img style="width: 45%;" src="Giao-Diem-Tinh-Hoa/standee-mockup.png" alt="Standee Mockup">
+                <img style="width: 30%;" src="Giao-Diem-Tinh-Hoa/standee-mockup.png" alt="Standee Mockup">
             </div>
 
             <div class="md-posm-item">

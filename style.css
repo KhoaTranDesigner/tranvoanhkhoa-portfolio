@@ -116,6 +116,71 @@ body {
   /* Hoặc điều chỉnh số px cho bằng với độ cao của header */
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Đảm bảo mọi thành phần không bị tính sai kích thước */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Hiệu ứng trỏ chuột cho các ảnh có thể click */
+img {
+  cursor: zoom-in;
+}
+
+.main-header img,
+.skill-item img,
+.social-icons img,
+.no-zoom {
+  cursor: default;
+}
+
+/* ======================================================= */
+/* THANH TIẾN TRÌNH ĐỌC (READING PROGRESS BAR)             */
+/* ======================================================= */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  /* Độ dày của thanh, Khoa có thể chỉnh nhỏ lại thành 3px hoặc 2px nếu thích mỏng hơn */
+  background: transparent;
+  z-index: 999999;
+  /* Đảm bảo luôn nằm trên cùng, đè lên cả header */
+  pointer-events: none;
+  /* Không cản trở các thao tác click */
+}
+
+.progress-bar {
+  height: 100%;
+  background: #0028FF;
+  /* Màu xanh thương hiệu của Khoa */
+  width: 0%;
+  /* Mặc định bằng 0, JS sẽ tự động kéo dài ra */
+  transition: width 0.1s ease-out;
+  /* Giúp thanh chạy mượt mà theo nhịp cuộn */
+}
+
+/* ======================================================= */
+/* FIX LỖI GIẬT KHỰNG KHI CUỘN QUA VIDEO YOUTUBE (LENIS)   */
+/* ======================================================= */
+
+/* Khi trang đang được cuộn, tắt tương tác của iframe để tránh bị nuốt lệnh lăn chuột */
+html.lenis-scrolling iframe {
+  pointer-events: none !important;
+}
+
 /* ===== MENU ===== */
 header {
   backdrop-filter: none;
@@ -615,11 +680,11 @@ body>* {
 
 .services-grid {
   background: #ffffff;
-  padding: 0px 20px;
+  padding: 0px 60px;
   /* trên dưới | trái phải */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 50px;
   margin-top: 50px;
 }
 
@@ -1140,7 +1205,7 @@ section html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 38, 255, 0.733);
+  background: rgba(0, 38, 255, 0.384);
   /* Màu xanh Khoa thích */
   display: flex;
   align-items: center;
@@ -1183,8 +1248,46 @@ section html {
 
 /* hover zoom */
 /* Hover Effect */
-.project-card:hover .project-thumb img {
-  transform: scale(1.1);
+/* ======================================================= */
+/* FIX LỖI PARALLAX TRÀN KHUNG & ZOOM CHUẨN                */
+/* ======================================================= */
+
+/* 1. Ép thẻ cha cắt cúp gọn gàng, fix triệt để lỗi tràn góc bo tròn trên Safari */
+.project-thumb {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+/* 2. Ép cái khung ảo của thư viện Parallax sinh ra phải vừa khít 100% */
+.simpleParallax {
+  width: 100%;
+  height: 100%;
+  /* Gắn hiệu ứng mượt vào khung này */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3. Chuyển hiệu ứng Zoom sang cho cái khung ảo, để yên cho tấm ảnh bên trong trượt Parallax */
+.project-card:hover .simpleParallax {
+  transform: scale(1.08);
+  /* Phóng to nhẹ khung lên 8% nhìn rất sang */
+}
+
+/* 4. Xóa bỏ cái transition cũ của ảnh để không bị khựng khi cuộn trang */
+.project-thumb img {
+  transition: filter 0.4s ease !important;
+}
+
+/* ======================================================= */
+/* FIX LỖI KHỰNG GIẬT HIỆU ỨNG 3D THẺ CARD                 */
+/* ======================================================= */
+.project-card:hover,
+.service-card:hover,
+.material-card:hover,
+.sw-card:hover,
+.phil-card:hover {
+  /* Ép bỏ thuộc tính "transform" ra khỏi CSS transition khi đang hover, 
+       chỉ giữ lại hiệu ứng làm mượt cho màu nền, bóng đổ và độ mờ */
+  transition-property: box-shadow, background-color, color, border, opacity !important;
 }
 
 .project-card:hover .project-overlay {
@@ -1595,12 +1698,13 @@ section html {
 .poster-row img {
   border-radius: 12px;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   height: auto;
   flex: 1;
 }
 
 .standee-row {
+  flex-direction: row;
   display: flex;
   justify-content: center;
   gap: 40px;
@@ -1608,14 +1712,13 @@ section html {
 }
 
 .standee-row img {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  /* Khoảng cách giữa 2 standee rộng ra chút cho thoáng */
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  /* Margin bottom để cách xa hình mockup bên dưới */
+  border-radius: 12px;
+  width: 80%;
+  max-width: 300px;
+  margin: 0;
+  /* Xóa chữ 'auto' đi để tắt cái lò xo đẩy 2 bên */
+  /* Nếu Khoa muốn có khoảng cách ở dưới đáy thì dùng dòng này: */
+  margin-bottom: 0px;
 }
 
 .standee-mockup {
@@ -1950,7 +2053,7 @@ img {
 }
 
 .md-post-small {
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
   display: block;
   margin-left: auto;
@@ -2743,17 +2846,18 @@ img {
   }
 
   .md-standee-row {
-    flex-direction: column;
+    width: 100%;
+    flex-direction: row;
     align-items: center;
-    gap: 20px;
-    padding: 0 20px;
+    gap: 15px;
+    padding: 0 5px;
     box-sizing: border-box;
   }
 
   .md-standee-row img {
     width: 100%;
     /* Trên mobile, mỗi standee full chiều ngang */
-    max-width: 400px;
+    max-width: 900px;
     /* Giới hạn độ to tối đa để không bị phình quá */
   }
 
@@ -2780,6 +2884,34 @@ img {
     padding: 0 10px;
   }
 
+  /* ======================================================= */
+  /* PHÓNG TO STANDEE & POSTER THANG MÁY TRÊN MOBILE         */
+  /* ======================================================= */
+  @media (max-width: 768px) {
+
+    /* 1. PHÓNG TO POSTER THANG MÁY (Ghi đè cái 30% trong HTML) */
+    .md-elevator-poster img {
+      width: 80% !important;
+      /* Khoa có thể tăng lên 90% hoặc 100% nếu thích bự hết cỡ */
+      max-width: none !important;
+    }
+
+    /* 2. ÉP STANDEE TO KỊCH KIM (Lấy hết diện tích màn hình) */
+    .standee-row {
+      gap: 15px !important;
+      /* Xích 2 cái lại gần nhau chỉ cách 8px */
+      padding: 20px !important;
+      /* Xóa khoảng trống thừa ở mép điện thoại */
+      width: 100% !important;
+    }
+
+    .standee-row img,
+    .md-standee-row img {
+      width: calc((100% - 8px) / 2) !important;
+      /* Chia đôi màn hình cực đại */
+    }
+  }
+
   .md-easel-row {
     flex-direction: row;
     /* Ép nó nằm ngang thay vì rớt xuống cột dọc */
@@ -2798,7 +2930,7 @@ img {
   }
 
   .md-elevator-poster {
-    padding: 0 20px;
+    padding: 0 15px;
     /* Cách đều 2 lề điện thoại 20px giống các mục trên */
     box-sizing: border-box;
   }
@@ -3095,13 +3227,13 @@ img {
   }
 
   .poster-row {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 20px;
   }
 
   .poster-row img {
-    max-width: 90%;
+    max-width: 40%;
   }
 
   .posm-title {
@@ -3114,13 +3246,19 @@ img {
   }
 
   .standee-row {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 20px;
+    padding: 20px;
   }
 
   .standee-row img {
-    max-width: 90%;
+    max-width: 40%;
+    /* Chia đôi màn hình, trừ đi 15px khoảng hở ở giữa */
+    width: calc((100% - 15px) / 2) !important;
+    max-width: none !important;
+    /* Xóa các giới hạn cũ đang gây lỗi */
+    height: auto;
   }
 
   .post-small {
