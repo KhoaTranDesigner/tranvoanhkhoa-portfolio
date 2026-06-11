@@ -24,14 +24,11 @@
     <div class="branding">
       <div class="name-container">
         <h1 class="main-name">
-          <a href="index.html" class="name-link">
-
+          <a href="index.html" class="name-link" onclick="sessionStorage.setItem('resetScroll', 'true')">
             <span class="logo-box">
               <span id="logo"></span>
             </span>
-
             <span class="typing-text">Trần Võ Anh Khoa</span>
-
           </a>
         </h1>
         <div class="sub-title-wrapper">
@@ -77,7 +74,7 @@
       </div>
 
       <div class="hero-right">
-        <img src="hinh-anh/avt.png" alt="Trần Võ Anh Khoa" class="hero-avatar">
+        <img src="hinh-anh/avt.png" alt="Trần Võ Anh Khoa" class="hero-avatar" fetchpriority="high" decoding="async">
       </div>
     </div>
   </section>
@@ -156,8 +153,8 @@
         <div class="phil-card">
           <div class="phil-num">01</div>
           <h3>Kinh nghiệm</h3>
-          <p>3 năm làm việc trong lĩnh vực thiết kế và vị trí Media Executive, phát triển nội dung hình ảnh đa nền tảng
-            số.</p>
+          <p>3 năm làm việc trong lĩnh vực thiết kế và vị trí Media Executive, phát triển nội dung hình ảnh đa nền tảng.
+          </p>
         </div>
 
         <div class="phil-card">
@@ -175,7 +172,7 @@
         <div class="phil-card">
           <div class="phil-num">04</div>
           <h3>Tư duy</h3>
-          <p>Thiết kế luôn được xây dựng dựa trên chiến lược tiếp thị rõ ràng, không chỉ dừng lại ở cảm tính cá nhân.
+          <p>Thiết kế luôn được xây dựng dựa trên chiến lược rõ ràng, không chỉ dừng lại ở cảm tính cá nhân.
           </p>
         </div>
       </div>
@@ -271,61 +268,61 @@
     </div>
   </section>
   <section id="skills" class="skill-section">
-
     <div class="section-header">
       <h2>Kỹ năng</h2>
       <p>Các chuyên môn chính tôi áp dụng trong sản xuất nội dung hình ảnh và video.</p>
     </div>
-  </section>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">
-        <img src="icon/brand icon.png" alt="">
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <img src="icon/brand icon.png" alt="pts" loading="lazy" decoding="async">
+        </div>
+        <h3>Visual Identity</h3>
+        <p>Xây dựng hệ thống nhận diện thương hiệu thông qua bố cục, màu sắc và typography, đảm bảo tính nhất quán và
+          định
+          hướng rõ ràng cho hình ảnh thương hiệu.</p>
       </div>
-      <h3>Visual Identity</h3>
-      <p>Xây dựng hệ thống nhận diện thương hiệu thông qua bố cục, màu sắc và typography, đảm bảo tính nhất quán và định
-        hướng rõ ràng cho hình ảnh thương hiệu.</p>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <img src="icon/video icon.png" alt="pr" loading="lazy" decoding="async">
+        </div>
+        <h3>Video Production</h3>
+        <p>Thực hiện quay và dựng video, từ lên ý tưởng, bố cục khung hình đến chỉnh màu và hoàn thiện sản phẩm phù hợp
+          với
+          nền tảng số.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <img src="icon/motion icon.png" alt="mg" loading="lazy" decoding="async">
+        </div>
+        <h3>Motion Graphics</h3>
+        <p>Thiết kế và xây dựng chuyển động đồ họa giúp nội dung trở nên sinh động, thu hút và tăng hiệu quả truyền tải
+          nội dung.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <img src="icon/camera icon.png" alt="cam" loading="lazy" decoding="async">
+        </div>
+        <h3>Photography & Retouch</h3>
+        <p>Chụp ảnh và xử lý hậu kỳ, bao gồm chỉnh màu (color grading), retouch và tối ưu hình ảnh để truyền tải cảm xúc
+          và
+          thông điệp rõ ràng.</p>
+      </div>
     </div>
 
-    <div class="service-card">
-      <div class="service-icon">
-        <img src="icon/video icon.png" alt="">
-      </div>
-      <h3>Video Production</h3>
-      <p>Thực hiện quay và dựng video, từ lên ý tưởng, bố cục khung hình đến chỉnh màu và hoàn thiện sản phẩm phù hợp
-        với
-        nền tảng số.</p>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">
-        <img src="icon/motion icon.png" alt="">
-      </div>
-      <h3>Motion Graphics</h3>
-      <p>Thiết kế và xây dựng chuyển động đồ họa giúp nội dung trở nên sinh động, thu hút và tăng hiệu quả truyền tải
-        nội dung.
+    <div class="about-container">
+      <p>
+        Tôi là <span>Media & Digital Designer</span> tập trung vào xây dựng nội dung hình ảnh và giao diện số hiện đại.
+        Với nền tảng về xử lý hình ảnh, chỉnh màu, quay dựng và thiết kế chuyển động quảng cáo,
+        tôi hướng đến việc tạo ra những trải nghiệm thị giác rõ ràng, có hệ thống
+        và truyền tải thông điệp một cách hiệu quả.
       </p>
     </div>
-
-    <div class="service-card">
-      <div class="service-icon">
-        <img src="icon/camera icon.png" alt="">
-      </div>
-      <h3>Photography & Retouch</h3>
-      <p>Chụp ảnh và xử lý hậu kỳ, bao gồm chỉnh màu (color grading), retouch và tối ưu hình ảnh để truyền tải cảm xúc
-        và
-        thông điệp rõ ràng.</p>
-    </div>
-  </div>
-  <div class="about-container">
-    <p>
-      Tôi là <span>Media & Digital Designer</span> tập trung vào xây dựng nội dung hình ảnh và giao diện số hiện đại.
-      Với nền tảng về xử lý hình ảnh, chỉnh màu, quay dựng và thiết kế chuyển động quảng cáo,
-      tôi hướng đến việc tạo ra những trải nghiệm thị giác rõ ràng, có hệ thống
-      và truyền tải thông điệp một cách hiệu quả.
-    </p>
-  </div>
-  </section>
   </section>
   <section class="marquee">
     <div class="marquee-track">
@@ -402,42 +399,42 @@
         <div class="skills-grid">
 
           <div class="skill-item">
-            <img src="icon/program logo/ps.svg" alt="Photoshop">
+            <img src="icon/program logo/ps.svg" alt="Photoshop" loading="lazy">
             <span class="skill-name">Photoshop</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/pr.svg" alt="Premiere">
+            <img src="icon/program logo/pr.svg" alt="Premiere" loading="lazy">
             <span class="skill-name">Premiere</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/ai.svg" alt="Illustrator">
+            <img src="icon/program logo/ai.svg" alt="Illustrator" loading="lazy">
             <span class="skill-name">Illustrator</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/ae.svg" alt="After Effects">
+            <img src="icon/program logo/ae.svg" alt="After Effects" loading="lazy">
             <span class="skill-name">After Effects</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/lr.svg" alt="Lightroom">
+            <img src="icon/program logo/lr.svg" alt="Lightroom" loading="lazy">
             <span class="skill-name">Lightroom</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/figma.svg" alt="Figma">
+            <img src="icon/program logo/figma.svg" alt="Figma" loading="lazy">
             <span class="skill-name">Figma</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/davinci.svg" alt="Davinci">
+            <img src="icon/program logo/davinci.svg" alt="Davinci" loading="lazy">
             <span class="skill-name">Davinci Resolve</span>
           </div>
 
           <div class="skill-item">
-            <img src="icon/program logo/capcut.svg" alt="Capcut">
+            <img src="icon/program logo/capcut.svg" alt="Capcut" loading="lazy">
             <span class="skill-name">Capcut</span>
           </div>
 
@@ -512,14 +509,14 @@
     <div class="container">
       <div class="section-header">
         <h2>Dự Án Tiêu Biểu</h2>
-        <p>Những sản phẩm hình ảnh & truyền thông được thực hiện dựa trên sự kết hợp giữa chiến lược và thẩm mỹ thị
+        <p>Những sản phẩm hình ảnh & truyền thông, thực hiện dựa trên sự kết hợp giữa chiến lược và thẩm mỹ thị
           giác.</p>
       </div>
 
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-thumb">
-            <img src="source/ceres/Key-Visual.png" alt="Ceres">
+            <img src="source/ceres/Key-Visual.png" alt="Ceres" loading="lazy">
             <div class="project-overlay">
               <a href="ceres.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -533,7 +530,7 @@
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Ngoc-Nga/Key-Visual.png" alt="Ngọc Ngà">
+            <img src="Ngoc-Nga/Key-Visual.png" alt="Ngọc Ngà" loading="lazy">
             <div class="project-overlay">
               <a href="ngoc-nga-campaign.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -547,7 +544,7 @@
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="mother-day/Key-Visual.jpg" alt="Mother's Day">
+            <img src="mother-day/Key-Visual.jpg" alt="Mother's Day" loading="lazy">
             <div class="project-overlay">
               <a href="mother's-day.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -561,7 +558,7 @@
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Thoi-Diem-Vang/Key-Visuals.png" alt="Thời Điểm Vàng">
+            <img src="Thoi-Diem-Vang/Key-Visuals.png" alt="Thời Điểm Vàng" loading="lazy">
             <div class="project-overlay">
               <a href="Promotion-campaigns.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -575,7 +572,7 @@
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Giao-Diem-Tinh-Hoa/KV.png" alt="Giao Điểm Tinh Hoa">
+            <img src="Giao-Diem-Tinh-Hoa/KV.png" alt="Giao Điểm Tinh Hoa" loading="lazy">
             <div class="project-overlay">
               <a href="Giao-Diem-Tinh-Hoa.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -589,7 +586,7 @@
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="selected-works/Key-Visual.png" alt="Selected Works">
+            <img src="selected-works/Key-Visual.png" alt="Selected Works" loading="lazy">
             <div class="project-overlay">
               <a href="selected-works.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -600,68 +597,99 @@
             <p class="pj-short-desc">Các thiết kế 2D khác.</p>
           </div>
         </div>
+
+        <!-- Thẻ Photography mới -->
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="Photography/previews/thumnail2.jpg" alt="Photography Portfolio" loading="lazy">
+            <div class="project-overlay">
+              <a href="photography.html" class="view-project-btn">Xem ảnh</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Photography</span>
+            <h3 class="project-title"><a href="photography.html">Portfolio Nhiếp Ảnh</a></h3>
+            <p class="pj-short-desc">Nhiếp ảnh và hậu kỳ.</p>
+          </div>
+        </div>
+
+        <!-- Thẻ Video Portfolio -->
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="source/thumnail-video2.png" alt="Video Portfolio" loading="lazy">
+            <div class="project-overlay">
+              <a href="video-portfolio.html" class="view-project-btn">Xem video</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="pj-tag">Video Production</span>
+            <h3 class="project-title"><a href="video-portfolio.html">Video Portfolio</a></h3>
+            <p class="pj-short-desc">Clip quảng cáo, color grading và motion graphics.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
   <section class="marquee">
     <div class="marquee-track">
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
 
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icon/logo.png" loading="lazy">
         <span>Trần Võ Anh Khoa</span>
       </div>
     </div>
@@ -704,100 +732,79 @@
       <p>© 2026 Trần Võ Anh Khoa. Media & Digital Designer.</p>
     </div>
   </section>
-  </section>
-</body>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const phoneBtn = document.getElementById("copy-phone-btn");
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const phoneBtn = document.getElementById("copy-phone-btn");
 
-    if (phoneBtn) {
-      phoneBtn.addEventListener("click", function () {
-        const phoneNumber = "+84382856991";
+      if (phoneBtn) {
+        phoneBtn.addEventListener("click", function () {
+          const phoneNumber = "+84382856991";
 
-        // Cách 1: API hiện đại (dành cho web đã có https)
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(phoneNumber).then(() => {
-            alert("Đã copy số điện thoại: " + phoneNumber);
-          }).catch(err => {
-            console.error('Lỗi copy clipboard: ', err);
-          });
-        } else {
-          // Cách 2: Phương án dự phòng (dành cho chạy file local ở máy tính)
-          const textArea = document.createElement("textarea");
-          textArea.value = phoneNumber;
+          // Cách 1: API hiện đại (dành cho web đã có https)
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(phoneNumber).then(() => {
+              alert("Đã copy số điện thoại: " + phoneNumber);
+            }).catch(err => {
+              console.error('Lỗi copy clipboard: ', err);
+            });
+          } else {
+            // Cách 2: Phương án dự phòng (dành cho chạy file local ở máy tính)
+            const textArea = document.createElement("textarea");
+            textArea.value = phoneNumber;
 
-          // Giấu textarea đi để web không bị giật/scroll khi bấm
-          textArea.style.position = "fixed";
-          textArea.style.left = "-9999px";
-          textArea.style.top = "0";
+            // Giấu textarea đi để web không bị giật/scroll khi bấm
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            textArea.style.top = "0";
 
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
 
-          try {
-            document.execCommand('copy');
-            alert("Đã copy số điện thoại: " + phoneNumber);
-          } catch (err) {
-            console.error('Không thể copy', err);
-            alert("Trình duyệt chặn copy. Vui lòng copy thủ công: " + phoneNumber);
+            try {
+              document.execCommand('copy');
+              alert("Đã copy số điện thoại: " + phoneNumber);
+            } catch (err) {
+              console.error('Không thể copy', err);
+              alert("Trình duyệt chặn copy. Vui lòng copy thủ công: " + phoneNumber);
+            }
+
+            document.body.removeChild(textArea);
           }
+        });
+      }
+    });
+  </script>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-          document.body.removeChild(textArea);
-        }
+  <nav class="mobile-menu" id="mobileMenu">
+
+    <a href="#about">ABOUT</a>
+    <a href="#skills">SKILL</a>
+    <a href="#tools">TOOLS</a>
+    <a href="#Project">PROJECT</a>
+    <a href="#contact">CONTACT</a>
+
+  </nav>
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+  <script>
+    if (window.lottie) {
+      lottie.loadAnimation({
+        container: document.getElementById("logo"),
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: "animationlogo.json"
       });
     }
-  });
-</script>
-<div class="hamburger" id="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  </script>
+</body>
 
-<nav class="mobile-menu" id="mobileMenu">
-
-  <a href="#about">ABOUT</a>
-  <a href="#skills">SKILL</a>
-  <a href="#tools">TOOLS</a>
-  <a href="#Project">PROJECT</a>
-  <a href="#contact">CONTACT</a>
-
-</nav>
-<div class="menu-overlay" id="menuOverlay"></div>
-<script src="script.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-
-    document.querySelectorAll(".service-card p").forEach(text => {
-      const content = text.innerText;
-      text.innerHTML = "";
-
-      content.split("").forEach((char, index) => {
-        const span = document.createElement("span");
-        span.innerText = char;
-        span.style.transitionDelay = (index * 0.015) + "s";
-        text.appendChild(span);
-      });
-
-    });
-
-  });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-
-<script>
-  lottie.loadAnimation({
-    container: document.getElementById("logo"),
-    renderer: "svg",
-    loop: false,
-    autoplay: true,
-    path: "animationlogo.json"
-  });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-<script>
-  window.addEventListener("scroll", function () {
-    const header = document.querySelector("header");
-    header.classList.toggle("scrolled", window.scrollY > 50);
-  })
+</html>

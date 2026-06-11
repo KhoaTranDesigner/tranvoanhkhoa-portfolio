@@ -16,8 +16,8 @@
     <style>
         :root {
             --brand-blue: #0028ff;
-            --gallery-bg: #0e0e0e;
-            --card-bg: #111114;
+            --gallery-bg: #000000;
+            --card-bg: #000000;
         }
 
         body#selected-works-page {
@@ -25,7 +25,17 @@
             color: #fff;
         }
 
+        #selected-works-page .main-header {
+            background: rgba(7, 7, 9, 0.82) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
 
+        #selected-works-page .main-name,
+        #selected-works-page .typing-text {
+            color: #fff !important;
+        }
 
         /* Hero Section */
         .sw-hero {
@@ -170,18 +180,126 @@
             transform: translateY(0);
         }
 
+        /* Hiệu ứng cho ô hình thứ 4 (View All) */
+        .view-more-card img {
+            filter: brightness(0.35);
+            /* Làm tối ảnh nền LBH để chữ nổi lên */
+        }
+
+        .view-more-card:hover img {
+            filter: brightness(0.5);
+            /* Sáng lên chút xíu khi hover */
+        }
+
+        .overlay-more {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            pointer-events: none;
+            /* Để không bị cản cú click chuột */
+        }
+
+        .overlay-more span {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            /* Lấy màu xanh nhận diện của Khoa */
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            transform: translateY(10px);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .overlay-more p {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            transform: translateY(10px);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition-delay: 0.05s;
+        }
+
+        .view-more-card:hover .overlay-more span,
+        .view-more-card:hover .overlay-more p {
+            transform: translateY(0);
+        }
+
+        .grid-kols {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+
         /* Responsive */
-        @media (max-width: 1024px) {
+
+        @media (max-width: 768px) {
             .grid-posters {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                display: flex !important;
+                /* Chuyển từ Grid sang Flex để nằm ngang */
+                overflow-x: auto;
+                /* Bật tính năng cuộn ngang */
+                scroll-snap-type: x mandatory;
+                /* Bật hiệu ứng tự động hút (snap) */
+                -webkit-overflow-scrolling: touch;
+                /* Vuốt mượt trên iPhone/iOS */
+                gap: 16px;
+                padding-bottom: 0px;
+                /* Chừa chỗ cho bóng đổ của thẻ card */
+            }
+
+            .grid-posters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .grid-posters .sw-card {
+                flex: 0 0 85% !important;
+                /* Hình chiếm 85% để lòi hình kế tiếp ra xíu */
+                scroll-snap-align: center;
+                /* Tự động hút hình vào giữa màn hình */
+                height: 480px !important;
+                /* Chỉnh chiều cao cho vừa vặn điện thoại */
             }
 
             .grid-exion {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
 
-        @media (max-width: 768px) {
+            .grid-kols {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+                /* Thu hẹp khoảng cách giữa 4 hình */
+            }
+
+            .grid-kols .sw-overlay {
+                padding: 10px !important;
+                /* Lớp phủ đen mỏng lại */
+            }
+
+            .grid-kols .sw-overlay h3 {
+                font-size: 10px !important;
+                /* Tên KOL nhỏ lại */
+                margin-bottom: 2px !important;
+            }
+
+            .grid-kols .sw-overlay p {
+                font-size: 7px !important;
+                /* Dòng chữ tiếng anh nhỏ lại */
+            }
+
+            .grid-kols .overlay-more span {
+                font-size: 22px !important;
+                /* Chữ +14 nhỏ lại */
+            }
+
+            .grid-kols .overlay-more p {
+                font-size: 9px !important;
+                /* Chữ View All nhỏ lại */
+            }
+
             .sw-card.wide {
                 grid-column: span 1;
             }
@@ -191,7 +309,8 @@
             }
 
             .grid-exion {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px;
             }
         }
     </style>
@@ -276,10 +395,10 @@
             <div class="line"></div>
         </div>
 
-        <div class="sw-grid grid-social">
+        <div class="sw-grid grid-social grid-kol">
 
             <div class="sw-card wide">
-                <img src="selected-works/hungphuc.png" alt="Vanity Clinic Banner">
+                <img src="selected-works/hungphuc.png" alt="Vanity Clinic Banner" loading="lazy">
                 <div class="sw-overlay">
                     <h3>Promotional Campaign</h3>
                     <p>Horizontal Banner</p>
@@ -287,39 +406,7 @@
             </div>
 
             <div class="sw-card">
-                <img src="selected-works/banner-caroussel.png" alt="Grand Offer">
-                <div class="sw-overlay">
-                    <h3>Grand Offer Campaign</h3>
-                    <p>Social Media Post</p>
-                </div>
-            </div>
-
-            <div class="sw-card">
-                <img src="selected-works/banner-caroussel-2.png" alt="Health Checkup">
-                <div class="sw-overlay">
-                    <h3>Health Checkup</h3>
-                    <p>Social Media Post</p>
-                </div>
-            </div>
-
-            <div class="sw-card">
-                <img src="selected-works/banner-caroussel-3.png" alt="Hoàng Mập Banner">
-                <div class="sw-overlay">
-                    <h3>Transformation Story</h3>
-                    <p>Social Media Post</p>
-                </div>
-            </div>
-
-            <div class="sw-card">
-                <img src="selected-works/kimdao.png" alt="Kim Dao Banner">
-                <div class="sw-overlay">
-                    <h3>Transformation Story</h3>
-                    <p>Social Media Post</p>
-                </div>
-            </div>
-
-            <div class="sw-card">
-                <img src="selected-works/LuongBichHuu.png" alt="Ideal Weight">
+                <img src="selected-works/LuongBichHuu.png" alt="Ideal Weight" loading="lazy">
                 <div class="sw-overlay">
                     <h3>Ideal Weight Milestone</h3>
                     <p>Social Media Post</p>
@@ -327,50 +414,165 @@
             </div>
 
             <div class="sw-card">
-                <img src="selected-works/LuongBichHuu2.png" alt="Care Plan">
+                <img src="selected-works/banner-caroussel.png" alt="Grand Offer" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Grand Offer Campaign</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
+            <div class="sw-card">
+                <img src="selected-works/banner-caroussel-2.png" alt="Health Checkup" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Health Checkup</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
+            <div class="sw-card">
+                <img src="selected-works/banner-caroussel-3.png" alt="Hoàng Mập Banner" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Transformation Story</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
+            <div class="sw-card">
+                <img src="selected-works/LuongBichHuu2.png" alt="Care Plan" loading="lazy">
                 <div class="sw-overlay">
                     <h3>Comprehensive Care Plan</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
+
+            <div class="sw-card">
+                <img src="selected-works/kimdao.png" alt="Kim Dao Banner" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Transformation Story</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
+            <div class="sw-card">
+                <img src="selected-works/kimdaosocialpost.png" alt="Hành trình giảm cân Kim Đào - Feedback"
+                    loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Transformation Story</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
+            <div class="sw-card">
+                <img src="selected-works/kimdaohong1.png" alt="Hành trình giảm cân Kim Đào - 78kg" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Transformation Story</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
+            <div class="sw-card">
+                <img src="selected-works/kimdaohong2.png" alt="Hành trình giảm cân Kim Đào - 58kg" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>Transformation Story</h3>
+                    <p>Social Media Post</p>
+                </div>
+            </div>
+
         </div>
 
         <div class="category-header">
-            <h2>Exion BTL Campaigns</h2>
+            <h2>KOL Birthday Visuals</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="sw-grid grid-social grid-kols">
+
+            <a href="selected-works/happy-birthday/TS.png" data-fancybox="kol-gallery" class="sw-card">
+                <img src="selected-works/happy-birthday/TS.png" alt="KOL TS" class="no-zoom" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>NSUT Tú Sương</h3>
+                    <p>Birthday Visual Adaptation</p>
+                </div>
+            </a>
+
+            <a href="selected-works/happy-birthday/LVD.png" data-fancybox="kol-gallery" class="sw-card">
+                <img src="selected-works/happy-birthday/LVD.png" alt="KOL LVD" class="no-zoom" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>NS Lâm Vỹ Dạ</h3>
+                    <p>Birthday Visual Adaptation</p>
+                </div>
+            </a>
+
+            <a href="selected-works/happy-birthday/PL.png" data-fancybox="kol-gallery" class="sw-card">
+                <img src="selected-works/happy-birthday/PL.png" alt="KOL PL" class="no-zoom" loading="lazy">
+                <div class="sw-overlay">
+                    <h3>CS Pha Lê</h3>
+                    <p>Birthday Visual Adaptation</p>
+                </div>
+            </a>
+
+            <a href="selected-works/happy-birthday/LBH.png" data-fancybox="kol-gallery" class="sw-card view-more-card">
+                <img src="selected-works/happy-birthday/LBH.png" alt="KOL LBH" class="no-zoom" loading="lazy">
+                <div class="overlay-more">
+                    <span>+14</span>
+                    <p>View All</p>
+                </div>
+            </a>
+
+            <div style="display: none;">
+                <a href="selected-works/happy-birthday/HBT.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/HP.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/HT.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/IT.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/KD.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/KTL.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/LHT.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/MBN.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/MPL.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/ND.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/O.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/TT.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works/happy-birthday/VTH.png" data-fancybox="kol-gallery"></a>
+            </div>
+
+        </div>
+
+        <div class="category-header">
+            <h2>Exion BTL AD Post</h2>
             <div class="line"></div>
         </div>
 
         <div class="sw-grid grid-exion">
 
             <div class="sw-card">
-                <img src="selected-works/1.png" alt="Exion BTL 1">
+                <img src="selected-works/1.png" alt="Exion BTL 1" loading="lazy">
                 <div class="sw-overlay">
-                    <h3>Exion Machine Campaign</h3>
-                    <p>Ad Design 01</p>
+                    <h3>Exion BTL</h3>
+                    <p>AD Design 01</p>
                 </div>
             </div>
 
             <div class="sw-card">
-                <img src="selected-works/2.png" alt="Exion BTL 2">
+                <img src="selected-works/2.png" alt="Exion BTL 2" loading="lazy">
                 <div class="sw-overlay">
-                    <h3>Exion Machine Campaign</h3>
-                    <p>Ad Design 02</p>
+                    <h3>Exion BTL</h3>
+                    <p>AD Design 02</p>
                 </div>
             </div>
 
             <div class="sw-card">
-                <img src="selected-works/3.png" alt="Exion BTL 3">
+                <img src="selected-works/3.png" alt="Exion BTL 3" loading="lazy">
                 <div class="sw-overlay">
-                    <h3>Exion Machine Campaign</h3>
-                    <p>Ad Design 03</p>
+                    <h3>Exion BTL</h3>
+                    <p>AD Design 03</p>
                 </div>
             </div>
 
             <div class="sw-card">
-                <img src="selected-works/4.png" alt="Exion BTL 4">
+                <img src="selected-works/4.png" alt="Exion BTL 4" loading="lazy">
                 <div class="sw-overlay">
-                    <h3>Exion Machine Campaign</h3>
-                    <p>Ad Design 04</p>
+                    <h3>Exion BTL</h3>
+                    <p>AD Design 04</p>
                 </div>
             </div>
 

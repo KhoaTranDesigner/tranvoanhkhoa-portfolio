@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Video Portfolio của Trần Võ Anh Khoa.">
+    <title>Video Portfolio - Trần Võ Anh Khoa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --video-blue: #0028ff;
+            --video-bg: #08080a;
+            --video-surface: #121216;
+            --video-muted: #9a9aa3;
+        }
+
+        body#video-portfolio-page {
+            margin: 0;
+            padding: 0;
+            background: var(--video-bg);
+            color: #fff;
+            font-family: "Be Vietnam Pro", sans-serif;
+        }
+
+        html.video-filter-jump {
+            scroll-behavior: auto !important;
+        }
+
+        #video-portfolio-page .main-header {
+            background: #0b0b0e !important;
+            border-bottom: 0 !important;
+            box-shadow: none;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        #video-portfolio-page .main-header.scrolled {
+            background: #0b0b0e !important;
+        }
+
+        #video-portfolio-page .main-name,
+        #video-portfolio-page .typing-text {
+            color: #fff !important;
+        }
+
+        #video-portfolio-page .sub-title,
+        #video-portfolio-page .back-hint {
+            color: #a8a8b2;
+        }
+
+        #video-portfolio-page .sub-title {
+            transition: color 0.35s ease, letter-spacing 0.35s ease;
+        }
+
+        #video-portfolio-page .sub-title:hover {
+            color: var(--video-blue);
+        }
+
+        .video-hero {
+            position: relative;
+            min-height: 430px;
+            padding: 200px 20px 58px;
+            overflow: hidden;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(14px);
+            transition:
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-hero.is-intro-ready {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-hero-content {
+            width: min(760px, 100%);
+            margin: 0 auto;
+        }
+
+        .video-hero h1 {
+            margin: 0 0 18px;
+            color: #fff;
+            font-size: clamp(40px, 6vw, 68px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.08;
+            opacity: 0;
+            transform: translateY(38px) scale(0.985);
+            filter: blur(7px);
+            transition:
+                opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.25s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.9s ease;
+        }
+
+        .video-hero h1 span {
+            color: var(--video-blue);
+            font-style: italic;
+        }
+
+        .video-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--video-muted);
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(26px);
+            filter: blur(5px);
+            transition:
+                opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.9s ease;
+        }
+
+        .video-hero.is-intro-title-visible h1,
+        .video-hero.is-intro-copy-visible p {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        .video-reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition:
+                opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .filter-menu {
+            position: sticky;
+            top: calc(var(--video-header-height, 112px) + 10px);
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            width: fit-content;
+            max-width: calc(100% - 32px);
+            margin: 0 auto 46px;
+            padding: 7px;
+            border: 0;
+            border-radius: 999px;
+            background: #18181d;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            transition:
+                opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.45s ease;
+            will-change: transform, opacity;
+        }
+
+        .filter-menu.is-nav-hidden {
+            opacity: 0;
+            transform: translate3d(0, calc(-100% - 28px), 0) scale(0.985);
+            pointer-events: none;
+        }
+
+        .filter-menu.is-nav-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        .filter-btn {
+            position: relative;
+            appearance: none;
+            padding: 10px 18px;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            color: #b3b3bc;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition:
+                background-color 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.4s ease,
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .filter-btn:hover {
+            color: var(--video-blue);
+        }
+
+        .filter-btn.is-active {
+            background: var(--video-blue);
+            color: #fff;
+            box-shadow: 0 7px 18px rgba(0, 40, 255, 0.24);
+            transform: translateY(-1px) scale(1.015);
+        }
+
+        .video-section {
+            width: min(1400px, 100%);
+            min-height: 420px;
+            margin: 0 auto;
+            padding: 0 clamp(14px, 3vw, 40px) 120px;
+        }
+
+        .video-switch-cover {
+            position: fixed;
+            top: var(--video-header-height, 112px);
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 19;
+            display: grid;
+            background: var(--video-bg);
+            opacity: 0;
+            pointer-events: none;
+            place-items: center;
+            transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-switch-cover.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .video-switch-loader {
+            width: 34px;
+            height: 34px;
+            border: 3px solid rgba(0, 40, 255, 0.12);
+            border-top-color: var(--video-blue);
+            border-radius: 50%;
+            animation: videoSwitchSpin 0.8s linear infinite;
+        }
+
+        .video-masonry {
+            column-count: 3;
+            column-gap: 22px;
+            transition:
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-masonry.is-switching {
+            opacity: 0;
+            transform: translate3d(0, 12px, 0) scale(0.992);
+        }
+
+        .video-card {
+            display: inline-block;
+            width: 100%;
+            margin: 0 0 22px;
+            overflow: hidden;
+            break-inside: avoid;
+            border: 0;
+            border-radius: 12px;
+            background: var(--video-surface);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity 0.45s ease,
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+            backface-visibility: hidden;
+        }
+
+        .video-card.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-card.is-filtering-out {
+            opacity: 0;
+            transform: scale(0.96);
+            pointer-events: none;
+        }
+
+        .video-card[hidden] {
+            display: none;
+        }
+
+        .video-card:hover {
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.46);
+        }
+
+        .video-link {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            background: #0a0a0a;
+            cursor: pointer;
+        }
+
+        .video-thumb {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: grid;
+            width: 64px;
+            height: 64px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(0, 40, 255, 0.88);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            place-items: center;
+            transform: translate(-50%, -50%);
+            transition: transform 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .play-icon::before {
+            content: "";
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 15px solid #fff;
+        }
+
+        .video-link:hover .video-thumb {
+            filter: brightness(0.82);
+            transform: scale(1.05);
+        }
+
+        .video-link:hover .play-icon {
+            background: #fff;
+            box-shadow: 0 10px 35px rgba(0, 40, 255, 0.45);
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        .video-link:hover .play-icon::before {
+            border-left-color: var(--video-blue);
+        }
+
+        .video-info {
+            padding: 20px 20px 22px;
+        }
+
+        .video-category {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--video-blue);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .video-title {
+            margin: 0 0 8px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .video-desc {
+            position: relative;
+            height: var(--desc-collapsed-height, 1.65em);
+            margin: 0;
+            overflow: hidden;
+            color: #aaaab3;
+            font-size: 14px;
+            line-height: 1.65;
+            transition:
+                height 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.55s ease;
+        }
+
+        .video-desc-text {
+            display: block;
+        }
+
+        .video-desc::after {
+            content: "...";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: auto;
+            height: var(--desc-collapsed-height, 1.65em);
+            padding-left: 6px;
+            background: linear-gradient(90deg, rgba(18, 18, 22, 0), var(--video-surface) 30%);
+            line-height: inherit;
+            opacity: 1;
+            transition: opacity 0.28s ease;
+            pointer-events: none;
+        }
+
+        .video-card.is-desc-open .video-desc {
+            height: var(--desc-expanded-height, auto);
+        }
+
+        .video-card.is-desc-open .video-desc::after {
+            opacity: 0;
+        }
+
+        .video-desc-toggle {
+            display: none;
+            margin-top: 10px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: var(--video-blue);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .video-desc-toggle.has-overflow {
+                display: inline-block;
+            }
+
+        }
+
+        .empty-state {
+            display: none;
+            max-width: 520px;
+            margin: 80px auto;
+            padding: 42px 24px;
+            border: 0;
+            border-radius: 12px;
+            background: var(--video-surface);
+            color: var(--video-muted);
+            text-align: center;
+        }
+
+        .empty-state.is-visible {
+            display: block;
+            animation: emptyReveal 0.4s ease both;
+        }
+
+        .empty-state strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--video-blue);
+            font-size: 19px;
+        }
+
+        .video-thanks {
+            padding: 100px 20px;
+            border-top: 0;
+            background: #0b0b0e;
+            text-align: center;
+        }
+
+        .video-thanks h2 {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: 1px;
+        }
+
+        .video-thanks p {
+            margin-top: 10px;
+            color: var(--video-blue);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .fancybox__caption {
+            max-width: 760px;
+            margin: 0 auto;
+            font-family: "Be Vietnam Pro", sans-serif;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        @keyframes emptyReveal {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes videoSwitchSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 960px) {
+            .video-masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #video-portfolio-page .main-header {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+
+            .video-hero {
+                min-height: 360px;
+                padding: 150px 18px 42px;
+            }
+
+            .filter-menu {
+                width: calc(100% - 28px);
+                max-width: 620px;
+                border-radius: 18px;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            .filter-btn {
+                flex: 1 1 auto;
+                padding-inline: 13px;
+            }
+
+            .video-switch-cover {
+                top: var(--video-header-height, 90px);
+            }
+
+        }
+
+        @media (max-width: 560px) {
+            .video-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .video-masonry {
+                column-count: 1;
+            }
+
+            .video-section {
+                padding-inline: 10px;
+            }
+
+            .video-card {
+                margin-bottom: 16px;
+            }
+
+            .play-icon {
+                width: 56px;
+                height: 56px;
+            }
+        }
+    </style>
+</head>
+
+<body class="loading no-zoom-page" id="video-portfolio-page">
+    <header class="main-header">
+        <nav class="nav-left">
+            <a href="index.html#about" class="nav-item"></a>
+            <a href="index.html#skills" class="nav-item"></a>
+        </nav>
+
+        <div class="branding">
+            <div class="name-container">
+                <h1 class="main-name">
+                    <a href="index.html#Project" class="name-link">
+                        <span class="logo-box"><span id="logo"></span></span>
+                        <span class="typing-text">Trần Võ Anh Khoa</span>
+                    </a>
+                </h1>
+                <div class="sub-title-wrapper">
+                    <h2 class="sub-title">Video Portfolio</h2>
+                    <div class="back-hint">
+                        <span class="arrow">←</span>
+                        <span class="hint-text">click to back</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav-right">
+            <a href="index.html#tools" class="nav-item"></a>
+            <a href="index.html#Project" class="nav-item"></a>
+            <a href="index.html#contact" class="nav-item"></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="video-hero" id="video-intro">
+            <div class="video-hero-content">
+                <h1>Video <span>Portfolio</span></h1>
+                <p>Tuyển tập các sản phẩm video quảng cáo, hậu kỳ màu sắc và motion graphics được thực hiện
+                    cho nhiều định dạng truyền thông khác nhau.</p>
+            </div>
+        </section>
+
+        <div id="video-filter-anchor" aria-hidden="true"></div>
+        <nav class="filter-menu video-reveal" aria-label="Lọc video">
+            <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">Tất cả</button>
+            <button class="filter-btn" type="button" data-filter="clip-ads" aria-pressed="false">Clip Ads</button>
+            <button class="filter-btn" type="button" data-filter="color-grading" aria-pressed="false">Color
+                Grading</button>
+            <button class="filter-btn" type="button" data-filter="motion-graphics" aria-pressed="false">Motion
+                Graphics</button>
+        </nav>
+
+        <section class="video-section" aria-live="polite">
+            <div class="video-masonry" id="video-masonry"></div>
+            <div class="empty-state" id="empty-state">
+                <strong>Chưa có video trong mục này</strong>
+                Khoa có thể bổ sung link video sau, bộ lọc đã sẵn sàng.
+            </div>
+        </section>
+    </main>
+
+    <div class="video-switch-cover" id="video-switch-cover" aria-hidden="true">
+        <span class="video-switch-loader" aria-hidden="true"></span>
+    </div>
+
+    <section class="video-thanks video-reveal">
+        <h2>Thanks for Watching</h2>
+        <p>Video Portfolio Collection</p>
+        <p class="project-credit">Filmed &amp; Edited by Trần Võ Anh Khoa</p>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const makeVideo = (id, title, description, category = "clip-ads", format = "vertical", thumbnail = "") => ({
+            id,
+            title,
+            description,
+            category,
+            format,
+            thumbnail
+        });
+
+        // Thêm video mới bằng makeVideo("YOUTUBE_ID", "Tiêu đề", "Mô tả", "category", "format").
+        // Category hợp lệ: clip-ads, color-grading, motion-graphics.
+        // Format hợp lệ: vertical hoặc landscape.
+        const clipAds = [
+            ["wLiFJR99Ib8", "Clip Ads 01", "Video quảng cáo ngắn được dựng cho định dạng mạng xã hội, tập trung vào nhịp độ nhanh và khả năng thu hút ngay từ những giây đầu."],
+            ["twlGQVVC_ig", "Clip Ads 02", "Short-form advertising video với cách triển khai hình ảnh cô đọng, phù hợp cho chiến dịch truyền thông trên nền tảng số."],
+            ["6wKQvgx-1P0", "Clip Ads 03", "Sản phẩm video quảng cáo dọc, kết hợp dựng hình, âm thanh và nhịp chuyển cảnh dành cho người xem trên thiết bị di động."],
+            ["phIZNJu8PPw", "Clip Ads 04", "Video truyền thông ngắn với bố cục trực quan, làm nổi bật thông điệp chính trong thời lượng cô đọng."],
+            ["Tx8id4PsP98", "Clip Ads 05", "Clip quảng cáo dành cho social media, ưu tiên chuyển động mượt, nhịp dựng rõ ràng và trải nghiệm xem nhanh."],
+            ["55ZVjd1E2XE", "Clip Ads 06", "Nội dung video dạng short được hoàn thiện từ khâu chọn cảnh, dựng nhịp đến xử lý hình ảnh cuối cùng."],
+            ["7CahozVLeqs", "Clip Ads 07", "Video quảng cáo tối ưu cho nền tảng dọc, tạo điểm nhấn bằng cách phối hợp hình ảnh, typography và âm thanh."],
+            ["ra7HvLoxygg", "Clip Ads 08", "Sản phẩm quảng cáo ngắn tập trung vào tính dễ xem, thông điệp rõ và khả năng ghi nhớ trên mạng xã hội."],
+            ["HgUCwqkGDzg", "Clip Ads 09", "Video social ads với tiết tấu linh hoạt, được xử lý để giữ sự chú ý xuyên suốt thời lượng ngắn."],
+            ["62n_9oeO7ZE", "Clip Ads 10", "Clip quảng cáo theo định dạng mobile-first, cân bằng giữa nội dung thương hiệu và trải nghiệm hình ảnh."],
+            ["hmFG3BNCKg4", "Clip Ads 11", "Video truyền thông ngắn được xây dựng với cấu trúc cô đọng, chuyển cảnh có chủ đích và hình ảnh nhất quán."],
+            ["s4gaLbBpuvs", "Clip Ads 12", "Sản phẩm video quảng cáo dành cho nền tảng số, chú trọng nhịp dựng, hiệu ứng và điểm chạm thị giác."],
+            ["3jAbOnfABZc", "Clip Ads 13", "Short video quảng cáo với cách kể chuyện nhanh, giúp nội dung chính được truyền tải trực tiếp và dễ tiếp cận."],
+            ["PZ0EhycPxc4", "Clip Ads 14", "Video social media hoàn thiện theo định dạng dọc, phù hợp cho chiến dịch quảng cáo và nội dung thương hiệu."]
+        ].map(([id, title, description]) => makeVideo(id, title, description));
+
+        const videos = [
+            ...clipAds,
+            makeVideo(
+                "9P5J9_uTARI",
+                "Color Grading 01",
+                "Sản phẩm color grading tập trung cân chỉnh ánh sáng, màu da và sắc độ để tạo nên tổng thể hình ảnh đồng nhất.",
+                "color-grading",
+                "landscape",
+                "video-thumbnails/color-grading-01.jpg"
+            ),
+            makeVideo(
+                "VzP4zTMGpSc",
+                "Color Grading 02 — Breakdown",
+                "Color grading breakdown thể hiện quá trình xử lý màu sắc, độ tương phản và không khí hình ảnh trước và sau hậu kỳ.",
+                "color-grading",
+                "landscape"
+            ),
+            makeVideo(
+                "_2VMB4j1w3o",
+                "Color Grading 03",
+                "Video chỉnh màu theo định dạng dọc, tối ưu sắc độ và cảm xúc hình ảnh cho nội dung social media.",
+                "color-grading"
+            ),
+            makeVideo(
+                "Z2QvqDcjoHI",
+                "Color Grading 04",
+                "Sản phẩm hậu kỳ màu sắc với sự cân bằng giữa ánh sáng, độ tương phản và tông màu chủ đạo.",
+                "color-grading"
+            ),
+            makeVideo(
+                "CPT-E0TYbTA",
+                "Color Grading 05",
+                "Color grading cho video dọc, tạo chiều sâu thị giác và duy trì màu sắc nhất quán xuyên suốt các khung hình.",
+                "color-grading"
+            ),
+            makeVideo(
+                "-boPWDnzi5I",
+                "Color Grading 06",
+                "Sản phẩm chỉnh màu hoàn thiện với tông màu điện ảnh, làm nổi bật chủ thể và không gian trong từng cảnh quay.",
+                "color-grading",
+                "landscape",
+                "video-thumbnails/color-grading-06.jpg"
+            ),
+            makeVideo(
+                "qt87WOpZX-U",
+                "Motion Graphics 01 — Mua 1 Tặng 1",
+                "Poster animation cho chương trình ưu đãi Mua 1 Tặng 1, kết hợp typography, sản phẩm và chuyển động quảng cáo nổi bật.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "_Dv1kEeCh0U",
+                "Motion Graphics 02 — BEARCHOCO",
+                "Logo animation dành cho BEARCHOCO, tập trung vào chuyển động nhận diện thương hiệu gọn gàng và dễ ghi nhớ.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "PgxPeyXyfs8",
+                "Motion Graphics 03 — SAIGONSOUL",
+                "Logo animation cho SAIGONSOUL với chuyển động cô đọng, nhịp điệu rõ ràng và phong cách hình ảnh hiện đại.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "z4j8jhmbR10",
+                "Motion Graphics 04 — Outro Animation",
+                "Đoạn outro animation được thiết kế để kết thúc video gọn gàng, đồng bộ với nhận diện và nhịp nội dung.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "w7wPiN1XybA",
+                "Motion Graphics 05",
+                "Sản phẩm motion graphics kết hợp chuyển động hình ảnh, typography và nhịp âm thanh cho nội dung truyền thông.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "gbhv1ErQOZY",
+                "Motion Graphics 06 — CV Motion",
+                "CV motion graphics trình bày thông tin cá nhân và năng lực bằng bố cục chuyển động trực quan, hiện đại.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "2MhRV9h9KK4",
+                "Motion Graphics 07",
+                "Sản phẩm motion graphics kết hợp chuyển động hình ảnh, typography và nhịp âm thanh cho nội dung truyền thông.",
+                "motion-graphics"
+            ),
+            makeVideo(
+                "tnEcTbCm3sY",
+                "Motion Graphics 08 — TikTok Shop",
+                "Coming soon animation dành cho TikTok Shop, sử dụng chuyển động nhanh và bố cục phù hợp nội dung digital.",
+                "motion-graphics",
+                "landscape"
+            ),
+            makeVideo(
+                "hCSrBg9NpRg",
+                "Motion Graphics 09 — Matcha Latte",
+                "Video hướng dẫn làm Matcha Latte kết hợp dựng hình, typography và chuyển động thông tin dễ theo dõi.",
+                "motion-graphics",
+                "landscape"
+            )
+        ];
+
+        const categoryNames = {
+            "clip-ads": "Clip Ads",
+            "color-grading": "Color Grading",
+            "motion-graphics": "Motion Graphics"
+        };
+
+        const masonry = document.getElementById("video-masonry");
+        const emptyState = document.getElementById("empty-state");
+        const videoSection = document.querySelector(".video-section");
+        const filterAnchor = document.getElementById("video-filter-anchor");
+        const filterMenu = document.querySelector(".filter-menu");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const pageHeader = document.querySelector(".main-header");
+        const videoSwitchCover = document.getElementById("video-switch-cover");
+        const videoIntro = document.getElementById("video-intro");
+        const navigationEntry = performance.getEntriesByType("navigation")[0];
+        const isPageReload = navigationEntry?.type === "reload";
+        const descriptionLayoutCallbacks = [];
+        let cachedHeaderHeight = 0;
+        let cachedStickyStart = 0;
+        let layoutMeasureFrame = null;
+
+        if (isPageReload) {
+            sessionStorage.removeItem(`scrollPosition_${window.location.pathname}`);
+            window.addEventListener("pageshow", () => {
+                window.setTimeout(() => window.scrollTo(0, 0), 120);
+            });
+        }
+
+        const updateStickyFilterPosition = () => {
+            cachedHeaderHeight = pageHeader ? pageHeader.offsetHeight : 0;
+            cachedStickyStart = filterMenu.offsetTop - cachedHeaderHeight - 12;
+            document.documentElement.style.setProperty("--video-header-height", `${cachedHeaderHeight}px`);
+        };
+
+        const measureVideoLayout = () => {
+            layoutMeasureFrame = null;
+            updateStickyFilterPosition();
+            descriptionLayoutCallbacks.forEach((callback) => callback());
+        };
+
+        const scheduleVideoLayoutMeasure = () => {
+            if (layoutMeasureFrame) return;
+            layoutMeasureFrame = requestAnimationFrame(measureVideoLayout);
+        };
+
+        const filterNavigationLocks = new Set();
+        let filterHiddenByScroll = false;
+        let lastFilterScrollY = window.scrollY;
+        let filterScrollFrame = null;
+        let isProgrammaticFilterScroll = false;
+
+        const updateFilterNavigation = () => {
+            const shouldHide = filterNavigationLocks.size > 0 || filterHiddenByScroll;
+            filterMenu.classList.toggle("is-nav-hidden", shouldHide);
+            filterMenu.classList.toggle("is-nav-visible", !shouldHide);
+        };
+
+        const setFilterNavigationLock = (reason, shouldLock) => {
+            if (shouldLock) {
+                filterNavigationLocks.add(reason);
+            } else {
+                filterNavigationLocks.delete(reason);
+            }
+
+            updateFilterNavigation();
+        };
+
+        const handleFilterScroll = () => {
+            if (filterScrollFrame || isProgrammaticFilterScroll) return;
+
+            filterScrollFrame = requestAnimationFrame(() => {
+                const currentScrollY = Math.max(0, window.scrollY);
+                const scrollDistance = currentScrollY - lastFilterScrollY;
+
+                if (currentScrollY <= Math.max(0, cachedStickyStart)) {
+                    filterHiddenByScroll = false;
+                } else if (scrollDistance > 8) {
+                    filterHiddenByScroll = true;
+                } else if (scrollDistance < -8) {
+                    filterHiddenByScroll = false;
+                }
+
+                lastFilterScrollY = currentScrollY;
+                updateFilterNavigation();
+                filterScrollFrame = null;
+            });
+        };
+
+        scheduleVideoLayoutMeasure();
+        updateFilterNavigation();
+        window.addEventListener("load", scheduleVideoLayoutMeasure);
+        window.addEventListener("resize", scheduleVideoLayoutMeasure, { passive: true });
+        window.addEventListener("scroll", handleFilterScroll, { passive: true });
+
+        if (document.fonts?.ready) {
+            document.fonts.ready.then(scheduleVideoLayoutMeasure);
+        }
+
+        if ("ResizeObserver" in window && pageHeader) {
+            const headerResizeObserver = new ResizeObserver(scheduleVideoLayoutMeasure);
+            headerResizeObserver.observe(pageHeader);
+        }
+
+        const playIntroSequence = () => {
+            window.setTimeout(() => videoIntro.classList.add("is-intro-ready"), 180);
+            window.setTimeout(() => videoIntro.classList.add("is-intro-title-visible"), 360);
+            window.setTimeout(() => videoIntro.classList.add("is-intro-copy-visible"), 580);
+        };
+
+        if (document.readyState === "complete") {
+            playIntroSequence();
+        } else {
+            window.addEventListener("load", playIntroSequence, { once: true });
+        }
+
+        const pageRevealElements = document.querySelectorAll(".video-reveal");
+        if ("IntersectionObserver" in window) {
+            const pageRevealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                rootMargin: "0px 0px -6% 0px",
+                threshold: 0.08
+            });
+
+            pageRevealElements.forEach((element) => pageRevealObserver.observe(element));
+        } else {
+            pageRevealElements.forEach((element) => element.classList.add("is-visible"));
+        }
+
+        const createVideoCard = (video, index) => {
+            const article = document.createElement("article");
+            const caption = `<strong>${video.title}</strong><br>${video.description}`;
+            const isVertical = video.format !== "landscape";
+            const thumbnailCandidates = isVertical
+                ? ["oar2.jpg", "hqdefault.jpg"]
+                : ["sddefault.jpg", "hqdefault.jpg"];
+            const youtubeThumbnailUrls = thumbnailCandidates.map(
+                (fileName) => `https://i.ytimg.com/vi/${video.id}/${fileName}`
+            );
+            const thumbnailUrls = video.thumbnail
+                ? [video.thumbnail, ...youtubeThumbnailUrls]
+                : youtubeThumbnailUrls;
+            article.className = "video-card";
+            article.dataset.category = video.category;
+            article.innerHTML = `
+                <a class="video-link"
+                    href="https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0"
+                    data-fancybox="video-gallery"
+                    data-type="iframe"
+                    data-video-id="${video.id}"
+                    data-width="${isVertical ? "405" : "960"}"
+                    data-height="${isVertical ? "720" : "540"}"
+                    data-caption="${caption.replace(/"/g, "&quot;")}">
+                    <img class="video-thumb"
+                        alt="${video.title}"
+                        loading="${index < 3 ? "eager" : "lazy"}"
+                        decoding="async">
+                    <span class="play-icon" aria-hidden="true"></span>
+                </a>
+                <div class="video-info">
+                    <span class="video-category">${categoryNames[video.category]}</span>
+                    <h2 class="video-title">${video.title}</h2>
+                    <p class="video-desc"><span class="video-desc-text">${video.description}</span></p>
+                    <button class="video-desc-toggle" type="button" aria-expanded="false">Xem thêm</button>
+                </div>`;
+
+            const thumbnail = article.querySelector(".video-thumb");
+            let thumbnailCandidateIndex = 0;
+            thumbnail.addEventListener("error", () => {
+                thumbnailCandidateIndex += 1;
+                const nextThumbnail = thumbnailUrls[thumbnailCandidateIndex];
+                if (nextThumbnail) thumbnail.src = nextThumbnail;
+            });
+            thumbnail.src = thumbnailUrls[0];
+
+            const description = article.querySelector(".video-desc");
+            const descriptionText = article.querySelector(".video-desc-text");
+            const descriptionToggle = article.querySelector(".video-desc-toggle");
+            const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+            let descriptionHasOverflow = false;
+
+            const setDescriptionOpen = (isOpen) => {
+                if (!descriptionHasOverflow) isOpen = false;
+                article.classList.toggle("is-desc-open", isOpen);
+                descriptionToggle.textContent = isOpen ? "Thu gọn" : "Xem thêm";
+                descriptionToggle.setAttribute("aria-expanded", String(isOpen));
+            };
+
+            descriptionToggle.addEventListener("click", () => {
+                setDescriptionOpen(!article.classList.contains("is-desc-open"));
+            });
+
+            if (canHover) {
+                article.addEventListener("mouseenter", () => setDescriptionOpen(true));
+                article.addEventListener("mouseleave", () => setDescriptionOpen(false));
+                article.addEventListener("focusin", () => setDescriptionOpen(true));
+                article.addEventListener("focusout", (event) => {
+                    if (!article.contains(event.relatedTarget)) setDescriptionOpen(false);
+                });
+            }
+
+            const updateDescriptionOverflow = () => {
+                const lineHeight = Number.parseFloat(getComputedStyle(description).lineHeight);
+                const expandedHeight = descriptionText.scrollHeight;
+                const hasOverflow = expandedHeight > lineHeight + 1;
+                descriptionHasOverflow = hasOverflow;
+
+                description.style.setProperty("--desc-collapsed-height", `${lineHeight}px`);
+                description.style.setProperty("--desc-expanded-height", `${expandedHeight}px`);
+                descriptionToggle.classList.toggle("has-overflow", hasOverflow);
+
+                if (!hasOverflow) {
+                    setDescriptionOpen(false);
+                    description.style.height = `${expandedHeight}px`;
+                } else {
+                    description.style.removeProperty("height");
+                }
+            };
+
+            descriptionLayoutCallbacks.push(updateDescriptionOverflow);
+
+            return article;
+        };
+
+        const fragment = document.createDocumentFragment();
+        videos.forEach((video, index) => fragment.appendChild(createVideoCard(video, index)));
+        masonry.appendChild(fragment);
+        scheduleVideoLayoutMeasure();
+
+        const videoCards = [...document.querySelectorAll(".video-card")];
+        if ("IntersectionObserver" in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add("is-revealed");
+                    observer.unobserve(entry.target);
+                });
+            }, { rootMargin: "0px 0px -5% 0px", threshold: 0.08 });
+            videoCards.forEach((card) => revealObserver.observe(card));
+        } else {
+            videoCards.forEach((card) => card.classList.add("is-revealed"));
+        }
+
+        let activeFilter = "all";
+        let filterTransitionId = 0;
+        const filterScrollPositions = {
+            all: window.scrollY
+        };
+
+        const getGalleryStartPosition = () => {
+            return Math.max(
+                0,
+                filterAnchor.getBoundingClientRect().top + window.scrollY - cachedHeaderHeight - 10
+            );
+        };
+
+        const filterVideos = (filter) => {
+            activeFilter = filter;
+            let visibleCount = 0;
+            videoCards.forEach((card) => {
+                const shouldShow = filter === "all" || card.dataset.category === filter;
+
+                if (shouldShow) {
+                    card.hidden = false;
+                    visibleCount += 1;
+                    card.classList.remove("is-filtering-out");
+                    card.classList.add("is-revealed");
+                } else {
+                    card.hidden = true;
+                    card.classList.add("is-filtering-out");
+                }
+            });
+            emptyState.classList.toggle("is-visible", visibleCount === 0);
+        };
+
+        const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+        const wait = (duration) => new Promise((resolve) => window.setTimeout(resolve, duration));
+
+        const smoothScrollToFilter = (targetPosition, duration = 620) => new Promise((resolve) => {
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+
+            if (Math.abs(distance) < 2) {
+                window.scrollTo(0, targetPosition);
+                resolve();
+                return;
+            }
+
+            const startTime = performance.now();
+            const step = (currentTime) => {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const easedProgress = progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+                window.scrollTo(0, startPosition + distance * easedProgress);
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    window.scrollTo(0, targetPosition);
+                    resolve();
+                }
+            };
+
+            requestAnimationFrame(step);
+        });
+
+        const waitForVisibleThumbnails = async () => {
+            const visibleImages = videoCards
+                .filter((card) => !card.hidden)
+                .filter((card) => {
+                    const bounds = card.getBoundingClientRect();
+                    return bounds.bottom >= -200 && bounds.top <= window.innerHeight + 300;
+                })
+                .map((card) => card.querySelector(".video-thumb"))
+                .filter(Boolean);
+
+            const imageTasks = visibleImages.map((image) => {
+                if (image.complete && image.naturalWidth > 0) {
+                    return image.decode?.().catch(() => undefined) || Promise.resolve();
+                }
+
+                return new Promise((resolve) => {
+                    const handleLoad = () => resolve();
+                    const handleError = () => {
+                        requestAnimationFrame(() => {
+                            if (image.complete && image.naturalWidth > 0) {
+                                resolve();
+                                return;
+                            }
+
+                            image.addEventListener("load", handleLoad, { once: true });
+                            image.addEventListener("error", resolve, { once: true });
+                        });
+                    };
+
+                    image.addEventListener("load", handleLoad, { once: true });
+                    image.addEventListener("error", handleError, { once: true });
+                });
+            });
+
+            await Promise.race([
+                Promise.all(imageTasks),
+                wait(1200)
+            ]);
+        };
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", async () => {
+                const nextFilter = button.dataset.filter;
+
+                if (nextFilter === activeFilter) {
+                    const galleryStart = getGalleryStartPosition();
+                    filterScrollPositions[activeFilter] = galleryStart;
+                    filterHiddenByScroll = false;
+                    isProgrammaticFilterScroll = true;
+                    updateFilterNavigation();
+                    document.documentElement.classList.add("video-filter-jump");
+                    await smoothScrollToFilter(galleryStart);
+                    await nextFrame();
+                    document.documentElement.classList.remove("video-filter-jump");
+                    lastFilterScrollY = window.scrollY;
+                    isProgrammaticFilterScroll = false;
+                    return;
+                }
+
+                filterScrollPositions[activeFilter] = window.scrollY;
+                const currentTransitionId = ++filterTransitionId;
+
+                filterButtons.forEach((item) => {
+                    const isActive = item === button;
+                    item.classList.toggle("is-active", isActive);
+                    item.setAttribute("aria-pressed", String(isActive));
+                });
+
+                document.documentElement.classList.remove("video-filter-jump");
+                setFilterNavigationLock("switch", true);
+                videoSection.style.minHeight = `${videoSection.offsetHeight}px`;
+                videoSwitchCover.classList.add("is-active");
+                videoSwitchCover.setAttribute("aria-hidden", "false");
+                masonry.classList.add("is-switching");
+
+                await wait(220);
+                if (currentTransitionId !== filterTransitionId) return;
+
+                filterVideos(nextFilter);
+                await nextFrame();
+
+                const targetPosition = getGalleryStartPosition();
+
+                document.documentElement.classList.add("video-filter-jump");
+                await nextFrame();
+                await nextFrame();
+                await waitForVisibleThumbnails();
+                await nextFrame();
+                await nextFrame();
+
+                if (currentTransitionId !== filterTransitionId) return;
+
+                isProgrammaticFilterScroll = true;
+                await smoothScrollToFilter(targetPosition);
+                await nextFrame();
+                lastFilterScrollY = window.scrollY;
+                isProgrammaticFilterScroll = false;
+                document.documentElement.classList.remove("video-filter-jump");
+
+                await nextFrame();
+                videoSection.style.removeProperty("min-height");
+
+                masonry.classList.remove("is-switching");
+                videoSwitchCover.classList.remove("is-active");
+                videoSwitchCover.setAttribute("aria-hidden", "true");
+                filterHiddenByScroll = false;
+                setFilterNavigationLock("switch", false);
+            });
+        });
+
+        const stopPopupVideos = () => {
+            document.querySelectorAll(".fancybox__container iframe").forEach((iframe) => {
+                iframe.src = "about:blank";
+                iframe.remove();
+            });
+        };
+
+        const handleVideoPopupClosed = () => {
+            stopPopupVideos();
+            filterHiddenByScroll = false;
+            setFilterNavigationLock("video-popup", false);
+        };
+
+        if (window.Fancybox) {
+            document.querySelectorAll('[data-fancybox="video-gallery"]').forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+
+                    const currentInstance = Fancybox.getInstance?.();
+                    if (currentInstance) currentInstance.close();
+                    stopPopupVideos();
+                    setFilterNavigationLock("video-popup", true);
+
+                    Fancybox.show([{
+                        src: link.href,
+                        type: "iframe",
+                        width: Number(link.dataset.width),
+                        height: Number(link.dataset.height),
+                        caption: link.dataset.caption
+                    }], {
+                        Hash: false,
+                        dragToClose: false,
+                        Toolbar: { display: { left: [], middle: [], right: ["close"] } },
+                        on: {
+                            close: handleVideoPopupClosed,
+                            destroy: handleVideoPopupClosed
+                        }
+                    });
+                });
+            });
+        }
+
+        if (window.lottie) {
+            lottie.loadAnimation({
+                container: document.getElementById("logo"),
+                renderer: "svg",
+                loop: false,
+                autoplay: true,
+                path: "animationlogo.json"
+            });
+        }
+    </script>
+</body>
+
+</html>

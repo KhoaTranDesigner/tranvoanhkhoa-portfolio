@@ -6,6 +6,14 @@ const header = document.querySelector("header");
 let animationFrameId = null;
 let isScrolling = false;
 const isMobile = window.matchMedia("(max-width:768px)").matches
+const runWhenIdle = (callback, timeout = 1200) => {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout });
+    return;
+  }
+
+  window.setTimeout(callback, 250);
+};
 function smoothScrollTo(target, duration = 800) {
   cancelScroll(); // tránh chồng animation
 
@@ -85,8 +93,14 @@ if (subTitle) {
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.body.classList.remove("loading");
-  }, 2800);
+  }, 300);
 });
+
+if (header) {
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  }, { passive: true });
+}
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".marquee-section");
 
@@ -106,35 +120,50 @@ document.addEventListener("DOMContentLoaded", () => {
     triggerShine(section);
   });
 });
-const tracks = document.querySelectorAll(".marquee-track")
-
-tracks.forEach(track => {
-
+const marqueeStates = [...document.querySelectorAll(".marquee-track")].map(track => {
   const content = track.innerHTML
-  track.innerHTML += content   // duplicate 1 lần
+  track.innerHTML += content
 
-  let position = 0
-  const speed = 0.3
-
-  function animate() {
-
-    position -= speed
-
-    if (Math.abs(position) >= track.scrollWidth / 2) {
-      position = 0
-    }
-
-    track.style.transform = `translateX(${position}px)`
-
-    requestAnimationFrame(animate)
+  return {
+    track,
+    position: 0,
+    visible: true,
+    speed: isMobile ? 0.18 : 0.3
   }
-
-  animate()
-
 })
 
-document.querySelector(".name-container")
-  .classList.add("start-animation");
+if (marqueeStates.length) {
+  const marqueeObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const state = marqueeStates.find(item => item.track === entry.target)
+        if (state) state.visible = entry.isIntersecting
+      })
+    })
+    : null
+
+  marqueeStates.forEach(state => marqueeObserver?.observe(state.track))
+
+  function animateMarquees() {
+    marqueeStates.forEach(state => {
+      if (!state.visible) return
+
+      state.position -= state.speed
+
+      if (Math.abs(state.position) >= state.track.scrollWidth / 2) {
+        state.position = 0
+      }
+
+      state.track.style.transform = `translate3d(${state.position}px, 0, 0)`
+    })
+
+    requestAnimationFrame(animateMarquees)
+  }
+
+  requestAnimationFrame(animateMarquees)
+}
+
+document.querySelector(".name-container")?.classList.add("start-animation");
 
 // 🔹 Cancel khi user tác động
 window.addEventListener("wheel", cancelScroll, { passive: true });
@@ -156,29 +185,25 @@ if (hamburger) {
   })
 
 }
-if (isMobile) {
+const revealElements = document.querySelectorAll(".reveal")
 
-  const revealElements = document.querySelectorAll(".reveal")
+const observer = new IntersectionObserver((entries) => {
 
-  const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
 
-    entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show")
+    }
 
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show")
-      }
-
-    })
-
-  }, {
-    threshold: 0.15
   })
 
-  revealElements.forEach(el => {
-    observer.observe(el)
-  })
+}, {
+  threshold: 0.15
+})
 
-}
+revealElements.forEach(el => {
+  observer.observe(el)
+})
 const grid = document.querySelector('.material-grid')
 const dots = document.querySelectorAll('.m-dot')
 
@@ -204,6 +229,7 @@ if (grid && dots.length) {
   })
 
 }
+
 // =======================================================
 // TÍNH NĂNG XEM ẢNH CHUYÊN NGHIỆP CÓ ZOOM (FANCYBOX)
 // =======================================================
@@ -224,135 +250,155 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3. Kích hoạt tính năng sau khi thư viện tải xong
   fancyboxJS.onload = () => {
-    // Tìm tất cả ảnh, TRỪ logo, icon và những ảnh có class .no-zoom
+    // 1. Gắn Fancybox cho các ảnh lẻ bình thường (Code cũ của Khoa)
     const imageSelector = "img:not(.nav-item img, #logo img, .social-icons img, .skill-item img, .no-zoom)";
-
-    // Gắn Fancybox vào các ảnh đó
     Fancybox.bind(imageSelector, {
-      Hash: false, // Tắt việc tự đổi link URL khi xem ảnh
-      Toolbar: {
-        display: {
-          left: [],
-          // Các nút hiển thị ở giữa: Phóng to, Thu nhỏ, Zoom 1:1
-          middle: ["zoomIn", "zoomOut", "toggle1to1"],
-          right: ["close"],
-        },
-      },
-      Images: {
-        zoom: true, // Kích hoạt chức năng soi chi tiết
-      }
+      Hash: false,
+      Toolbar: { display: { left: [], middle: ["zoomIn", "zoomOut", "toggle1to1"], right: ["close"] } },
+      Images: { zoom: true }
+    });
+
+    // 2. Gắn Fancybox cho Album KOL 18 tấm (ĐOẠN CODE BỔ SUNG)
+    Fancybox.bind('[data-fancybox="kol-gallery"]', {
+      Hash: false,
+      Toolbar: { display: { left: [], middle: ["zoomIn", "zoomOut", "toggle1to1"], right: ["close"] } },
+      Images: { zoom: true }
     });
   };
 });
+
 // =======================================================
-// HIỆU ỨNG THẺ 3D (VANILLA-TILT.JS)
+// THUMBNAIL + POPUP CHO TOÀN BỘ VIDEO YOUTUBE NHÚNG
 // =======================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // Tải thư viện Vanilla Tilt
-  const tiltJS = document.createElement("script");
-  tiltJS.src = "https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js";
-  document.body.appendChild(tiltJS);
+  const youtubeFrames = [...document.querySelectorAll(
+    '.md-shorts-frame iframe[src*="youtube"], .md-landscape-frame iframe[src*="youtube"], .shorts-wrapper iframe[src*="youtube"]'
+  )];
 
-  tiltJS.onload = () => {
-    // Tự động gắn hiệu ứng 3D cho các thẻ Card của Khoa
-    const cards = document.querySelectorAll(".project-card, .service-card, .material-card, .sw-card");
+  if (!youtubeFrames.length) return;
 
-    VanillaTilt.init(cards, {
-      max: 8,             // Độ nghiêng tối đa (số càng to nghiêng càng nhiều)
-      speed: 400,         // Tốc độ hồi phục về ban đầu
-      glare: true,        // Bật hiệu ứng lóa sáng như kính
-      "max-glare": 0.3,   // Độ lóa sáng tối đa (0.3 là vừa đẹp)
-      scale: 1.02         // Khi hover vào thẻ tự động phóng to nhẹ lên 2%
+  const stopProjectYoutubeVideos = () => {
+    document.querySelectorAll(".fancybox__container iframe").forEach((iframe) => {
+      iframe.src = "about:blank";
+      iframe.remove();
     });
   };
+
+  const openProjectYoutubeVideo = (poster) => {
+    if (!window.Fancybox) {
+      window.open(`https://www.youtube.com/watch?v=${poster.dataset.videoId}`, "_blank", "noopener");
+      return;
+    }
+
+    const currentInstance = Fancybox.getInstance?.();
+    if (currentInstance) currentInstance.close();
+    stopProjectYoutubeVideos();
+
+    Fancybox.show([{
+      src: poster.href,
+      type: "iframe",
+      width: Number(poster.dataset.width),
+      height: Number(poster.dataset.height),
+      caption: poster.dataset.caption
+    }], {
+      Hash: false,
+      dragToClose: false,
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ["close"]
+        }
+      },
+      on: {
+        close: stopProjectYoutubeVideos,
+        destroy: stopProjectYoutubeVideos
+      }
+    });
+  };
+
+  youtubeFrames.forEach((iframe, index) => {
+    const source = iframe.getAttribute("src") || "";
+    const match = source.match(/\/embed\/([A-Za-z0-9_-]{11})/);
+    if (!match) return;
+
+    const videoId = match[1];
+    const frame = iframe.parentElement;
+    const isVertical = frame.classList.contains("md-shorts-frame") ||
+      frame.classList.contains("shorts-wrapper");
+    const poster = document.createElement("a");
+    const thumbnail = document.createElement("img");
+    const playIcon = document.createElement("span");
+    const title = iframe.getAttribute("title") || `YouTube video ${index + 1}`;
+
+    poster.className = "youtube-poster";
+    poster.href = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+    poster.dataset.videoId = videoId;
+    poster.dataset.width = isVertical ? "405" : "960";
+    poster.dataset.height = isVertical ? "720" : "540";
+    poster.dataset.caption = title;
+    poster.setAttribute("aria-label", `Phát ${title}`);
+
+    thumbnail.className = "youtube-poster-thumb no-zoom";
+    thumbnail.src = isVertical
+      ? `https://i.ytimg.com/vi/${videoId}/oar2.jpg`
+      : `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+    thumbnail.dataset.fallback = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+    thumbnail.alt = title;
+    thumbnail.loading = "lazy";
+    thumbnail.decoding = "async";
+    thumbnail.addEventListener("error", () => {
+      const fallback = thumbnail.dataset.fallback;
+      if (!fallback) return;
+      thumbnail.src = fallback;
+      thumbnail.removeAttribute("data-fallback");
+    });
+
+    playIcon.className = "youtube-poster-play";
+    playIcon.setAttribute("aria-hidden", "true");
+    poster.append(thumbnail, playIcon);
+    poster.addEventListener("click", (event) => {
+      event.preventDefault();
+      openProjectYoutubeVideo(poster);
+    });
+
+    iframe.replaceWith(poster);
+    frame.querySelector(".youtube-cover")?.remove();
+  });
 });
 // =======================================================
 // HIỆU ỨNG CUỘN TRANG (AOS - ANIMATE ON SCROLL)
 // =======================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Chèn CSS của AOS
-  const aosCSS = document.createElement("link");
-  aosCSS.rel = "stylesheet";
-  aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
-  document.head.appendChild(aosCSS);
-
-  // 2. Chèn JS của AOS
-  const aosJS = document.createElement("script");
-  aosJS.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
-  document.body.appendChild(aosJS);
-
-  // 3. Kích hoạt sau khi tải xong
-  aosJS.onload = () => {
-    // Tự động gắn hiệu ứng cho các khối nội dung
+  runWhenIdle(() => {
     const animateElements = document.querySelectorAll('.project-card, .service-card, .material-card, .phil-card, .sw-card');
 
-    animateElements.forEach((el, index) => {
-      el.setAttribute('data-aos', 'fade-up');
-      // Tạo hiệu ứng xuất hiện lần lượt (stagger)
-      el.setAttribute('data-aos-delay', (index % 3) * 150);
-    });
+    if (!animateElements.length) return;
 
-    // Khởi tạo AOS
-    AOS.init({
-      duration: 800, // Thời gian chạy hiệu ứng (0.8s)
-      easing: 'ease-out-cubic', // Gia tốc mượt mà
-      once: true, // Chỉ chạy hiệu ứng 1 lần khi cuộn xuống
-      offset: 50 // Cách đáy màn hình 50px thì bắt đầu chạy
-    });
-  };
-});
-// =======================================================
-// HIỆU ỨNG CUỘN TRANG MƯỢT MÀ (LENIS SMOOTH SCROLL)
-// =======================================================
-document.addEventListener("DOMContentLoaded", () => {
-  // Bỏ qua trên mobile để giữ nguyên trải nghiệm vuốt tự nhiên của điện thoại
-  if (window.matchMedia("(max-width: 768px)").matches) return;
+    const aosCSS = document.createElement("link");
+    aosCSS.rel = "stylesheet";
+    aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+    document.head.appendChild(aosCSS);
 
-  const lenisScript = document.createElement("script");
-  lenisScript.src = "https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js";
-  document.body.appendChild(lenisScript);
+    const aosJS = document.createElement("script");
+    aosJS.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+    aosJS.async = true;
+    document.body.appendChild(aosJS);
 
-  lenisScript.onload = () => {
-    const lenis = new Lenis({
-      duration: 1.2, // Độ trượt dài sau khi ngừng lăn chuột (càng to càng trượt dài)
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Gia tốc mượt
-      smooth: true,
-    });
+    aosJS.onload = () => {
+      animateElements.forEach((el, index) => {
+        el.setAttribute('data-aos', 'fade-up');
+        el.setAttribute('data-aos-delay', (index % 3) * 150);
+      });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  };
-});
-// =======================================================
-// HIỆU ỨNG NÚT BẤM NAM CHÂM (MAGNETIC ELEMENTS)
-// =======================================================
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.matchMedia("(max-width: 768px)").matches) return; // Bỏ qua trên mobile
-
-  // Tìm các nút bấm và menu để gắn nam châm
-  const magnets = document.querySelectorAll('.btn, .nav-item, .contact-box');
-
-  magnets.forEach((magnet) => {
-    magnet.addEventListener('mousemove', function (e) {
-      const position = magnet.getBoundingClientRect();
-      // Tính toán khoảng cách từ chuột đến tâm của nút bấm
-      const x = e.clientX - position.left - position.width / 2;
-      const y = e.clientY - position.top - position.height / 2;
-
-      // Cho nút di chuyển nhẹ theo hướng chuột (nhân với 0.3 để giảm lực hút cho mượt)
-      magnet.style.transform = `translate(${x * 0.3}px, ${y * 0.4}px)`;
-      magnet.style.transition = 'transform 0.1s ease-out';
-    });
-
-    // Khi chuột rời đi, nút nảy lại vị trí cũ
-    magnet.addEventListener('mouseleave', function (e) {
-      magnet.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-      magnet.style.transform = 'translate(0px, 0px)';
-    });
-  });
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50
+      });
+    };
+  }, 1000);
 });
 // =======================================================
 // THANH TIẾN TRÌNH ĐỌC (READING PROGRESS BAR)
@@ -367,36 +413,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   progressContainer.appendChild(progressBar);
   document.body.appendChild(progressContainer);
-
-  // 2. Tính toán và cập nhật độ dài liên tục mỗi khi cuộn chuột
-  window.addEventListener("scroll", () => {
-    // Vị trí hiện tại tính từ đầu trang xuống
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    // Tổng chiều dài của toàn bộ trang web có thể cuộn được
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-    // Tính phần trăm (%)
-    const scrollPercentage = (scrollTop / scrollHeight) * 100;
-
-    // Đổ kết quả vào thanh màu xanh
-    progressBar.style.width = scrollPercentage + "%";
-  });
 });
-// =======================================================
-// TỰ ĐỘNG THÊM LAZY LOADING CHO ẢNH (TỐI ƯU TỐC ĐỘ TẢI)
-// =======================================================
-document.addEventListener("DOMContentLoaded", () => {
-  // Tìm tất cả thẻ img trên trang, TRỪ những ảnh nằm trong Header hoặc phần Hero trên cùng
-  const images = document.querySelectorAll("img:not(header img):not(.hero-avatar):not(.keyvisual-wrapper img):not(.sw-hero img)");
 
-  images.forEach(img => {
-    // Nếu ảnh chưa có thuộc tính loading thì tự động gắn 'lazy' vào
-    if (!img.hasAttribute("loading")) {
-      img.setAttribute("loading", "lazy");
-    }
-  });
-});
 // 1. Khai báo key lưu trữ duy nhất cho từng trang
 const scrollKey = 'scrollPosition_' + window.location.pathname;
 
@@ -404,32 +422,29 @@ const scrollKey = 'scrollPosition_' + window.location.pathname;
 window.addEventListener('pagehide', () => {
   sessionStorage.setItem(scrollKey, window.scrollY);
 });
-
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 // 3. Xử lý khi trang hiển thị
 window.addEventListener('pageshow', (event) => {
-  const navEntries = performance.getEntriesByType('navigation');
-  const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+  // 1. Kiểm tra xem có lệnh reset từ Logo không
+  const isReset = sessionStorage.getItem('resetScroll') === 'true';
 
-  // Nếu là load mới hoàn toàn hoặc nhấn F5 (Reload)
-  if (isReload || !event.persisted) {
-    // Nếu là F5 thì mới đưa về đầu trang, còn không thì kệ nó
-    if (isReload) {
-      window.scrollTo(0, 0);
-      sessionStorage.removeItem(scrollKey);
-      return;
-    }
+  // 2. Nếu là reset từ Logo thì xóa cờ hiệu và cuộn về đầu
+  if (isReset) {
+    sessionStorage.removeItem('resetScroll');
+    window.scrollTo(0, 0);
+    return; // Dừng lại, không chạy code nhớ vị trí nữa
   }
 
-  // Nếu quay lại bằng nút Back (event.persisted hoặc không phải reload)
+  // 3. Nếu không phải reset thì mới chạy logic nhớ vị trí cũ
   const scrollPos = sessionStorage.getItem(scrollKey);
   if (scrollPos) {
-    // Đợi một chút để AOS và các thư viện khác dựng xong giao diện
     setTimeout(() => {
       window.scrollTo({
         top: parseInt(scrollPos),
         behavior: 'instant'
       });
-      // Giữ lại vị trí trong session, chỉ xóa khi người dùng thực sự Reload trang
     }, 100);
   }
 });
