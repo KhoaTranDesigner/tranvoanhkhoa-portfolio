@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 Add-Type -AssemblyName System.Drawing
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$photoDirectory = Join-Path $projectRoot "Photography"
+$photoDirectory = Join-Path $projectRoot "photography-gallery"
 $previewDirectory = Join-Path $photoDirectory "previews"
 $dataFile = Join-Path $photoDirectory "gallery-data.js"
 $allowedExtensions = @(".jpg", ".jpeg", ".png")
@@ -63,7 +63,7 @@ $sourceFiles = Get-ChildItem -LiteralPath $photoDirectory -File |
     Sort-Object { Get-NaturalSortKey $_.Name }
 
 $gallery = foreach ($file in $sourceFiles) {
-    $previewName = "$($file.Name).jpg"
+    $previewName = "$([System.IO.Path]::GetFileNameWithoutExtension($file.Name)).jpg"
     $previewPath = Join-Path $previewDirectory $previewName
     $mustRegenerate = -not (Test-Path -LiteralPath $previewPath) -or
         $file.LastWriteTimeUtc -gt (Get-Item -LiteralPath $previewPath).LastWriteTimeUtc
@@ -76,8 +76,8 @@ $gallery = foreach ($file in $sourceFiles) {
         }
 
         [ordered]@{
-            full = "Photography/$([uri]::EscapeDataString($file.Name))"
-            preview = "Photography/previews/$([uri]::EscapeDataString($previewName))"
+            full = "photography-gallery/$([uri]::EscapeDataString($file.Name))"
+            preview = "photography-gallery/previews/$([uri]::EscapeDataString($previewName))"
             width = $image.Width
             height = $image.Height
             title = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)

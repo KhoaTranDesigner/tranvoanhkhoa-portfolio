@@ -5,7 +5,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  <title>Portfolio Khoa</title>
+  <title>Trần Võ Anh Khoa | Media &amp; Digital Designer TP.HCM</title>
+  <meta name="description"
+    content="Portfolio của Trần Võ Anh Khoa, Media & Digital Designer tại TP.HCM, chuyên về visual identity, video production, motion graphics và photography.">
+  <meta name="author" content="Trần Võ Anh Khoa">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Trần Võ Anh Khoa | Media & Digital Designer">
+  <meta property="og:description"
+    content="Portfolio thiết kế, video, motion graphics và photography của Trần Võ Anh Khoa tại TP.HCM.">
+  <meta property="profile:first_name" content="Anh Khoa">
+  <meta property="profile:last_name" content="Trần Võ">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Trần Võ Anh Khoa | Media & Digital Designer">
+  <meta name="twitter:description"
+    content="Portfolio thiết kế, video, motion graphics và photography của Trần Võ Anh Khoa tại TP.HCM.">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Trần Võ Anh Khoa",
+      "jobTitle": "Media & Digital Designer",
+      "email": "mailto:khoatran9021@gmail.com",
+      "telephone": "+84 382 856 991",
+      "sameAs": [
+        "https://www.facebook.com/kozhsaigon203/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ho Chi Minh City",
+        "addressCountry": "VN"
+      },
+      "knowsAbout": [
+        "Visual Identity",
+        "Video Production",
+        "Motion Graphics",
+        "Photography",
+        "Color Grading"
+      ]
+    }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +57,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="loading no-zoom-page">
+<body class="loading no-zoom-page" id="top">
   <header class="main-header">
     <nav class="nav-left">
       <a href="#about" class="nav-item">ABOUT</a>
@@ -23,14 +66,14 @@
 
     <div class="branding">
       <div class="name-container">
-        <h1 class="main-name">
+        <div class="main-name">
           <a href="index.html" class="name-link" onclick="sessionStorage.setItem('resetScroll', 'true')">
             <span class="logo-box">
               <span id="logo"></span>
             </span>
             <span class="typing-text">Trần Võ Anh Khoa</span>
           </a>
-        </h1>
+        </div>
         <div class="sub-title-wrapper">
           <h2 class="sub-title">Media & Digital Designer</h2>
           <div class="back-hint">
@@ -49,94 +92,71 @@
   </header>
 
   <section class="hero-section">
-    <h1 class="portfolio-title">
-      PORT<span class="folio">FOLIO</span>
-    </h1>
-
-    </div>
-
-    <div class="hero-container">
-      <div class="hero-left">
-        <h1 class="greeting">
-          Xin chào,<br>
-          Tôi là <span class="highlight">Trần Võ Anh Khoa</span>
-        </h1>
-        <p class="description">
-          Graphic Designer với định hướng xây dựng hình ảnh thương hiệu nổi bật,
-          giàu cảm xúc. Tôi yêu thích việc khai thác màu sắc mạnh, ánh sáng và
-          typography để tạo nên những thiết kế ấn tượng và có chiều sâu.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">Liên Hệ</a>
-          <a href="#about" class="btn btn-secondary">Xem thêm</a>
-        </div>
+    <div class="hero-composition">
+      <div class="portfolio-title" aria-hidden="true">
+        PORT<span class="folio">FOLIO</span>
       </div>
 
-      <div class="hero-right">
-        <img src="hinh-anh/avt.png" alt="Trần Võ Anh Khoa" class="hero-avatar" fetchpriority="high" decoding="async">
+      <div class="hero-container">
+        <div class="hero-left">
+          <h1 class="greeting">
+            Xin chào,<br>
+            Tôi là <span class="highlight">Trần Võ Anh Khoa</span>
+          </h1>
+          <p class="description">
+            <span class="description-sentence">
+              Tôi là <span class="keep-together">Media &amp; Digital Designer</span> tại
+              <span class="keep-together">TP.HCM</span>, chuyên xây dựng hình ảnh thương hiệu,
+              video quảng cáo, motion graphics và photography.
+            </span>
+            <span class="description-sentence">
+              Tôi kết hợp tư duy thiết kế, màu sắc và chuyển động để tạo nên những trải nghiệm
+              thị giác rõ ràng và giàu cảm xúc.
+            </span>
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Liên Hệ</a>
+            <a href="#about" class="btn btn-secondary btn-discover">
+              <span>Khám phá</span>
+              <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 3v13M5 11l5 5 5-5"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <img src="hinh-anh/avt.png" alt="Trần Võ Anh Khoa" class="hero-avatar" loading="eager" fetchpriority="high"
+            decoding="async" width="276" height="304">
+        </div>
       </div>
     </div>
   </section>
   <section class="marquee">
     <div class="marquee-track">
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
     </div>
@@ -147,6 +167,10 @@
 
       <div class="about-main-text">
         <h2>Giới Thiệu</h2>
+        <p class="section-intro">
+          Những giá trị và nguyên tắc tôi theo đuổi để tạo nên các sản phẩm thiết kế
+          rõ ràng, có định hướng và giàu tính ứng dụng.
+        </p>
       </div>
 
       <div class="philosophy-grid">
@@ -182,87 +206,27 @@
   <section class="marquee">
     <div class="marquee-track">
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
     </div>
@@ -270,13 +234,17 @@
   <section id="skills" class="skill-section">
     <div class="section-header">
       <h2>Kỹ năng</h2>
-      <p>Các chuyên môn chính tôi áp dụng trong sản xuất nội dung hình ảnh và video.</p>
+      <p class="section-intro">
+        Những chuyên môn chính tôi sử dụng để xây dựng nội dung hình ảnh và video
+        nhất quán, rõ ràng và phù hợp với từng nền tảng.
+      </p>
     </div>
 
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">
-          <img src="icon/brand icon.png" alt="pts" loading="lazy" decoding="async">
+          <img src="icons/brand-icon.png" alt="Visual Identity Design" loading="lazy" decoding="async" width="39"
+            height="40">
         </div>
         <h3>Visual Identity</h3>
         <p>Xây dựng hệ thống nhận diện thương hiệu thông qua bố cục, màu sắc và typography, đảm bảo tính nhất quán và
@@ -286,7 +254,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <img src="icon/video icon.png" alt="pr" loading="lazy" decoding="async">
+          <img src="icons/video-icon.png" alt="Video Production" loading="lazy" decoding="async" width="41" height="40">
         </div>
         <h3>Video Production</h3>
         <p>Thực hiện quay và dựng video, từ lên ý tưởng, bố cục khung hình đến chỉnh màu và hoàn thiện sản phẩm phù hợp
@@ -296,7 +264,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <img src="icon/motion icon.png" alt="mg" loading="lazy" decoding="async">
+          <img src="icons/motion-icon.png" alt="Motion Graphics" loading="lazy" decoding="async" width="34" height="40">
         </div>
         <h3>Motion Graphics</h3>
         <p>Thiết kế và xây dựng chuyển động đồ họa giúp nội dung trở nên sinh động, thu hút và tăng hiệu quả truyền tải
@@ -306,7 +274,8 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <img src="icon/camera icon.png" alt="cam" loading="lazy" decoding="async">
+          <img src="icons/camera-icon.png" alt="Photography and Retouching" loading="lazy" decoding="async" width="40"
+            height="31">
         </div>
         <h3>Photography & Retouch</h3>
         <p>Chụp ảnh và xử lý hậu kỳ, bao gồm chỉnh màu (color grading), retouch và tối ưu hình ảnh để truyền tải cảm xúc
@@ -316,73 +285,36 @@
     </div>
 
     <div class="about-container">
-      <p>
-        Tôi là <span>Media & Digital Designer</span> tập trung vào xây dựng nội dung hình ảnh và giao diện số hiện đại.
-        Với nền tảng về xử lý hình ảnh, chỉnh màu, quay dựng và thiết kế chuyển động quảng cáo,
-        tôi hướng đến việc tạo ra những trải nghiệm thị giác rõ ràng, có hệ thống
-        và truyền tải thông điệp một cách hiệu quả.
-      </p>
+                <p class="skills-summary">
+                    <span class="skills-summary-line">Tôi là <span>Media & Digital Designer</span> tập trung vào xây dựng nội dung hình ảnh và giao diện số hiện đại.</span>
+                    <span class="skills-summary-line">Với nền tảng về xử lý hình ảnh, chỉnh màu, quay dựng và thiết kế chuyển động quảng cáo, tôi hướng đến việc tạo ra những trải nghiệm thị giác rõ ràng, có hệ thống và truyền tải thông điệp một cách hiệu quả.</span>
+                </p>
     </div>
   </section>
   <section class="marquee">
     <div class="marquee-track">
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
     </div>
@@ -392,115 +324,96 @@
 
       <div class="section-header">
         <h2>Phần Mềm</h2>
-        <p>
-          Các phần mềm tôi sử dụng để tạo ra những sản phẩm thiết kế chất lượng, bao gồm Adobe Photoshop, Illustrator,
-          Premiere Pro, After Effects và các công cụ hỗ trợ khác.
+        <p class="section-intro">
+          Những công cụ tôi sử dụng để phát triển ý tưởng, hoàn thiện hình ảnh,
+          dựng video và xây dựng chuyển động cho từng dự án.
         </p>
         <div class="skills-grid">
+          <div class="skill-group skill-group--adobe">
+            <div class="skill-group-heading">
+              <span>Adobe Creative Cloud</span>
+            </div>
+            <div class="skill-group-items">
+              <div class="skill-item">
+                <img src="icons/program-logo/ps.svg" alt="Photoshop" loading="lazy" decoding="async" width="78" height="78">
+                <span class="skill-name">Photoshop</span>
+              </div>
 
-          <div class="skill-item">
-            <img src="icon/program logo/ps.svg" alt="Photoshop" loading="lazy">
-            <span class="skill-name">Photoshop</span>
+              <div class="skill-item">
+                <img src="icons/program-logo/pr.svg" alt="Premiere" loading="lazy" decoding="async" width="78" height="78">
+                <span class="skill-name">Premiere</span>
+              </div>
+
+              <div class="skill-item">
+                <img src="icons/program-logo/ai.svg" alt="Illustrator" loading="lazy" decoding="async" width="78"
+                  height="78">
+                <span class="skill-name">Illustrator</span>
+              </div>
+
+              <div class="skill-item">
+                <img src="icons/program-logo/ae.svg" alt="After Effects" loading="lazy" decoding="async" width="78"
+                  height="78">
+                <span class="skill-name">After Effects</span>
+              </div>
+
+              <div class="skill-item">
+                <img src="icons/program-logo/lr.svg" alt="Lightroom" loading="lazy" decoding="async" width="78" height="78">
+                <span class="skill-name">Lightroom</span>
+              </div>
+            </div>
           </div>
 
-          <div class="skill-item">
-            <img src="icon/program logo/pr.svg" alt="Premiere" loading="lazy">
-            <span class="skill-name">Premiere</span>
-          </div>
+          <div class="skill-group skill-group--other">
+            <div class="skill-group-heading">
+              <span>Other Tools</span>
+            </div>
+            <div class="skill-group-items">
+              <div class="skill-item">
+                <img src="icons/program-logo/figma.svg" alt="Figma" loading="lazy" decoding="async" width="78" height="78">
+                <span class="skill-name">Figma</span>
+              </div>
 
-          <div class="skill-item">
-            <img src="icon/program logo/ai.svg" alt="Illustrator" loading="lazy">
-            <span class="skill-name">Illustrator</span>
-          </div>
+              <div class="skill-item">
+                <img src="icons/program-logo/davinci.svg" alt="Davinci Resolve" loading="lazy" decoding="async" width="78"
+                  height="78">
+                <span class="skill-name">Davinci Resolve</span>
+              </div>
 
-          <div class="skill-item">
-            <img src="icon/program logo/ae.svg" alt="After Effects" loading="lazy">
-            <span class="skill-name">After Effects</span>
+              <div class="skill-item">
+                <img src="icons/program-logo/capcut.svg" alt="Capcut" loading="lazy" decoding="async" width="78"
+                  height="78">
+                <span class="skill-name">Capcut</span>
+              </div>
+            </div>
           </div>
-
-          <div class="skill-item">
-            <img src="icon/program logo/lr.svg" alt="Lightroom" loading="lazy">
-            <span class="skill-name">Lightroom</span>
-          </div>
-
-          <div class="skill-item">
-            <img src="icon/program logo/figma.svg" alt="Figma" loading="lazy">
-            <span class="skill-name">Figma</span>
-          </div>
-
-          <div class="skill-item">
-            <img src="icon/program logo/davinci.svg" alt="Davinci" loading="lazy">
-            <span class="skill-name">Davinci Resolve</span>
-          </div>
-
-          <div class="skill-item">
-            <img src="icon/program logo/capcut.svg" alt="Capcut" loading="lazy">
-            <span class="skill-name">Capcut</span>
-          </div>
-
         </div>
-
-  </section>
+      </div>
+    </div>
   </section>
   <section class="marquee">
     <div class="marquee-track">
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
     </div>
@@ -509,14 +422,17 @@
     <div class="container">
       <div class="section-header">
         <h2>Dự Án Tiêu Biểu</h2>
-        <p>Những sản phẩm hình ảnh & truyền thông, thực hiện dựa trên sự kết hợp giữa chiến lược và thẩm mỹ thị
-          giác.</p>
+        <p class="section-intro">
+          Những dự án tiêu biểu được thực hiện từ sự kết hợp giữa tư duy chiến lược,
+          thẩm mỹ thị giác và mục tiêu truyền thông.
+        </p>
       </div>
 
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-thumb">
-            <img src="source/ceres/Key-Visual.png" alt="Ceres" loading="lazy">
+            <img src="project-assets/ceres/key-visual.png" alt="Ceres" loading="lazy" decoding="async" width="976"
+              height="754">
             <div class="project-overlay">
               <a href="ceres.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -530,7 +446,8 @@
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Ngoc-Nga/Key-Visual.png" alt="Ngọc Ngà" loading="lazy">
+            <img src="ngoc-nga-assets/key-visual.png" alt="Ngọc Ngà" loading="lazy" decoding="async" width="976"
+              height="754">
             <div class="project-overlay">
               <a href="ngoc-nga-campaign.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -538,55 +455,59 @@
           <div class="project-info">
             <span class="pj-tag">Campaign / Visual Identity</span>
             <h3 class="project-title"><a href="ngoc-nga-campaign.html">Ngọc Ngà 8/3 Campaign</a></h3>
-            <p class="pj-short-desc">Bộ nhận diện truyền thông tôn vinh vẻ đẹp phụ nữ Việt.</p>
+            <p class="pj-short-desc">Bộ nhận diện truyền thông tôn vinh vẻ đẹp của người phụ nữ Việt Nam.</p>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="mother-day/Key-Visual.jpg" alt="Mother's Day" loading="lazy">
+            <img src="mothers-day-assets/key-visual.jpg" alt="Mother's Day" loading="lazy" decoding="async" width="976"
+              height="754">
             <div class="project-overlay">
-              <a href="mother's-day.html" class="view-project-btn">Xem dự án</a>
+              <a href="mothers-day.html" class="view-project-btn">Xem dự án</a>
             </div>
           </div>
           <div class="project-info">
             <span class="pj-tag">Digital Campaign</span>
-            <h3 class="project-title"><a href="mother's-day.html">Mother’s Day Campaign</a></h3>
+            <h3 class="project-title"><a href="mothers-day.html">Mother’s Day Campaign</a></h3>
             <p class="pj-short-desc">Chiến dịch cảm xúc kết nối tình mẫu tử qua hình ảnh số.</p>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Thoi-Diem-Vang/Key-Visuals.png" alt="Thời Điểm Vàng" loading="lazy">
+            <img src="thoi-diem-vang-assets/key-visuals.png" alt="Thời Điểm Vàng" loading="lazy" decoding="async"
+              width="976" height="754">
             <div class="project-overlay">
-              <a href="Promotion-campaigns.html" class="view-project-btn">Xem dự án</a>
+              <a href="thoi-diem-vang-campaign.html" class="view-project-btn">Xem dự án</a>
             </div>
           </div>
           <div class="project-info">
             <span class="pj-tag">Tactical Campaign</span>
-            <h3 class="project-title"><a href="Promotion-campaigns.html">Thời Điểm Vàng</a></h3>
+            <h3 class="project-title"><a href="thoi-diem-vang-campaign.html">Thời Điểm Vàng</a></h3>
             <p class="pj-short-desc">Chiến dịch thúc đẩy doanh số giai đoạn cận Tết.</p>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Giao-Diem-Tinh-Hoa/KV.png" alt="Giao Điểm Tinh Hoa" loading="lazy">
+            <img src="giao-diem-tinh-hoa-assets/kv.png" alt="Giao Điểm Tinh Hoa" loading="lazy" decoding="async"
+              width="976" height="754">
             <div class="project-overlay">
-              <a href="Giao-Diem-Tinh-Hoa.html" class="view-project-btn">Xem dự án</a>
+              <a href="giao-diem-tinh-hoa-project.html" class="view-project-btn">Xem dự án</a>
             </div>
           </div>
           <div class="project-info">
             <span class="pj-tag">Event Branding</span>
-            <h3 class="project-title"><a href="Giao-Diem-Tinh-Hoa.html">Giao Điểm Tinh Hoa</a></h3>
+            <h3 class="project-title"><a href="giao-diem-tinh-hoa-project.html">Giao Điểm Tinh Hoa</a></h3>
             <p class="pj-short-desc">Sự kiện khai trương chi nhánh mới 2026.</p>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="selected-works/Key-Visual.png" alt="Selected Works" loading="lazy">
+            <img src="selected-works-assets/key-visual.png" alt="Selected Works" loading="lazy" decoding="async"
+              width="976" height="754">
             <div class="project-overlay">
               <a href="selected-works.html" class="view-project-btn">Xem dự án</a>
             </div>
@@ -601,14 +522,15 @@
         <!-- Thẻ Photography mới -->
         <div class="project-card">
           <div class="project-thumb">
-            <img src="Photography/previews/thumnail2.jpg" alt="Photography Portfolio" loading="lazy">
+            <img src="photography-gallery/previews/thumnail2.jpg" alt="Photography Portfolio" loading="lazy"
+              decoding="async" width="1066" height="853">
             <div class="project-overlay">
-              <a href="photography.html" class="view-project-btn">Xem ảnh</a>
+              <a href="photography-portfolio.html" class="view-project-btn">Xem ảnh</a>
             </div>
           </div>
           <div class="project-info">
             <span class="pj-tag">Photography</span>
-            <h3 class="project-title"><a href="photography.html">Portfolio Nhiếp Ảnh</a></h3>
+            <h3 class="project-title"><a href="photography-portfolio.html">Portfolio Nhiếp Ảnh</a></h3>
             <p class="pj-short-desc">Nhiếp ảnh và hậu kỳ.</p>
           </div>
         </div>
@@ -616,7 +538,8 @@
         <!-- Thẻ Video Portfolio -->
         <div class="project-card">
           <div class="project-thumb">
-            <img src="source/thumnail-video2.png" alt="Video Portfolio" loading="lazy">
+            <img src="project-assets/thumnail-video2.png" alt="Video Portfolio" loading="lazy" decoding="async"
+              width="987" height="790">
             <div class="project-overlay">
               <a href="video-portfolio.html" class="view-project-btn">Xem video</a>
             </div>
@@ -634,62 +557,27 @@
   <section class="marquee">
     <div class="marquee-track">
       <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
-
       <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
-        <span>Trần Võ Anh Khoa</span>
-      </div>
-
-      <div class="marquee-item">
-        <img src="icon/logo.png" loading="lazy">
+        <img src="icons/marquee-logo.svg" loading="lazy" decoding="async" width="100" height="122">
         <span>Trần Võ Anh Khoa</span>
       </div>
     </div>
@@ -707,69 +595,121 @@
     </p>
   </section>
   <section id="contact" class="contact-section">
-    <div class="contact-intro">
-      <h2>Sẵn sàng hợp tác?</h2>
-    </div>
-
-    <div class="contact-wrapper">
-      <a href="https://www.facebook.com/kozhsaigon203/" target="_blank" class="contact-box">
-        <span class="c-label">Social</span>
-        <span class="c-value">Facebook</span>
-      </a>
-
-      <div class="contact-box" id="copy-phone-btn">
-        <span class="c-label">Phone (Click to copy)</span>
-        <span class="c-value">+84 382 856 991</span>
+    <div class="contact-inner">
+      <div class="contact-topline">
+        <span class="contact-eyebrow">Contact / 2026</span>
+        <span class="contact-availability">
+          <span class="availability-dot" aria-hidden="true"></span>
+          Đang nhận dự án mới
+        </span>
       </div>
 
-      <a href="mailto:khoatran9021@gmail.com" class="contact-box">
-        <span class="c-label">Email</span>
-        <span class="c-value">khoatran9021<br>@gmail.com</span>
-      </a>
+      <div class="contact-main-grid">
+        <div class="contact-intro">
+          <h2>
+            <span class="contact-title-line">Có một dự án</span>
+            <span class="contact-title-line">cần hình ảnh</span>
+            <span class="contact-title-line contact-title-accent">nổi bật?</span>
+          </h2>
+          <p>
+            Khoa luôn sẵn sàng lắng nghe những ý tưởng mới về thiết kế,
+            hình ảnh, video và nội dung số.
+          </p>
+        </div>
+
+        <a href="mailto:khoatran9021@gmail.com?subject=Project%20inquiry" class="contact-primary">
+          <span class="contact-primary-label">Bắt đầu một dự án</span>
+          <span class="contact-primary-email">khoatran9021@gmail.com</span>
+          <span class="contact-primary-arrow contact-arrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M6 18 18 6M9 6h9v9" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="contact-directory" aria-label="Thông tin liên hệ">
+        <a href="https://www.facebook.com/kozhsaigon203/" target="_blank" rel="noopener noreferrer" class="contact-row">
+          <span class="contact-row-index">01</span>
+          <span class="contact-row-label">Facebook</span>
+          <span class="contact-row-value">kozhsaigon203</span>
+          <span class="contact-row-arrow contact-arrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M6 18 18 6M9 6h9v9" />
+            </svg>
+          </span>
+        </a>
+
+        <button class="contact-row" id="copy-phone-btn" type="button" aria-label="Sao chép số điện thoại">
+          <span class="contact-row-index">02</span>
+          <span class="contact-row-label">Điện thoại</span>
+          <span class="contact-row-value">+84 382 856 991</span>
+          <span class="contact-row-action">Nhấn để sao chép</span>
+        </button>
+
+        <div class="contact-row contact-row-static">
+          <span class="contact-row-index">03</span>
+          <span class="contact-row-label">Địa điểm</span>
+          <span class="contact-row-value">TP. Hồ Chí Minh, Việt Nam</span>
+          <span class="contact-row-action">GMT+7</span>
+        </div>
+      </div>
     </div>
 
     <div class="contact-footer">
-      <p>© 2026 Trần Võ Anh Khoa. Media & Digital Designer.</p>
+      <p class="contact-copyright">
+        <span>© 2026 Trần Võ Anh Khoa.</span>
+        <span>Media &amp; Digital Designer.</span>
+      </p>
+      <a href="#top" class="back-to-top" aria-label="Về đầu trang">
+        Về đầu trang <span aria-hidden="true">&uarr;</span>
+      </a>
     </div>
+
+    <div class="copy-toast" id="copy-toast" role="status" aria-live="polite">Đã sao chép số điện thoại</div>
   </section>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const phoneBtn = document.getElementById("copy-phone-btn");
+      const copyToast = document.getElementById("copy-toast");
+      let toastTimer;
 
       if (phoneBtn) {
-        phoneBtn.addEventListener("click", function () {
+        phoneBtn.addEventListener("click", async function () {
           const phoneNumber = "+84382856991";
 
-          // Cách 1: API hiện đại (dành cho web đã có https)
-          if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(phoneNumber).then(() => {
-              alert("Đã copy số điện thoại: " + phoneNumber);
-            }).catch(err => {
-              console.error('Lỗi copy clipboard: ', err);
-            });
-          } else {
-            // Cách 2: Phương án dự phòng (dành cho chạy file local ở máy tính)
-            const textArea = document.createElement("textarea");
-            textArea.value = phoneNumber;
+          const showCopyStatus = (message, copied) => {
+            if (!copyToast) return;
+            copyToast.textContent = message;
+            copyToast.classList.toggle("is-error", !copied);
+            copyToast.classList.add("is-visible");
+            window.clearTimeout(toastTimer);
+            toastTimer = window.setTimeout(() => copyToast.classList.remove("is-visible"), 2400);
+          };
 
-            // Giấu textarea đi để web không bị giật/scroll khi bấm
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            textArea.style.top = "0";
-
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-
-            try {
-              document.execCommand('copy');
-              alert("Đã copy số điện thoại: " + phoneNumber);
-            } catch (err) {
-              console.error('Không thể copy', err);
-              alert("Trình duyệt chặn copy. Vui lòng copy thủ công: " + phoneNumber);
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(phoneNumber);
+            } else {
+              const textArea = document.createElement("textarea");
+              textArea.value = phoneNumber;
+              textArea.style.position = "fixed";
+              textArea.style.left = "-9999px";
+              textArea.style.top = "0";
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              const copied = document.execCommand("copy");
+              document.body.removeChild(textArea);
+              if (!copied) throw new Error("Copy command failed");
             }
 
-            document.body.removeChild(textArea);
+            phoneBtn.classList.add("is-copied");
+            showCopyStatus("Đã sao chép số điện thoại", true);
+            window.setTimeout(() => phoneBtn.classList.remove("is-copied"), 1800);
+          } catch (error) {
+            console.error("Không thể sao chép số điện thoại", error);
+            showCopyStatus("Không thể sao chép. Số điện thoại: +84 382 856 991", false);
           }
         });
       }
@@ -800,7 +740,7 @@
         container: document.getElementById("logo"),
         renderer: "svg",
         loop: false,
-        autoplay: true,
+        autoplay: false,
         path: "animationlogo.json"
       });
     }

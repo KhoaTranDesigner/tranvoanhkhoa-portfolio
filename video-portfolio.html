@@ -27,7 +27,7 @@
             margin: 0;
             padding: 0;
             background: var(--video-bg);
-            color: #fff;
+            color: #ffffff;
             font-family: "Be Vietnam Pro", sans-serif;
         }
 
@@ -49,7 +49,7 @@
 
         #video-portfolio-page .main-name,
         #video-portfolio-page .typing-text {
-            color: #fff !important;
+            color: #ffffff !important;
         }
 
         #video-portfolio-page .sub-title,
@@ -90,7 +90,7 @@
 
         .video-hero h1 {
             margin: 0 0 18px;
-            color: #fff;
+            color: #ffffff;
             font-size: clamp(40px, 6vw, 68px);
             font-weight: 800;
             letter-spacing: -2px;
@@ -149,16 +149,14 @@
             position: sticky;
             top: calc(var(--video-header-height, 112px) + 10px);
             z-index: 20;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            width: fit-content;
-            max-width: calc(100% - 32px);
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 6px;
+            width: min(720px, calc(100% - 32px));
             margin: 0 auto 46px;
-            padding: 7px;
+            padding: 6px;
             border: 0;
-            border-radius: 999px;
+            border-radius: 18px;
             background: #18181d;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
             backdrop-filter: none;
@@ -184,14 +182,18 @@
         .filter-btn {
             position: relative;
             appearance: none;
-            padding: 10px 18px;
+            min-width: 0;
+            padding: 11px 14px;
             border: 0;
-            border-radius: 999px;
+            border-radius: 13px;
             background: transparent;
             color: #b3b3bc;
             font: inherit;
             font-size: 13px;
             font-weight: 600;
+            line-height: 1.25;
+            text-align: center;
+            white-space: nowrap;
             cursor: pointer;
             transition:
                 background-color 0.55s cubic-bezier(0.16, 1, 0.3, 1),
@@ -206,7 +208,7 @@
 
         .filter-btn.is-active {
             background: var(--video-blue);
-            color: #fff;
+            color: #ffffff;
             box-shadow: 0 7px 18px rgba(0, 40, 255, 0.24);
             transform: translateY(-1px) scale(1.015);
         }
@@ -336,7 +338,7 @@
             margin-left: 5px;
             border-top: 9px solid transparent;
             border-bottom: 9px solid transparent;
-            border-left: 15px solid #fff;
+            border-left: 15px solid #ffffff;
         }
 
         .video-link:hover .video-thumb {
@@ -345,7 +347,7 @@
         }
 
         .video-link:hover .play-icon {
-            background: #fff;
+            background: #ffffff;
             box-shadow: 0 10px 35px rgba(0, 40, 255, 0.45);
             transform: translate(-50%, -50%) scale(1.08);
         }
@@ -370,7 +372,7 @@
 
         .video-title {
             margin: 0 0 8px;
-            color: #fff;
+            color: #ffffff;
             font-size: 18px;
             font-weight: 700;
             line-height: 1.45;
@@ -469,7 +471,7 @@
 
         .video-thanks h2 {
             margin: 0;
-            color: #fff;
+            color: #ffffff;
             font-size: clamp(32px, 5vw, 48px);
             letter-spacing: 1px;
         }
@@ -528,14 +530,12 @@
             .filter-menu {
                 width: calc(100% - 28px);
                 max-width: 620px;
-                border-radius: 18px;
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
             }
 
             .filter-btn {
-                flex: 1 1 auto;
-                padding-inline: 13px;
+                padding-inline: 10px;
             }
 
             .video-switch-cover {
@@ -547,6 +547,21 @@
         @media (max-width: 560px) {
             .video-hero h1 {
                 letter-spacing: -1px;
+            }
+
+            .filter-menu {
+                grid-template-columns: 0.72fr 0.9fr 1.28fr 1.45fr;
+                gap: 4px;
+                width: calc(100% - 20px);
+                padding: 5px;
+                border-radius: 15px;
+            }
+
+            .filter-btn {
+                padding: 10px 4px;
+                border-radius: 11px;
+                font-size: clamp(10px, 2.8vw, 12px);
+                letter-spacing: -0.15px;
             }
 
             .video-masonry {
@@ -571,18 +586,20 @@
 
 <body class="loading no-zoom-page" id="video-portfolio-page">
     <header class="main-header">
-        <nav class="nav-left">
-            <a href="index.html#about" class="nav-item"></a>
-            <a href="index.html#skills" class="nav-item"></a>
+        <nav class="nav-left project-nav-left" aria-label="Điều hướng trang">
+            <button class="page-back-button is-hidden" type="button">
+                <span class="page-back-icon" aria-hidden="true">&#8592;</span>
+                <span class="page-back-label">Quay lại</span>
+            </button>
         </nav>
 
         <div class="branding">
             <div class="name-container">
                 <h1 class="main-name">
-                    <a href="index.html#Project" class="name-link">
+                    <span class="name-link">
                         <span class="logo-box"><span id="logo"></span></span>
                         <span class="typing-text">Trần Võ Anh Khoa</span>
-                    </a>
+                    </span>
                 </h1>
                 <div class="sub-title-wrapper">
                     <h2 class="sub-title">Video Portfolio</h2>
@@ -633,9 +650,9 @@
         <span class="video-switch-loader" aria-hidden="true"></span>
     </div>
 
-    <section class="video-thanks video-reveal">
-        <h2>Thanks for Watching</h2>
-        <p>Video Portfolio Collection</p>
+    <section class="thanks-section project-thanks project-thanks--dark video-reveal">
+        <h2 class="thanks-title">Thanks for Watching</h2>
+        <p class="thanks-sub">Video Portfolio Collection</p>
         <p class="project-credit">Filmed &amp; Edited by Trần Võ Anh Khoa</p>
     </section>
 
@@ -933,7 +950,10 @@
                     data-caption="${caption.replace(/"/g, "&quot;")}">
                     <img class="video-thumb"
                         alt="${video.title}"
+                        width="${isVertical ? "405" : "960"}"
+                        height="${isVertical ? "720" : "540"}"
                         loading="${index < 3 ? "eager" : "lazy"}"
+                        fetchpriority="${index === 0 ? "high" : "auto"}"
                         decoding="async">
                     <span class="play-icon" aria-hidden="true"></span>
                 </a>
@@ -1243,7 +1263,7 @@
                 container: document.getElementById("logo"),
                 renderer: "svg",
                 loop: false,
-                autoplay: true,
+                autoplay: false,
                 path: "animationlogo.json"
             });
         }

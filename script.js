@@ -6,6 +6,60 @@ const header = document.querySelector("header");
 let animationFrameId = null;
 let isScrolling = false;
 const isMobile = window.matchMedia("(max-width:768px)").matches
+
+document.querySelectorAll(".page-back-button").forEach((button) => {
+  let hasLeftPageTop = false;
+  let idleTimer = null;
+
+  const showBackButton = () => {
+    button.classList.remove("is-idle");
+    window.clearTimeout(idleTimer);
+
+    if (!button.classList.contains("is-hidden")) {
+      idleTimer = window.setTimeout(() => {
+        button.classList.add("is-idle");
+      }, 1400);
+    }
+  };
+
+  const updateBackButton = () => {
+    const isAtPageTop = window.scrollY <= 8;
+
+    if (!isAtPageTop) {
+      hasLeftPageTop = true;
+      button.classList.remove("is-hidden");
+      button.classList.add("is-scroll-top");
+      button.setAttribute("aria-label", "Cuộn lên đầu trang");
+      showBackButton();
+      return;
+    }
+
+    button.classList.remove("is-scroll-top");
+    button.classList.toggle("is-hidden", !hasLeftPageTop);
+    button.setAttribute("aria-label", "Quay lại trang chủ");
+    showBackButton();
+  };
+
+  button.addEventListener("click", () => {
+    if (window.scrollY > 8) {
+      if (isMobile) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        smoothScrollTo(0);
+      }
+      return;
+    }
+
+    window.location.href = "index.html#Project";
+  });
+
+  window.addEventListener("scroll", updateBackButton, { passive: true });
+  button.addEventListener("pointerenter", showBackButton);
+  button.addEventListener("focus", showBackButton);
+  button.addEventListener("touchstart", showBackButton, { passive: true });
+  updateBackButton();
+});
+
 const runWhenIdle = (callback, timeout = 1200) => {
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(callback, { timeout });
@@ -60,14 +114,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(href)
     if (!target) return
 
-    const headerHeight = header ? header.offsetHeight + 80 : 0
-    const targetPosition = target.offsetTop - headerHeight
-
     if (isMobile) {
+      const mobileMenu = document.getElementById("mobileMenu")
+      const mobileCoverHeight = Math.max(
+        header?.offsetHeight || 0,
+        mobileMenu?.offsetHeight || 0
+      )
+
+      const targetTop = target.getBoundingClientRect().top + window.scrollY
+      const targetPosition = targetTop - mobileCoverHeight
 
       window.scrollTo(0, targetPosition)   // ⭐ NHẢY THẲNG → mượt mobile
 
     } else {
+      const headerHeight = header ? header.offsetHeight : 0
+      const targetTop = target.getBoundingClientRect().top + window.scrollY
+      const targetPosition = targetTop - headerHeight
 
       smoothScrollTo(targetPosition)       // ⭐ giữ hiệu ứng desktop
 
@@ -90,10 +152,27 @@ if (subTitle) {
 
   });
 }
+const replayLogoAnimation = () => {
+  const animations = window.lottie?.getRegisteredAnimations?.() || [];
+
+  animations.forEach((animation) => {
+    if (animation.wrapper?.id === "logo") {
+      animation.goToAndPlay(0, true);
+    }
+  });
+};
+
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.body.classList.remove("loading");
+    window.requestAnimationFrame(replayLogoAnimation);
   }, 300);
+});
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    window.requestAnimationFrame(replayLogoAnimation);
+  }
 });
 
 if (header) {
@@ -120,47 +199,109 @@ document.addEventListener("DOMContentLoaded", () => {
     triggerShine(section);
   });
 });
-const marqueeStates = [...document.querySelectorAll(".marquee-track")].map(track => {
-  const content = track.innerHTML
-  track.innerHTML += content
+const marqueeTracks = [...document.querySelectorAll(".marquee-track")];
 
-  return {
-    track,
-    position: 0,
-    visible: true,
-    speed: isMobile ? 0.18 : 0.3
-  }
-})
+if (marqueeTracks.length) {
+  let marqueeFrameId = null;
+  const marqueeStates = marqueeTracks.map((track) => {
+    const originalItemCount = track.children.length;
+    const content = track.innerHTML;
+    track.insertAdjacentHTML("beforeend", content);
 
-if (marqueeStates.length) {
-  const marqueeObserver = "IntersectionObserver" in window
-    ? new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const state = marqueeStates.find(item => item.track === entry.target)
-        if (state) state.visible = entry.isIntersecting
-      })
-    })
-    : null
+    return {
+      track,
+      originalItemCount,
+      position: 0,
+      loopWidth: track.children[originalItemCount]?.offsetLeft || track.scrollWidth / 2,
+      visible: false,
+      speed: isMobile ? 0.18 : 0.3
+    };
+  });
 
-  marqueeStates.forEach(state => marqueeObserver?.observe(state.track))
+  const stopMarqueeLoop = () => {
+    if (marqueeFrameId !== null) {
+      window.cancelAnimationFrame(marqueeFrameId);
+      marqueeFrameId = null;
+    }
+  };
 
-  function animateMarquees() {
-    marqueeStates.forEach(state => {
-      if (!state.visible) return
+  const shouldAnimateMarquees = () =>
+    !document.hidden &&
+    marqueeStates.some((state) => state.visible);
 
-      state.position -= state.speed
+  const animateMarquees = () => {
+    marqueeFrameId = null;
+    const pixelRatio = Math.max(1, window.devicePixelRatio || 1);
 
-      if (Math.abs(state.position) >= state.track.scrollWidth / 2) {
-        state.position = 0
+    marqueeStates.forEach((state) => {
+      if (!state.visible) return;
+
+      state.position -= state.speed;
+      if (Math.abs(state.position) >= state.loopWidth) {
+        state.position += state.loopWidth;
       }
 
-      state.track.style.transform = `translate3d(${state.position}px, 0, 0)`
+      const pixelAlignedPosition = Math.round(state.position * pixelRatio) / pixelRatio;
+      state.track.style.transform = `translate3d(${pixelAlignedPosition}px, 0, 0)`;
+    });
+
+    if (shouldAnimateMarquees()) {
+      marqueeFrameId = window.requestAnimationFrame(animateMarquees);
+    }
+  };
+
+  const syncMarqueeLoop = () => {
+    const shouldRun = shouldAnimateMarquees();
+    marqueeStates.forEach((state) => {
+      state.track.classList.toggle("is-running", shouldRun && state.visible);
+    });
+
+    if (shouldRun) {
+      if (marqueeFrameId === null) {
+        marqueeFrameId = window.requestAnimationFrame(animateMarquees);
+      }
+      return;
+    }
+
+    stopMarqueeLoop();
+  };
+
+  const refreshMarqueeWidths = () => {
+    marqueeStates.forEach((state) => {
+      state.loopWidth =
+        state.track.children[state.originalItemCount]?.offsetLeft ||
+        state.track.scrollWidth / 2;
+      if (Math.abs(state.position) >= state.loopWidth) {
+        state.position = 0;
+        state.track.style.transform = "translate3d(0, 0, 0)";
+      }
+    });
+  };
+
+  const marqueeObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const state = marqueeStates.find((item) => item.track === entry.target);
+        if (state) state.visible = entry.isIntersecting;
+      });
+      syncMarqueeLoop();
     })
+    : null;
 
-    requestAnimationFrame(animateMarquees)
+  marqueeStates.forEach((state) => {
+    state.visible = !marqueeObserver;
+    marqueeObserver?.observe(state.track);
+  });
+
+  document.addEventListener("visibilitychange", syncMarqueeLoop);
+
+  window.addEventListener("resize", () => {
+    refreshMarqueeWidths();
+  }, { passive: true });
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(refreshMarqueeWidths);
   }
-
-  requestAnimationFrame(animateMarquees)
 }
 
 document.querySelector(".name-container")?.classList.add("start-animation");
@@ -231,41 +372,169 @@ if (grid && dots.length) {
 }
 
 // =======================================================
-// TÍNH NĂNG XEM ẢNH CHUYÊN NGHIỆP CÓ ZOOM (FANCYBOX)
+// LIGHTBOX ẢNH BẰNG PHOTOSWIPE
 // =======================================================
+const PHOTO_SWIPE_VERSION = "5.4.4";
+let photoSwipeModulePromise = null;
+let photoSwipeStylePromise = null;
+
+const loadPhotoSwipe = () => {
+  if (!photoSwipeStylePromise) {
+    photoSwipeStylePromise = new Promise((resolve, reject) => {
+      const existingStylesheet = document.querySelector('link[data-portfolio-photoswipe]');
+      if (existingStylesheet?.sheet) {
+        resolve();
+        return;
+      }
+
+      const stylesheet = existingStylesheet || document.createElement("link");
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = `https://cdn.jsdelivr.net/npm/photoswipe@${PHOTO_SWIPE_VERSION}/dist/photoswipe.css`;
+      stylesheet.dataset.portfolioPhotoswipe = "";
+      stylesheet.onload = resolve;
+      stylesheet.onerror = reject;
+
+      if (!existingStylesheet) {
+        document.head.appendChild(stylesheet);
+      }
+    });
+  }
+
+  if (!photoSwipeModulePromise) {
+    photoSwipeModulePromise = import(
+      `https://cdn.jsdelivr.net/npm/photoswipe@${PHOTO_SWIPE_VERSION}/dist/photoswipe.esm.js`
+    );
+  }
+
+  return Promise.all([photoSwipeModulePromise, photoSwipeStylePromise])
+    .then(([module]) => module);
+};
+
+const getPhotoSwipeItem = (image, source = "") => ({
+  src: source || image.dataset.full || image.currentSrc || image.src,
+  width: Number(image.getAttribute("width")) || image.naturalWidth || 1600,
+  height: Number(image.getAttribute("height")) || image.naturalHeight || 1200,
+  msrc: image.currentSrc || image.src,
+  alt: image.alt || ""
+});
+
+const openPhotoSwipe = async (items, index = 0, thumbnail = null) => {
+  if (!items.length) return;
+
+  try {
+    const { default: PhotoSwipe } = await loadPhotoSwipe();
+    const options = {
+      dataSource: items,
+      index,
+      bgOpacity: 0.96,
+      wheelToZoom: true,
+      closeOnVerticalDrag: true,
+      showHideAnimationType: thumbnail ? "zoom" : "fade"
+    };
+
+    if (thumbnail) {
+      options.getThumbBoundsFn = () => {
+        const bounds = thumbnail.getBoundingClientRect();
+        return { x: bounds.left, y: bounds.top, w: bounds.width };
+      };
+    }
+
+    const lightbox = new PhotoSwipe(options);
+
+    lightbox.on("uiRegister", () => {
+      lightbox.ui.registerElement({
+        name: "portfolio-caption",
+        order: 9,
+        isButton: false,
+        appendTo: "root",
+        html: "",
+        onInit: (caption) => {
+          const updateCaption = () => {
+            const text = lightbox.currSlide?.data?.alt || "";
+            caption.textContent = text;
+            caption.hidden = !text;
+          };
+
+          lightbox.on("change", updateCaption);
+          updateCaption();
+        }
+      });
+    });
+
+    lightbox.init();
+  } catch (error) {
+    window.location.assign(items[index].src);
+  }
+};
+
+window.PortfolioLightbox = {
+  open: openPhotoSwipe,
+  itemFromImage: getPhotoSwipeItem
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Nếu trang có class no-zoom-page thì bỏ qua
+  document.addEventListener("click", (event) => {
+    const galleryItem = event.target.closest("[data-photoswipe-gallery]");
+    if (!galleryItem) return;
+
+    event.preventDefault();
+    const galleryName = galleryItem.dataset.photoswipeGallery;
+    const galleryItems = [...document.querySelectorAll("[data-photoswipe-gallery]")]
+      .filter((item) => item.dataset.photoswipeGallery === galleryName);
+    const items = galleryItems.map((item) => {
+      const image = item.querySelector("img");
+      return {
+        src: item.dataset.pswpSrc || item.href || image?.dataset.full || image?.currentSrc || image?.src,
+        width: Number(item.dataset.pswpWidth) || Number(image?.getAttribute("width")) || 1080,
+        height: Number(item.dataset.pswpHeight) || Number(image?.getAttribute("height")) || 1920,
+        msrc: image?.currentSrc || image?.src || "",
+        alt: item.dataset.caption || image?.alt || ""
+      };
+    });
+
+    openPhotoSwipe(items, galleryItems.indexOf(galleryItem), galleryItem.querySelector("img"));
+  });
+
   if (document.body.classList.contains("no-zoom-page")) return;
 
-  // 1. Tự động chèn thư viện CSS của Fancybox
-  const fancyboxCSS = document.createElement("link");
-  fancyboxCSS.rel = "stylesheet";
-  fancyboxCSS.href = "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css";
-  document.head.appendChild(fancyboxCSS);
+  const imageSelector = "img:not(.nav-item img, #logo img, .social-icons img, .skill-item img, .no-zoom)";
+  document.querySelectorAll(imageSelector).forEach((image) => {
+    if (image.closest("[data-photoswipe-gallery]")) return;
 
-  // 2. Tự động chèn thư viện JS của Fancybox
-  const fancyboxJS = document.createElement("script");
-  fancyboxJS.src = "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js";
-  document.body.appendChild(fancyboxJS);
-
-  // 3. Kích hoạt tính năng sau khi thư viện tải xong
-  fancyboxJS.onload = () => {
-    // 1. Gắn Fancybox cho các ảnh lẻ bình thường (Code cũ của Khoa)
-    const imageSelector = "img:not(.nav-item img, #logo img, .social-icons img, .skill-item img, .no-zoom)";
-    Fancybox.bind(imageSelector, {
-      Hash: false,
-      Toolbar: { display: { left: [], middle: ["zoomIn", "zoomOut", "toggle1to1"], right: ["close"] } },
-      Images: { zoom: true }
+    image.addEventListener("click", (event) => {
+      event.preventDefault();
+      openPhotoSwipe([getPhotoSwipeItem(image)], 0, image);
     });
-
-    // 2. Gắn Fancybox cho Album KOL 18 tấm (ĐOẠN CODE BỔ SUNG)
-    Fancybox.bind('[data-fancybox="kol-gallery"]', {
-      Hash: false,
-      Toolbar: { display: { left: [], middle: ["zoomIn", "zoomOut", "toggle1to1"], right: ["close"] } },
-      Images: { zoom: true }
-    });
-  };
+  });
 });
+
+// =======================================================
+// FANCYBOX CHỈ DÙNG CHO VIDEO
+// =======================================================
+let fancyboxPromise = null;
+
+const loadFancybox = () => {
+  if (window.Fancybox) return Promise.resolve(window.Fancybox);
+  if (fancyboxPromise) return fancyboxPromise;
+
+  fancyboxPromise = new Promise((resolve, reject) => {
+    if (!document.querySelector('link[data-portfolio-fancybox]')) {
+      const stylesheet = document.createElement("link");
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css";
+      stylesheet.dataset.portfolioFancybox = "";
+      document.head.appendChild(stylesheet);
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js";
+    script.onload = () => resolve(window.Fancybox);
+    script.onerror = reject;
+    document.body.appendChild(script);
+  });
+
+  return fancyboxPromise;
+};
 
 // =======================================================
 // THUMBNAIL + POPUP CHO TOÀN BỘ VIDEO YOUTUBE NHÚNG
@@ -284,8 +553,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const openProjectYoutubeVideo = (poster) => {
-    if (!window.Fancybox) {
+  const openProjectYoutubeVideo = async (poster) => {
+    try {
+      await loadFancybox();
+    } catch (error) {
       window.open(`https://www.youtube.com/watch?v=${poster.dataset.videoId}`, "_blank", "noopener");
       return;
     }

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Bộ sưu tập nhiếp ảnh của Trần Võ Anh Khoa.">
+        <title>Photography - Portfolio Khoa</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;400;600;700;800;900&display=swap"
+                rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+                :root {
+                        --photo-blue: #0028ff;
+                        --photo-bg: #070709;
+                }
+
+                body#photography-page {
+                        margin: 0;
+                        padding: 0;
+                        background: var(--photo-bg);
+                        color: #ffffff;
+                        font-family: "Be Vietnam Pro", sans-serif;
+                }
+
+                #photography-page .main-header {
+                        background: rgba(7, 7, 9, 0.82) !important;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+                        backdrop-filter: blur(10px);
+                }
+
+                #photography-page .main-name,
+                #photography-page .typing-text {
+                        color: #ffffff !important;
+                }
+
+                .photo-hero {
+                        padding: 200px 20px 72px;
+                        text-align: center;
+                }
+
+                .photo-hero h1 {
+                        margin: 0 0 16px;
+                        font-size: clamp(40px, 6vw, 64px);
+                        font-weight: 800;
+                        letter-spacing: 4px;
+                        text-transform: uppercase;
+                }
+
+                .photo-hero h1 span {
+                        color: var(--photo-blue);
+                        font-style: italic;
+                }
+
+                .photo-hero p {
+                        max-width: 680px;
+                        margin: 0 auto;
+                        color: #aaaaaa;
+                        font-size: 1rem;
+                        font-weight: 300;
+                        line-height: 1.8;
+                }
+
+                .gallery-container {
+                        width: min(1500px, 100%);
+                        margin: 0 auto;
+                        padding: 0 clamp(12px, 2vw, 28px) 120px;
+                }
+
+                .photo-grid {
+                        column-count: 3;
+                        column-gap: clamp(10px, 1.2vw, 18px);
+                }
+
+                .photo-item {
+                        display: block;
+                        width: 100%;
+                        margin: 0 0 clamp(10px, 1.2vw, 18px);
+                        overflow: hidden;
+                        break-inside: avoid;
+                        border-radius: 8px;
+                        background: #111111;
+                        cursor: zoom-in;
+                        content-visibility: auto;
+                        contain-intrinsic-size: 500px 700px;
+                        opacity: 0;
+                        transform: translateY(36px);
+                        transition:
+                                opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1),
+                                transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+                }
+
+                .photo-item.is-revealed {
+                        opacity: 1;
+                        transform: translateY(0);
+                }
+
+                .photo-item img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        aspect-ratio: var(--photo-ratio);
+                        object-fit: contain;
+                        background: #111111;
+                        transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .photo-item img[data-loading="true"] {
+                        opacity: 0;
+                }
+
+                .photo-item img.is-ready {
+                        opacity: 1;
+                }
+
+                @media (hover: hover) {
+                        .photo-item:hover img {
+                                transform: scale(1.015);
+                        }
+                }
+
+                .gallery-empty {
+                        padding: 60px 20px;
+                        color: #999999;
+                        text-align: center;
+                }
+
+                .thanks-section {
+                        padding: 100px 20px;
+                        border-top: 1px solid rgba(255, 255, 255, 0.05);
+                        background: var(--photo-bg);
+                        text-align: center;
+                }
+
+                .thanks-title {
+                        color: #ffffff;
+                        font-size: clamp(32px, 5vw, 48px);
+                        letter-spacing: 2px;
+                }
+
+                .thanks-sub {
+                        margin-top: 10px;
+                        color: var(--photo-blue);
+                        font-size: 16px;
+                        letter-spacing: 2px;
+                }
+
+                @media (max-width: 900px) {
+                        .photo-grid {
+                                column-count: 2;
+                        }
+                }
+
+                @media (max-width: 560px) {
+                        .photo-hero {
+                                padding: 145px 18px 48px;
+                        }
+
+                        .photo-hero h1 {
+                                letter-spacing: 2px;
+                        }
+
+                        .gallery-container {
+                                padding-inline: 8px;
+                        }
+
+                        .photo-grid {
+                                column-count: 1;
+                        }
+
+                        .photo-item {
+                                border-radius: 5px;
+                        }
+                }
+        </style>
+</head>
+
+<body class="loading no-zoom-page" id="photography-page">
+        <header class="main-header">
+                <nav class="nav-left project-nav-left" aria-label="Điều hướng trang">
+                        <button class="page-back-button is-hidden" type="button">
+                                <span class="page-back-icon" aria-hidden="true">&#8592;</span>
+                                <span class="page-back-label">Quay lại</span>
+                        </button>
+                </nav>
+
+                <div class="branding">
+                        <div class="name-container">
+                                <h1 class="main-name">
+                                        <span class="name-link">
+                                                <span class="logo-box"><span id="logo"></span></span>
+                                                <span class="typing-text">Trần Võ Anh Khoa</span>
+                                        </span>
+                                </h1>
+                                <div class="sub-title-wrapper">
+                                        <h2 class="sub-title">Photography</h2>
+                                        <div class="back-hint">
+                                                <span class="arrow">←</span>
+                                                <span class="hint-text">click to back</span>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <nav class="nav-right">
+                        <a href="index.html#tools" class="nav-item"></a>
+                        <a href="index.html#Project" class="nav-item"></a>
+                        <a href="index.html#contact" class="nav-item"></a>
+                </nav>
+        </header>
+
+        <main>
+                <section class="photo-hero">
+                        <h1>Photo<span>graphy</span></h1>
+                        <p>Góc nhìn điện ảnh và những khoảnh khắc được bắt trọn qua ống kính. Sự kết hợp giữa
+                                ánh sáng tự nhiên và kỹ thuật color grading.</p>
+                </section>
+
+                <section class="gallery-container" aria-label="Bộ sưu tập ảnh">
+                        <div class="photo-grid" id="photo-grid"></div>
+                        <noscript>
+                                <p class="gallery-empty">Vui lòng bật JavaScript để xem bộ sưu tập ảnh.</p>
+                        </noscript>
+                </section>
+        </main>
+
+        <section class="thanks-section project-thanks project-thanks--dark">
+                <h2 class="thanks-title">Thanks for Watching</h2>
+                <p class="thanks-sub">Photography Portfolio</p>
+                <p class="project-credit">Photography &amp; Retouching by Trần Võ Anh Khoa</p>
+        </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+        <script src="photography-gallery/gallery-data.js"></script>
+        <script src="script.js"></script>
+        <script>
+                if (window.lottie) {
+                        lottie.loadAnimation({
+                                container: document.getElementById("logo"),
+                                renderer: "svg",
+                                loop: false,
+                                autoplay: false,
+                                path: "animationlogo.json"
+                        });
+                }
+
+                const photoGrid = document.getElementById("photo-grid");
+                const photos = Array.isArray(window.PHOTOGRAPHY_IMAGES) ? window.PHOTOGRAPHY_IMAGES : [];
+
+                if (!photos.length) {
+                        photoGrid.innerHTML = '<p class="gallery-empty">Chưa có ảnh trong bộ sưu tập.</p>';
+                } else {
+                        const fragment = document.createDocumentFragment();
+
+                        photos.forEach((photo, index) => {
+                                const link = document.createElement("a");
+                                const image = document.createElement("img");
+
+                                link.className = "photo-item";
+                                link.href = photo.full;
+                                link.dataset.photoswipeGallery = "photography";
+                                link.dataset.pswpWidth = photo.width;
+                                link.dataset.pswpHeight = photo.height;
+                                link.dataset.caption = photo.title || "";
+                                link.style.setProperty("--photo-ratio", `${photo.width} / ${photo.height}`);
+
+                                image.src = photo.preview;
+                                image.alt = photo.title || `Ảnh nhiếp ảnh ${index + 1}`;
+                                image.width = photo.width;
+                                image.height = photo.height;
+                                image.decoding = "async";
+                                image.dataset.loading = "true";
+
+                                if (index < 4) {
+                                        image.loading = "eager";
+                                        image.fetchPriority = index === 0 ? "high" : "auto";
+                                } else {
+                                        image.loading = "lazy";
+                                }
+
+                                const markReady = () => {
+                                        image.dataset.loading = "false";
+                                        image.classList.add("is-ready");
+                                };
+
+                                image.addEventListener("load", markReady, { once: true });
+                                if (image.complete) markReady();
+
+                                link.appendChild(image);
+                                fragment.appendChild(link);
+                        });
+
+                        photoGrid.appendChild(fragment);
+
+                        const photoItems = photoGrid.querySelectorAll(".photo-item");
+
+                        if (!("IntersectionObserver" in window)) {
+                                photoItems.forEach((item) => item.classList.add("is-revealed"));
+                        } else {
+                                const revealObserver = new IntersectionObserver((entries, observer) => {
+                                        entries.forEach((entry) => {
+                                                if (!entry.isIntersecting) return;
+
+                                                entry.target.classList.add("is-revealed");
+                                                observer.unobserve(entry.target);
+                                        });
+                                }, {
+                                        rootMargin: "0px 0px -6% 0px",
+                                        threshold: 0.08
+                                });
+
+                                photoItems.forEach((item) => revealObserver.observe(item));
+                        }
+
+                }
+        </script>
+</body>
+
+</html>

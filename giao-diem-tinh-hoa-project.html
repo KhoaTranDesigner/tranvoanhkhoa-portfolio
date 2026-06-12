@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giao Điểm Tinh Hoa Campaign - Portfolio Khoa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;600;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            /* Tone màu Đỏ Rượu theo KV Tết 2026 của Khoa */
+            --th-heading-color: #8b001a;
+            --th-text-color: #000000;
+        }
+
+        /* Ghi đè màu tiêu đề */
+        #tinhhoa-page .campaign-container h1,
+        #tinhhoa-page .md-section-title,
+        #tinhhoa-page .md-post-title,
+        #tinhhoa-page .keyvisual-title,
+        #tinhhoa-page .thanks-title,
+        #tinhhoa-page .thanks-sub,
+        #tinhhoa-page .project-credit,
+        #tinhhoa-page .meta-label {
+            color: var(--th-heading-color) !important;
+        }
+
+        /* Ghi đè màu đoạn văn bản */
+        #tinhhoa-page .campaign-container p,
+        #tinhhoa-page .meta-value {
+            color: var(--th-text-color) !important;
+        }
+
+        /* Tùy chỉnh layout riêng cho phần thiệp và standee */
+        .th-offline-row {
+            flex-direction: row;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+        }
+
+        .th-offline-row img {
+            flex-direction: row;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(139, 0, 26, 0.15);
+        }
+
+        .th-standee {
+            width: 100%;
+        }
+
+        .th-thiep {
+            width: 100%;
+        }
+
+        @media (max-width:768px) {
+            .th-offline-row {
+                width: 100%;
+                flex-direction: row !important;
+                /* Đảm bảo nằm ngang */
+                justify-content: center;
+                gap: 20px !important;
+                /* Khoảng cách giữa 2 standee */
+                padding: 0 10px;
+            }
+
+            /* CHỈNH KÍCH THƯỚC ẢNH Ở ĐÂY */
+            .th-offline-row img {
+                width: calc((100% - 10px) / 2) !important;
+                /* Chia đôi màn hình để to nhất có thể */
+                height: auto;
+            }
+
+            .th-standee,
+            .th-thiep {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="loading" id="tinhhoa-page">
+    <header class="main-header">
+        <nav class="nav-left project-nav-left" aria-label="Điều hướng trang">
+            <button class="page-back-button is-hidden" type="button">
+                <span class="page-back-icon" aria-hidden="true">&#8592;</span>
+                <span class="page-back-label">Quay lại</span>
+            </button>
+        </nav>
+
+        <div class="branding">
+            <div class="name-container">
+                <h1 class="main-name">
+                    <span class="name-link">
+                        <span class="logo-box">
+                            <span id="logo"></span>
+                        </span>
+                        <span class="typing-text">Trần Võ Anh Khoa</span>
+                    </span>
+                </h1>
+                <div class="sub-title-wrapper">
+                    <h2 class="sub-title">Campaign Design</h2>
+                    <div class="back-hint">
+                        <span class="arrow">←</span>
+                        <span class="hint-text">click to back</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav-right">
+            <a href="index.html#tools" class="nav-item"></a>
+            <a href="index.html#Project" class="nav-item"></a>
+            <a href="index.html#contact" class="nav-item"></a>
+        </nav>
+    </header>
+
+    <section class="mothersday-hero-cp">
+        <div class="project-meta">
+            <div class="meta-item">
+                <span class="meta-label">Client</span>
+                <span class="meta-value">Vanity</span>
+            </div>
+
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">Design & Video Editor</span>
+            </div>
+
+            <div class="meta-item">
+                <span class="meta-label">Type</span>
+                <span class="meta-value">Grand Opening Campaign</span>
+            </div>
+
+            <div class="meta-item">
+                <span class="meta-label">Execution</span>
+                <span class="meta-value">Trần Võ Anh Khoa</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="keyvisual">
+        <div class="keyvisual-wrapper">
+            <img src="giao-diem-tinh-hoa-assets/key-visual.png" alt="Key Visual Giao Điểm Tinh Hoa"
+                loading="eager" fetchpriority="high" decoding="async" width="976" height="754">
+        </div>
+    </section>
+
+    <section class="campaign-intro">
+        <div class="campaign-container">
+            <h1>
+                Giao Điểm Tinh Hoa
+                <span class="md-slogan" style="color: var(--th-heading-color);">"Sự Kiện Khai Trương Chi Nhánh
+                    Mới"</span>
+            </h1>
+
+            <p>
+                "Giao Điểm Tinh Hoa" là chiến dịch truyền thông đánh dấu cột mốc khai trương chi nhánh mới của Vanity
+                tại đường 3/2. Sự kiện mang ý nghĩa về một khởi đầu rực rỡ, nơi hội tụ những tinh hoa trong dịch vụ làm
+                đẹp để mang đến cho khách hàng một không gian chăm sóc sắc đẹp cao cấp và chuẩn y khoa.
+            </p>
+
+            <p>
+                Hệ thống Visual đi theo concept Sang trọng, Ấm áp nhưng không kém phần hiện đại. Thoát khỏi những tông
+                màu khai trương rực rỡ thông thường, tôi lựa chọn sắc <strong style="color: #000000;">Đỏ Rượu
+                    (Burgundy)</strong> làm nền tảng,
+                kết hợp tinh tế cùng các chi tiết <strong style="color: #000000;">Vàng Kim (Gold)</strong> và
+                typography mạ chrome. Sự kết hợp
+                này mang lại chiều sâu thị giác, vừa phù hợp với dịp Tết, vừa tôn lên vẻ đẹp đằm thắm, quý phái và định
+                vị đẳng cấp của thương hiệu
+                trong sự kiện ra mắt.
+            </p>
+        </div>
+    </section>
+
+    <section class="material-section">
+
+        <h2 class="material-title">Key Visual Materials</h2>
+
+        <div class="material-grid">
+
+            <div class="material-card">
+                <img src="giao-diem-tinh-hoa-assets/typography.png" alt="Gold Typography" loading="lazy" decoding="async" width="900" height="900">
+                <h3>Gold Chrome Typography</h3>
+                <p>
+                    Cụm typo mạ vàng sắc nét, nổi bật trên nền, khẳng định sự đẳng cấp và sang trọng của sự
+                    kiện.
+                </p>
+            </div>
+
+            <div class="material-card">
+                <img src="giao-diem-tinh-hoa-assets/hoa-mai.png" alt="Golden Apricot" loading="lazy" decoding="async" width="900" height="900">
+                <h3>Spring Blossom</h3>
+                <p>
+                    Hoa mai điểm xuyết tinh tế mang ý nghĩa thịnh vượng, giúp tổng thể thiết mang nhiều âm hưởng của dịp
+                    lễ Tết.
+                </p>
+            </div>
+
+            <div class="material-card">
+                <img src="image-previews/giao-diem-tinh-hoa-assets/bui.webp" alt="Sparkle Effect" loading="lazy" decoding="async" width="900" height="900" data-full="giao-diem-tinh-hoa-assets/bui.png">
+                <h3>Golden Particles</h3>
+                <p>
+                    Hiệu ứng hạt sáng lấp lánh tạo chiều sâu huyền ảo, mô phỏng không khí lung linh và rực rỡ.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="material-dots">
+            <span class="m-dot active"></span>
+            <span class="m-dot"></span>
+            <span class="m-dot"></span>
+        </div>
+    </section>
+
+    <section class="md-facebook-post" style="padding: 0 10px;">
+        <h2 class="md-section-title">Digital Banners</h2>
+
+        <div class="md-post-grid">
+            <div class="md-post-item" style="width: 100%;">
+                <p class="md-post-title">Facebook Cover</p>
+                <div class="cover-wrapper">
+                    <img src="image-previews/giao-diem-tinh-hoa-assets/cover-mockup-1.webp" alt="Facebook Cover Flat" loading="lazy" decoding="async" width="1176" height="436" data-full="giao-diem-tinh-hoa-assets/cover-mockup-1.png">
+                    <img class="no-shadow" src="image-previews/giao-diem-tinh-hoa-assets/cover-mockup-2.webp" alt="Facebook Cover Mockup"
+                        loading="lazy" decoding="async" width="1209" height="702" data-full="giao-diem-tinh-hoa-assets/cover-mockup-2.png">
+                </div>
+            </div>
+
+            <div class="md-post-item" style="width: 100%; margin-top: 20px;">
+                <p class="md-post-title">Website Banner</p>
+                <img class="md-post-small" style="max-width: 900px;" src="image-previews/giao-diem-tinh-hoa-assets/website-baner.webp"
+                    alt="Website Banner" loading="lazy" decoding="async" width="1200" height="741" data-full="giao-diem-tinh-hoa-assets/website-baner.png">
+            </div>
+
+            <div class="md-post-item" style="width: 100%; margin-top: 40px;">
+                <p class="md-post-title">Online Invitation Card</p>
+                <img class="md-post-small" style="width: 60%;" src="image-previews/giao-diem-tinh-hoa-assets/thiep.webp"
+                    alt="Online Invitation" loading="lazy" decoding="async" width="674" height="1200" data-full="giao-diem-tinh-hoa-assets/thiep.png">
+            </div>
+        </div>
+    </section>
+
+    <section class="md-facebook-post" style="margin-top: 60px;">
+        <h2 class="md-section-title">Social Media Materials</h2>
+
+        <div class="md-post-item" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+            <p class="md-post-title">Tết Greetings (Mùng 1 - Mùng 3)</p>
+            <div class="tdv-post-three">
+                <img src="image-previews/giao-diem-tinh-hoa-assets/mung1.webp" alt="Mùng 1" loading="lazy" decoding="async" width="1080" height="1080" data-full="giao-diem-tinh-hoa-assets/mung1.png">
+                <img src="image-previews/giao-diem-tinh-hoa-assets/mung2.webp" alt="Mùng 2" loading="lazy" decoding="async" width="1080" height="1080" data-full="giao-diem-tinh-hoa-assets/mung2.png">
+                <img src="image-previews/giao-diem-tinh-hoa-assets/mung3.webp" alt="Mùng 3" loading="lazy" decoding="async" width="1080" height="1080" data-full="giao-diem-tinh-hoa-assets/mung3.png">
+            </div>
+        </div>
+
+        <div class="md-post-item" style="width: 100%; max-width: 800px; margin: 60px auto 0 auto;">
+            <p class="md-post-title">Frame Overlay</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <img style="width: 45%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
+                    src="image-previews/giao-diem-tinh-hoa-assets/frame1.webp" alt="Frame Trong Suốt" loading="lazy" decoding="async" width="1200" height="1200" data-full="giao-diem-tinh-hoa-assets/frame1.png">
+                <img style="width: 45%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
+                    src="image-previews/giao-diem-tinh-hoa-assets/frame2.webp" alt="Frame Application" loading="lazy" decoding="async" width="1200" height="1200" data-full="giao-diem-tinh-hoa-assets/frame2.png">
+            </div>
+        </div>
+    </section>
+
+    <section class="md-posm-section" style="padding-top: 60px;">
+        <h2 class="md-section-title">Offline POSM</h2>
+
+        <div class="md-posm-item" style="margin-bottom: 60px;">
+            <p class="md-post-title" style="margin-bottom: 20px;">Standee Design & Mockup</p>
+            <div class="th-offline-row" style="align-items: center;">
+                <img style="width: 30%;" src="image-previews/giao-diem-tinh-hoa-assets/standee.webp" alt="Standee Design" loading="lazy" decoding="async" width="534" height="1200" data-full="giao-diem-tinh-hoa-assets/standee.png">
+
+                <img style="width: 30%;" src="image-previews/giao-diem-tinh-hoa-assets/standee-mockup.webp" alt="Standee Mockup"
+                    loading="lazy" decoding="async" width="534" height="1200" data-full="giao-diem-tinh-hoa-assets/standee-mockup.png">
+            </div>
+
+            <div class="md-posm-item">
+                <p class="md-post-title" style="margin-bottom: 20px;">Event Backdrop & Check-in Area Mockup</p>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 0 20px;">
+                    <img style="width: 100%; max-width: 900px; border-radius: 12px;"
+                        src="image-previews/giao-diem-tinh-hoa-assets/backdrop.webp" alt="Backdrop Design" loading="lazy" decoding="async" width="1200" height="1076" data-full="giao-diem-tinh-hoa-assets/backdrop.png">
+
+                    <img style="width: 100%; max-width: 1000px; border-radius: 12px; box-shadow: 0 15px 45px rgba(139, 0, 26, 0.15);"
+                        src="image-previews/giao-diem-tinh-hoa-assets/backdrop-mockup.webp" alt="Backdrop Mockup" loading="lazy" decoding="async" width="1200" height="800" data-full="giao-diem-tinh-hoa-assets/backdrop-mockup.png">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="md-ads-section">
+        <h2 class="md-section-title">Stage Opening Visual</h2>
+
+        <div class="md-recap-container">
+            <div class="md-video-col">
+                <div class="md-landscape-frame">
+                    <iframe src="https://www.youtube-nocookie.com/embed/LfaESQdpea4?rel=0" title="Tết Motion Graphics"
+                        allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="md-workflow-info">
+            <h3 style="color: var(--th-heading-color);">My Roles</h3>
+            <div class="md-workflow-tags">
+                <span class="md-tag"
+                    style="background: rgba(139, 0, 26, 0.08); color: #8b001a; border-color: rgba(139, 0, 26, 0.2);">Layout
+                    Design</span>
+                <span class="md-tag"
+                    style="background: rgba(139, 0, 26, 0.08); color: #8b001a; border-color: rgba(139, 0, 26, 0.2);">Motion
+                    Graphics</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="thanks-section project-thanks">
+        <h2 class="thanks-title">Thanks for Watching</h2>
+        <p class="thanks-sub">Giao Điểm Tinh Hoa - Tết Campaign</p>
+        <p class="project-credit">Designed &amp; Animated by Trần Võ Anh Khoa</p>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script>
+        lottie.loadAnimation({
+            container: document.getElementById("logo"),
+            renderer: "svg",
+            loop: false,
+            autoplay: false,
+            path: "animationlogo.json"
+        });
+    </script>
+    <script>
+        window.addEventListener("scroll", function () {
+            const header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        })
+    </script>
+</body>
+
+</html>

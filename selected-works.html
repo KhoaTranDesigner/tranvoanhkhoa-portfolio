@@ -22,7 +22,7 @@
 
         body#selected-works-page {
             background-color: var(--gallery-bg);
-            color: #fff;
+            color: #ffffff;
         }
 
         #selected-works-page .main-header {
@@ -34,7 +34,7 @@
 
         #selected-works-page .main-name,
         #selected-works-page .typing-text {
-            color: #fff !important;
+            color: #ffffff !important;
         }
 
         /* Hero Section */
@@ -56,7 +56,7 @@
 
         .sw-hero p {
             font-size: 1.1rem;
-            color: #888;
+            color: #888888;
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.6;
@@ -79,7 +79,7 @@
         .category-header h2 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #fff;
+            color: #ffffff;
             white-space: nowrap;
             letter-spacing: -0.5px;
         }
@@ -158,7 +158,7 @@
         .sw-overlay h3 {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #fff;
+            color: #ffffff;
             margin-bottom: 6px;
             transform: translateY(15px);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -198,7 +198,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: #ffffff;
             pointer-events: none;
             /* Để không bị cản cú click chuột */
         }
@@ -319,20 +319,22 @@
 <body class="loading" id="selected-works-page">
 
     <header class="main-header">
-        <nav class="nav-left">
-            <a href="index.html#about" class="nav-item"></a>
-            <a href="index.html#skills" class="nav-item"></a>
+        <nav class="nav-left project-nav-left" aria-label="Điều hướng trang">
+            <button class="page-back-button is-hidden" type="button">
+                <span class="page-back-icon" aria-hidden="true">&#8592;</span>
+                <span class="page-back-label">Quay lại</span>
+            </button>
         </nav>
 
         <div class="branding">
             <div class="name-container">
                 <h1 class="main-name">
-                    <a href="index.html#Project" class="name-link">
+                    <span class="name-link">
                         <span class="logo-box">
                             <span id="logo"></span>
                         </span>
                         <span class="typing-text">Trần Võ Anh Khoa</span>
-                    </a>
+                    </span>
                 </h1>
 
                 <div class="sub-title-wrapper">
@@ -365,24 +367,26 @@
         </div>
 
         <div class="sw-grid grid-posters">
-            <div class="sw-card">
-                <img src="selected-works/Beme.png" alt="Beme Collection Summer">
+            <div class="sw-card" data-photoswipe-gallery="poster-gallery">
+                <img src="image-previews/selected-works-assets/beme.webp" alt="Beme Collection Summer" loading="lazy" decoding="async" width="2480" height="3508" data-full="selected-works-assets/beme.png">
                 <div class="sw-overlay">
                     <h3>Beme Collection</h3>
                     <p>Summer Collection Poster</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/hoi-xuan.png" alt="Sự Kiện Sinh Nhật Hoàng Mập - Poster">
+            <div class="sw-card" data-photoswipe-gallery="poster-gallery">
+                <img src="image-previews/selected-works-assets/hoi-xuan.webp" alt="Sự Kiện Sinh Nhật Hoàng Mập - Poster"
+                    loading="lazy" decoding="async" width="2480" height="3508" data-full="selected-works-assets/hoi-xuan.png">
                 <div class="sw-overlay">
                     <h3>Sự Kiện Sinh Nhật Hoàng Mập</h3>
                     <p>Key Visual Poster</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/hoi-xuan2.png" alt="Sự Kiện Sinh Nhật Hoàng Mập - Invitation">
+            <div class="sw-card" data-photoswipe-gallery="poster-gallery">
+                <img src="image-previews/selected-works-assets/hoi-xuan2.webp" alt="Sự Kiện Sinh Nhật Hoàng Mập - Invitation"
+                    loading="lazy" decoding="async" width="2480" height="3508" data-full="selected-works-assets/hoi-xuan2.png">
                 <div class="sw-overlay">
                     <h3>Sự Kiện Sinh Nhật Hoàng Mập</h3>
                     <p>Event Invitation Card</p>
@@ -397,81 +401,81 @@
 
         <div class="sw-grid grid-social grid-kol">
 
-            <div class="sw-card wide">
-                <img src="selected-works/hungphuc.png" alt="Vanity Clinic Banner" loading="lazy">
+            <div class="sw-card wide" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/hungphuc.webp" alt="Vanity Clinic Banner" loading="lazy" decoding="async" width="1800" height="900" data-full="selected-works-assets/hungphuc.png">
                 <div class="sw-overlay">
                     <h3>Promotional Campaign</h3>
                     <p>Horizontal Banner</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/LuongBichHuu.png" alt="Ideal Weight" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/luongbichhuu.webp" alt="Ideal Weight" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/luongbichhuu.png">
                 <div class="sw-overlay">
                     <h3>Ideal Weight Milestone</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/banner-caroussel.png" alt="Grand Offer" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/banner-caroussel.webp" alt="Grand Offer" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/banner-caroussel.png">
                 <div class="sw-overlay">
                     <h3>Grand Offer Campaign</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/banner-caroussel-2.png" alt="Health Checkup" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/banner-caroussel-2.webp" alt="Health Checkup" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/banner-caroussel-2.png">
                 <div class="sw-overlay">
                     <h3>Health Checkup</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/banner-caroussel-3.png" alt="Hoàng Mập Banner" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/banner-caroussel-3.webp" alt="Hoàng Mập Banner" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/banner-caroussel-3.png">
                 <div class="sw-overlay">
                     <h3>Transformation Story</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/LuongBichHuu2.png" alt="Care Plan" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/luongbichhuu2.webp" alt="Care Plan" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/luongbichhuu2.png">
                 <div class="sw-overlay">
                     <h3>Comprehensive Care Plan</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/kimdao.png" alt="Kim Dao Banner" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/kimdao.webp" alt="Kim Dao Banner" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/kimdao.png">
                 <div class="sw-overlay">
                     <h3>Transformation Story</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/kimdaosocialpost.png" alt="Hành trình giảm cân Kim Đào - Feedback"
-                    loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/kimdaosocialpost.webp" alt="Hành trình giảm cân Kim Đào - Feedback"
+                    loading="lazy" decoding="async" width="1000" height="1000" data-full="selected-works-assets/kimdaosocialpost.png">
                 <div class="sw-overlay">
                     <h3>Transformation Story</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/kimdaohong1.png" alt="Hành trình giảm cân Kim Đào - 78kg" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/kimdaohong1.webp" alt="Hành trình giảm cân Kim Đào - 78kg" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/kimdaohong1.png">
                 <div class="sw-overlay">
                     <h3>Transformation Story</h3>
                     <p>Social Media Post</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/kimdaohong2.png" alt="Hành trình giảm cân Kim Đào - 58kg" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="social-gallery">
+                <img src="image-previews/selected-works-assets/kimdaohong2.webp" alt="Hành trình giảm cân Kim Đào - 58kg" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/kimdaohong2.png">
                 <div class="sw-overlay">
                     <h3>Transformation Story</h3>
                     <p>Social Media Post</p>
@@ -487,32 +491,32 @@
 
         <div class="sw-grid grid-social grid-kols">
 
-            <a href="selected-works/happy-birthday/TS.png" data-fancybox="kol-gallery" class="sw-card">
-                <img src="selected-works/happy-birthday/TS.png" alt="KOL TS" class="no-zoom" loading="lazy">
+            <a href="selected-works-assets/happy-birthday/ts.png" data-photoswipe-gallery="kol-gallery" class="sw-card">
+                <img src="image-previews/selected-works-assets/happy-birthday/ts.webp" alt="KOL TS" class="no-zoom" loading="lazy" decoding="async" width="1080" height="1920" data-full="selected-works-assets/happy-birthday/ts.png">
                 <div class="sw-overlay">
                     <h3>NSUT Tú Sương</h3>
                     <p>Birthday Visual Adaptation</p>
                 </div>
             </a>
 
-            <a href="selected-works/happy-birthday/LVD.png" data-fancybox="kol-gallery" class="sw-card">
-                <img src="selected-works/happy-birthday/LVD.png" alt="KOL LVD" class="no-zoom" loading="lazy">
+            <a href="selected-works-assets/happy-birthday/lvd.png" data-photoswipe-gallery="kol-gallery" class="sw-card">
+                <img src="image-previews/selected-works-assets/happy-birthday/lvd.webp" alt="KOL LVD" class="no-zoom" loading="lazy" decoding="async" width="1080" height="1920" data-full="selected-works-assets/happy-birthday/lvd.png">
                 <div class="sw-overlay">
                     <h3>NS Lâm Vỹ Dạ</h3>
                     <p>Birthday Visual Adaptation</p>
                 </div>
             </a>
 
-            <a href="selected-works/happy-birthday/PL.png" data-fancybox="kol-gallery" class="sw-card">
-                <img src="selected-works/happy-birthday/PL.png" alt="KOL PL" class="no-zoom" loading="lazy">
+            <a href="selected-works-assets/happy-birthday/pl.png" data-photoswipe-gallery="kol-gallery" class="sw-card">
+                <img src="image-previews/selected-works-assets/happy-birthday/pl.webp" alt="KOL PL" class="no-zoom" loading="lazy" decoding="async" width="1080" height="1920" data-full="selected-works-assets/happy-birthday/pl.png">
                 <div class="sw-overlay">
                     <h3>CS Pha Lê</h3>
                     <p>Birthday Visual Adaptation</p>
                 </div>
             </a>
 
-            <a href="selected-works/happy-birthday/LBH.png" data-fancybox="kol-gallery" class="sw-card view-more-card">
-                <img src="selected-works/happy-birthday/LBH.png" alt="KOL LBH" class="no-zoom" loading="lazy">
+            <a href="selected-works-assets/happy-birthday/lbh.png" data-photoswipe-gallery="kol-gallery" class="sw-card view-more-card">
+                <img src="image-previews/selected-works-assets/happy-birthday/lbh.webp" alt="KOL LBH" class="no-zoom" loading="lazy" decoding="async" width="1080" height="1920" data-full="selected-works-assets/happy-birthday/lbh.png">
                 <div class="overlay-more">
                     <span>+14</span>
                     <p>View All</p>
@@ -520,19 +524,19 @@
             </a>
 
             <div style="display: none;">
-                <a href="selected-works/happy-birthday/HBT.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/HP.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/HT.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/IT.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/KD.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/KTL.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/LHT.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/MBN.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/MPL.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/ND.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/O.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/TT.png" data-fancybox="kol-gallery"></a>
-                <a href="selected-works/happy-birthday/VTH.png" data-fancybox="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/hbt.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/hp.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/ht.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/it.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/kd.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/ktl.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/lht.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/mbn.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/mpl.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/nd.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/o.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/tt.png" data-photoswipe-gallery="kol-gallery"></a>
+                <a href="selected-works-assets/happy-birthday/vth.png" data-photoswipe-gallery="kol-gallery"></a>
             </div>
 
         </div>
@@ -544,32 +548,32 @@
 
         <div class="sw-grid grid-exion">
 
-            <div class="sw-card">
-                <img src="selected-works/1.png" alt="Exion BTL 1" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="exion-gallery">
+                <img src="image-previews/selected-works-assets/1.webp" alt="Exion BTL 1" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/1.png">
                 <div class="sw-overlay">
                     <h3>Exion BTL</h3>
                     <p>AD Design 01</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/2.png" alt="Exion BTL 2" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="exion-gallery">
+                <img src="image-previews/selected-works-assets/2.webp" alt="Exion BTL 2" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/2.png">
                 <div class="sw-overlay">
                     <h3>Exion BTL</h3>
                     <p>AD Design 02</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/3.png" alt="Exion BTL 3" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="exion-gallery">
+                <img src="image-previews/selected-works-assets/3.webp" alt="Exion BTL 3" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/3.png">
                 <div class="sw-overlay">
                     <h3>Exion BTL</h3>
                     <p>AD Design 03</p>
                 </div>
             </div>
 
-            <div class="sw-card">
-                <img src="selected-works/4.png" alt="Exion BTL 4" loading="lazy">
+            <div class="sw-card" data-photoswipe-gallery="exion-gallery">
+                <img src="image-previews/selected-works-assets/4.webp" alt="Exion BTL 4" loading="lazy" decoding="async" width="1080" height="1080" data-full="selected-works-assets/4.png">
                 <div class="sw-overlay">
                     <h3>Exion BTL</h3>
                     <p>AD Design 04</p>
@@ -580,11 +584,10 @@
 
     </section>
 
-    <section class="thanks-section"
-        style="background: #070709; padding: 120px 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <h2 class="thanks-title" style="color: #fff;">Thanks for Watching</h2>
-        <p class="thanks-sub" style="color: #0028ff;">Selected Works Collection</p>
-        <p class="project-credit" style="color: #666;">Designed by Trần Võ Anh Khoa</p>
+    <section class="thanks-section project-thanks project-thanks--dark">
+        <h2 class="thanks-title">Thanks for Watching</h2>
+        <p class="thanks-sub">Selected Works Collection</p>
+        <p class="project-credit">Designed by Trần Võ Anh Khoa</p>
     </section>
 
     <script src="script.js"></script>
@@ -594,7 +597,7 @@
             container: document.getElementById("logo"),
             renderer: "svg",
             loop: false,
-            autoplay: true,
+            autoplay: false,
             path: "animationlogo.json"
         });
     </script>
