@@ -1,6 +1,3 @@
-function sayHello() {
-  alert("Welcome to Khoa's Portfolio 🔥");
-}
 const header = document.querySelector("header");
 
 let animationFrameId = null;
@@ -138,6 +135,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   })
 })
 // 🔹 Click vào graphics designer
+const sectionIndexLinks = [...document.querySelectorAll(".section-index-link")];
+
+if (sectionIndexLinks.length) {
+  const indexedSections = sectionIndexLinks
+    .map((link) => document.getElementById(link.dataset.section))
+    .filter(Boolean);
+  let sectionIndexFrame = null;
+
+  const updateSectionIndex = () => {
+    sectionIndexFrame = null;
+    const readingLine = window.innerHeight * 0.42;
+    let activeSection = indexedSections[0];
+
+    indexedSections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= readingLine) {
+        activeSection = section;
+      }
+    });
+
+    sectionIndexLinks.forEach((link) => {
+      const isActive = link.dataset.section === activeSection?.id;
+      link.classList.toggle("is-active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const requestSectionIndexUpdate = () => {
+    if (sectionIndexFrame !== null) return;
+    sectionIndexFrame = window.requestAnimationFrame(updateSectionIndex);
+  };
+
+  window.addEventListener("scroll", requestSectionIndexUpdate, { passive: true });
+  window.addEventListener("resize", requestSectionIndexUpdate, { passive: true });
+  updateSectionIndex();
+}
+
 const subTitle = document.querySelector(".sub-title");
 
 if (subTitle) {
@@ -671,21 +709,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }, 1000);
 });
-// =======================================================
-// THANH TIẾN TRÌNH ĐỌC (READING PROGRESS BAR)
-// =======================================================
-document.addEventListener("DOMContentLoaded", () => {
-  // 1. Tự động tạo khối HTML cho thanh tiến trình và chèn vào web
-  const progressContainer = document.createElement("div");
-  progressContainer.classList.add("progress-container");
-
-  const progressBar = document.createElement("div");
-  progressBar.classList.add("progress-bar");
-
-  progressContainer.appendChild(progressBar);
-  document.body.appendChild(progressContainer);
-});
-
 // 1. Khai báo key lưu trữ duy nhất cho từng trang
 const scrollKey = 'scrollPosition_' + window.location.pathname;
 
