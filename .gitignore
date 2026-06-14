@@ -2,3 +2,5 @@
 .logo-check.png
 hero-*-preview*.png
 hero-after-cleanup*.png
+.npm-cache/
+.qr-tools/

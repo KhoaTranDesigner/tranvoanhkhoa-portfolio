@@ -612,6 +612,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }], {
       Hash: false,
       dragToClose: false,
+      hideScrollbar: false,
       Toolbar: {
         display: {
           left: [],

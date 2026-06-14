@@ -1156,12 +1156,20 @@ header {
   font-weight: 700;
   margin-bottom: 12px;
   color: #0028ff;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .phil-card p {
   font-size: 15px;
   line-height: 1.6;
   color: #555555;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.phil-card:hover h3,
+.phil-card:hover p {
+  color: #0028ff;
+  transform: translateY(-3px);
 }
 
 /* ============================= */
@@ -1639,7 +1647,7 @@ header.scrolled {
 .ceres-tagline {
   letter-spacing: 6px;
   font-size: 14px;
-  color: #3e6770;
+  color: #0b192d;
   margin-bottom: 20px;
 }
 
@@ -1665,7 +1673,7 @@ header.scrolled {
 
 .ceres-about h3 {
   font-size: 18px;
-  color: #1c5c6b;
+  color: #0b192d;
   margin-bottom: 15px;
 }
 
@@ -1716,7 +1724,7 @@ header.scrolled {
 
 .info-item p {
   text-align: left;
-  color: #1c5c6b;
+  color: #0b192d;
   font-size: 16px;
   font-weight: 500;
 }
@@ -4239,7 +4247,7 @@ img {
 
   .ceres-about h3 {
     font-size: 18px;
-    color: #1c5c6b;
+    color: #0b192d;
     margin-bottom: 15px;
   }
 
@@ -4425,7 +4433,7 @@ html {
 
 .project-thanks--ceres .thanks-sub,
 .project-thanks--ceres .project-credit {
-  color: #1c5c6b !important;
+  color: #0b192d !important;
 }
 
 .thanks-title,
@@ -4600,6 +4608,26 @@ html {
     .skill-section .skills-summary-line + .skills-summary-line {
         margin-top: 10px;
     }
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  .skill-section .about-container {
+    width: min(calc(100% - 36px), 900px);
+    margin-inline: auto;
+  }
+
+  .skill-section .skills-summary {
+    display: block;
+    text-align: center;
+  }
+
+  .skill-section .skills-summary-line {
+    display: inline;
+  }
+
+  .skill-section .skills-summary-line + .skills-summary-line {
+    margin-top: 0;
+  }
 }
 
 /* =======================================================

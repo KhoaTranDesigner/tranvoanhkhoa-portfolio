@@ -39,7 +39,9 @@
                 }
 
                 .photo-hero {
+                        min-height: 430px;
                         padding: 200px 20px 72px;
+                        box-sizing: border-box;
                         text-align: center;
                 }
 
@@ -47,8 +49,8 @@
                         margin: 0 0 16px;
                         font-size: clamp(40px, 6vw, 64px);
                         font-weight: 800;
-                        letter-spacing: 4px;
-                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        line-height: 1.1;
                 }
 
                 .photo-hero h1 span {
@@ -60,7 +62,7 @@
                         max-width: 680px;
                         margin: 0 auto;
                         color: #aaaaaa;
-                        font-size: 1rem;
+                        font-size: 16px;
                         font-weight: 300;
                         line-height: 1.8;
                 }
@@ -157,11 +159,12 @@
 
                 @media (max-width: 560px) {
                         .photo-hero {
-                                padding: 145px 18px 48px;
+                                min-height: 360px;
+                                padding: 150px 18px 48px;
                         }
 
                         .photo-hero h1 {
-                                letter-spacing: 2px;
+                                letter-spacing: 1px;
                         }
 
                         .gallery-container {
