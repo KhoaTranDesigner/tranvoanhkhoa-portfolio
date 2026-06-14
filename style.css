@@ -4960,6 +4960,7 @@ html {
 
   .home-page .hero-left {
     order: initial;
+    text-align: left;
   }
 
   .home-page .hero-right {
@@ -5047,17 +5048,19 @@ html {
 
   .home-page .description {
     max-width: 40ch;
-    margin-right: auto;
+    margin-right: 0;
     margin-bottom: var(--space-4);
-    margin-left: auto;
+    margin-left: 0;
     font-size: 14px;
     line-height: 1.75;
+    text-align: left;
   }
 
   .home-page .hero-buttons {
     width: min(100%, 40ch);
     gap: 10px;
-    margin: -16px auto 28px;
+    margin: -16px 0 28px;
+    justify-content: flex-start;
   }
 
   .home-page .hero-buttons .btn {
